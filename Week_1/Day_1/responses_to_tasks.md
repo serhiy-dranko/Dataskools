@@ -29,7 +29,7 @@ System of the elevator:
 
 1. Inputs:
    - Floor call button
-   - floor selection buttons
+   - Floor selection buttons
    - Electricity
      
 2. Processes:
