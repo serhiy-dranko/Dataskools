@@ -38,11 +38,11 @@ System of the elevator:
    - Stops at the correct floor
    - Doors open and close
      
-3.Outputs:
+3. Outputs:
    - Passengers are transported between floors
    - Passengers are stuck in the elevator
      
-4.Feedback loops:
+4. Feedback loops:
    - The elevator reacts to new button presses and updates the route
    - If the elevator is overloaded, it will not move
    - If the doors are blocked, they reopen
