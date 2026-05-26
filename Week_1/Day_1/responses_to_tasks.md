@@ -81,15 +81,20 @@ And I will keep going because I’m a big boy:)
       
 Week 1–4:
   - Learning mindset, mock interviews, comfort zones
+    
 Week 5–8:
   - Real business case studies for hands-on projects
+    
 Week 9–14:
   - AI-ready data pipelines
+    
 Week 15–20:
   - Introduction to ML workflows: training, testing, predictions
+    
 Week 21–24:
   - Azure Data Lake, Synapse, ML Studio
   - Managing and querying massive datase
+    
     
 - [X] Save today's notes in your `Week1 > Day1` folder
 
