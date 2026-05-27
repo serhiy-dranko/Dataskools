@@ -5,14 +5,18 @@
 - [X] Read `05_slack_zoom_basics.md` and set up both apps on desktop and mobile
 - [X] Read `06_google_calendar_setup.md` and sync your program schedule
 - [X] Read `07_github_intro.md` and understand what GitHub is and why we use it
+      
   - Collaborate with People
   - Build project for portfolio
   - Show what I’ve actually done
   - Track version history
+    
 - [X] Read `08_github_profile_setup.md` and complete your GitHub profile
-  <img width="344" height="715" alt="image" src="https://github.com/user-attachments/assets/f486f8d5-19f0-4f55-ba04-4f05ec362d86" />
+      
+<img width="344" height="715" alt="image" src="https://github.com/user-attachments/assets/f486f8d5-19f0-4f55-ba04-4f05ec362d86" />
 - [X] Read `09_folders_and_files.md` and create your full folder structure
-  <img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/d397231c-66c0-49fc-aad5-66f72ca20a1c" />
+      
+<img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/d397231c-66c0-49fc-aad5-66f72ca20a1c" />
 
 
 ---
@@ -43,11 +47,15 @@ Strong 3. I get the basics but need more practice.
 ## 🚀 Action Tasks
 
 - [X] Send your first message in the Slack **#tools-setup** channel
-  <img width="622" height="716" alt="image" src="https://github.com/user-attachments/assets/6b3d435c-5180-46d0-b32b-5fdaf4ca9af8" />
+
+<img width="622" height="716" alt="image" src="https://github.com/user-attachments/assets/6b3d435c-5180-46d0-b32b-5fdaf4ca9af8" />
+
 - [X] Add your GitHub profile link in your Slack bio
-  <img width="541" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d32667-7c19-4a0f-b84c-ff0890a50d22" />
+
+<img width="541" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d32667-7c19-4a0f-b84c-ff0890a50d22" />
 - [X] Take a screenshot of your completed folder structure and save it in `Week1 > Day2`
-   <img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/25385b58-b3f2-42e5-9bad-06dd129cae04" />
+      
+<img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/25385b58-b3f2-42e5-9bad-06dd129cae04" />
 
 
 ---
