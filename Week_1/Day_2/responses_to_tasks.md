@@ -14,6 +14,7 @@
 - [X] Read `08_github_profile_setup.md` and complete your GitHub profile
       
 <img width="344" height="715" alt="image" src="https://github.com/user-attachments/assets/f486f8d5-19f0-4f55-ba04-4f05ec362d86" />
+
 - [X] Read `09_folders_and_files.md` and create your full folder structure
       
 <img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/d397231c-66c0-49fc-aad5-66f72ca20a1c" />
@@ -40,6 +41,7 @@
   However, I’m already comfortable with the basics of SQL and have some experience with Microsoft Power BI and analytics, which helps me understand the overall data workflow.
   
 - [X] Rate your Comfortability Index today from 1–5 and write why:
+      
 Strong 3. I get the basics but need more practice.
 
 ---
@@ -53,6 +55,7 @@ Strong 3. I get the basics but need more practice.
 - [X] Add your GitHub profile link in your Slack bio
 
 <img width="541" height="884" alt="image" src="https://github.com/user-attachments/assets/f8d32667-7c19-4a0f-b84c-ff0890a50d22" />
+
 - [X] Take a screenshot of your completed folder structure and save it in `Week1 > Day2`
       
 <img width="287" height="451" alt="image" src="https://github.com/user-attachments/assets/25385b58-b3f2-42e5-9bad-06dd129cae04" />
