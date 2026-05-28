@@ -46,11 +46,12 @@ newone:
 
 ## 🚀 Action Tasks
 
-- [ ] Open your terminal and type one basic command (e.g. `pwd` or `ls`)
+- [x] Open your terminal and type one basic command (e.g. `pwd` or `ls`)
 
+<img width="775" height="699" alt="image" src="https://github.com/serhiy-dranko/Dataskools/Week_1/Day_3/screenshots/Terminal commands task.png" />
 
-- [ ] Share your experience in the Slack **#daily-wins** channel — even if it felt hard
-- [ ] Save today's notes and reflections in `Week1 > Day3`
+- [x] Share your experience in the Slack **#daily-wins** channel — even if it felt hard
+- [x] Save today's notes and reflections in `Week1 > Day3`
 
 ---
 
