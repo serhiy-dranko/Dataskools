@@ -50,9 +50,10 @@ newone:
 
 <img width="775" height="699" alt="image" src="https://raw.githubusercontent.com/serhiy-dranko/Dataskools/main/Week_1/Day_3/screenshots/Terminal%20commands%20task.png" />
 
-
-
 - [x] Share your experience in the Slack **#daily-wins** channel — even if it felt hard
+
+<img width="622" height="749" alt="image" src="https://raw.githubusercontent.com/serhiy-dranko/Dataskools/main/Week_1/Day_3/screenshots/Slack-daily-wins-task.png" />
+
 - [x] Save today's notes and reflections in `Week1 > Day3`
 
 ---
