@@ -48,7 +48,9 @@ newone:
 
 - [x] Open your terminal and type one basic command (e.g. `pwd` or `ls`)
 
-<img width="775" height="699" alt="image" src="https://github.com/serhiy-dranko/Dataskools/Week_1/Day_3/screenshots/Terminal commands task.png" />
+<img width="775" height="699" alt="image" src="https://raw.githubusercontent.com/serhiy-dranko/Dataskools/main/Week_1/Day_3/screenshots/Terminal%20commands%20task.png" />
+
+
 
 - [x] Share your experience in the Slack **#daily-wins** channel — even if it felt hard
 - [x] Save today's notes and reflections in `Week1 > Day3`
