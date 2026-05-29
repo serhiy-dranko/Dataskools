@@ -3,8 +3,8 @@
 
 ## 📘 Core Tasks
 
-- [X] Read `14_mock_interviews.md` and understand what mock interviews are and why they matter
-- [ ] Review your notes from Day 1, Day 2, and Day 3
+- [x] Read `14_mock_interviews.md` and understand what mock interviews are and why they matter
+- [x] Review your notes from Day 1, Day 2, and Day 3
 - [ ] Complete the Week 1 Review Quiz (40 questions — Day 5 file)
 
 ---
