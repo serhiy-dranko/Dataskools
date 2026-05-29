@@ -52,7 +52,7 @@
 - [x] Push all your Week 1 notes and tasks to your GitHub repository
 - [x] Share one win from this week in the Slack **#weekly-wins** channel
 
-    <img width="1376" height="719" alt="image" src="https://raw.githubusercontent.com/serhiy-dranko/Dataskools/main/Week_1/Day_4/screenshots/Weekly%20commands%20win.png" />
+    <img width="1376" height="719" alt="image" src="https://raw.githubusercontent.com/serhiy-dranko/Dataskools/main/Week_1/Day_4/screenshots/Weekly%20win.png" />
 
 - [x] Complete and submit the Week 1 checkpoint form
 - [x] Set your Google Calendar reminders for Week 2 sessions
