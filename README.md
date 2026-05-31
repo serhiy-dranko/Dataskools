@@ -5,6 +5,7 @@ This directory contains educational materials related to Dataskools training and
 The content is organized into two main categories:
 
 Responses – practical tasks, exercises, and completed examples designed to reinforce key concepts and provide hands-on experience.
+
 Quizzes – knowledge checks and assessment materials intended to evaluate understanding of the covered topics.
 
 The purpose of this directory is to maintain a centralized collection of learning resources, making it easier to access, review, and track progress throughout the learning process.
