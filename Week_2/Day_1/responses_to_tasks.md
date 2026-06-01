@@ -22,9 +22,7 @@ Research and write a one-page summary comparing five core data roles:
 
 Data Engineer -> Analytics Engineer -> Data Analyst -> Data Scientist -> BI Developer
 
-
 > **Tip:** Use real LinkedIn job postings to ground your research in actual expectations, not just textbook definitions.
-
 
 
 ### Task 2 — Draw the Data Value Chain
@@ -32,7 +30,8 @@ Data Engineer -> Analytics Engineer -> Data Analyst -> Data Scientist -> BI Deve
 
 **Part A — Sketch from memory first (10 min)**
 
-Without looking anything up, draw the journey of raw data from source to business decision. Label each stage you can think of.
+Data Sources (website, crm, Erp ...) → Server/Cloud → Data storage (Databrix) → Cleaning & Transformation Data → Analysis & Reporting → Insights and forecasting → Business Decision → Actions
+
 
 **Part B — Compare and refine (20 min)**
 
@@ -41,8 +40,8 @@ Compare your sketch against the DIKW pyramid:
 ```
 Raw Data → Information → Knowledge → Wisdom → Decision
 ```
-
-Note where your version differs and update your diagram. Keep this sketch — you will redraw it from memory at the end of the day.
+My vision:
+Raw Data → Data Engineering → Information → Data Analyze and visualize → Knowledge → Data Science → Wisdom → SEO,Stakeholders,... → Decision
 
 
 
