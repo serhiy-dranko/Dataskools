@@ -55,15 +55,122 @@ Pick any company you interact with daily (Swiggy, Zomato, Amazon, your bank, etc
 
 Write a 1–2 page breakdown of how data likely flows through that business. Use this prompt as your structure:
 
+Carid.com
+
 1. **Event** — A customer places an order
+```
+    The customer browses website → find the product what he actualy wants → add them into their chart → complete a purchase.
+```
+This event create multiple pieces of the data Acroos company systems. Like:
+    - customer information
+    - payment information
+    - delivery preferences
+    - product details
+
+Owners: Software Engineers, Purchace team, Inventory team, Product team generate most of the data. 
+DE responsible for collecting it.
+
 2. **Capture** — What data is collected and how?
+
+When the order was created, business got the data such as:
+
+    - client id
+    - Name
+    - First Name
+    - order_date
+    - order_id
+    - sku
+    - product_id
+    - product_name
+    - product_department
+    - product_category
+    - product_sub-category
+    - product_quantity
+    - price
+    - discount
+    - ship_price
+    - shipping_address
+    - payment_method
+    - purchace_date
+    - source
+
+    
+This data is collected through web site, marketplaces(Amazon, Ebay, Wallmart) , payments gateway (Braintree,Afirm...) and inventory system. Events are typically recorded in transactional database (API to NetSuite from Oracle)
+
+Owners: I think Data Engineer
+
+Common Tools: APIs, SQL Databases
+
 3. **Storage** — Where does it go?
+
+    NetSuite:
+        - sales orders
+        - purchace orders
+        - invoices
+        - bills
+        - customers
+        - vendors
+        - inventory
+        - credits
+        - accounting
+    Databrix:
+        - replicated NetSuite tables
+        - historical snapshots
+        - contact-center data
+        - google analytics data
+        - jhira tickets data
+        - website data
+
+Owners: Data Engineer, Analytics Engineer
+
+Tools: Databricks SQL, Delta Live Tables, Spark
+
 4. **Transformation** — How is it cleaned and modelled?
+
+At this step Raw data is getting ready for analysis. 
+
+    Transformation processes:
+
+       - Remove duplicate records
+       - Standardize formats
+       - Handle missing values
+       - Create friendly tables *Bronze, silver, gold*
+       - Calculate metrics such as revenue, profit, and other counts
+
+Primary Owner: Analytics engineer, Data analytics
+
+Common Tools: SQL, Databricks,  Gitlab
+
 5. **Analysis** — What questions does the business ask of it?
+
+When clean data is available, analysts and data scientists investigate data for business.
+
+    Data analyst:
+    - Which regions generate the highest Gross revenue and Profit
+    - How effective was a recent or last promotion?
+    - Which products sell the most by a diifrent parameters?
+    - What are the top-performing product, categories ?
+
+    Data scientist:
+    - What future inventory demand should be expected?
+    - How increase our profit in next quarter?
+    - Which products should be recommended next?
+
+Insights are often delivered through dashboards, reports.
+
+Owners: Data Analyst, Data Scientist, BI Developer
+
+Common Tools: SQL, Python, Power BI, Databrix
+
 6. **Decision** — What action does it drive? (e.g. personalised feed, warehouse stocking)
 
-For each stage, note which data role would own that work.
+Finished analysis spin a wheel of Decisions like:
 
+    More marketing campaings → Customers who have not purchased recently may receive targeted promotions.
+    Owner: Data Analyst and Marketing Team
+
+    Inventory Planning → If forecasts predict increasing of sales for a product, additional inventory can be stocked in warehouses.
+    Owner: Data Scientist and Inventory Team
 
 
 ### Task 4 — Interview or Case Study Deep Dive
