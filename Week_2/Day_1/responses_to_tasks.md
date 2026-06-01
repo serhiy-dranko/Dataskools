@@ -29,9 +29,9 @@ Data Engineer -> Analytics Engineer -> Data Analyst -> Data Scientist -> BI Deve
 **Duration:** 30 minutes
 
 **Part A — Sketch from memory first (10 min)**
-
+```
 Data Sources (website, crm, Erp ...) → Server/Cloud → Data storage (Databrix) → Cleaning & Transformation Data → Analysis & Reporting → Insights and forecasting → Business Decision → Actions
-
+```
 
 **Part B — Compare and refine (20 min)**
 
@@ -41,7 +41,10 @@ Compare your sketch against the DIKW pyramid:
 Raw Data → Information → Knowledge → Wisdom → Decision
 ```
 My vision:
+
+```
 Raw Data → Data Engineering → Information → Data Analyze and visualize → Knowledge → Data Science → Wisdom → SEO,Stakeholders,... → Decision
+```
 
 
 
