@@ -43,7 +43,7 @@ Raw Data → Information → Knowledge → Wisdom → Decision
 My vision:
 
 ```
-Raw Data → Data Engineering → Information → Data Analyze and visualize → Knowledge → Data Science → Wisdom → SEO,Stakeholders,... → Decision
+Raw Data → Data Engineering → Information → Data Analyze and visualize → Knowledge → Data Science → Wisdom → CEO,Stakeholders,... → Decision
 ```
 
 
