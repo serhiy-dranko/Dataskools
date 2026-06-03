@@ -22,7 +22,7 @@ EXTRACT
 
 TRANSFORM
   Tool used:      Google Sheets
-  Cleaning done:  [summarise your change_log in bullet points]
+  Cleaning done:  Find & Replace mistakes and empty data
   New fields:     total_revenue_eur, data_quality_flag
   Aggregations:   Revenue by city, returns by city, product performance, payment breakdown
 

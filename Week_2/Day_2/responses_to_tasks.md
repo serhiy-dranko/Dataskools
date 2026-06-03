@@ -272,17 +272,53 @@ For each stage write one sentence on: what the tool does automatically that you 
 
 Then answer: what would happen to your `change_log` in a real pipeline? Look up *dbt tests* and *data lineage* if needed.
 
+
+## Production Pipeline
+```
+[Spotify App] → [Fivetran] → [Google BigQuery] → [dbt] → [Looker Studio]
+```
+Source → Extract Tool → Raw Storage → Transform → BI Dashboard
+
+### Source (Spotify)
+
+Spotify automatically collects listening activity such as songs played, listening time, playlists, likes, and search history.
+
+### Fivetran (Extract Tool)
+
+Fivetran automatically transfers Spotify data to BigQuery on a scheduled basis, eliminating the need for manual exports.
+
+### Google BigQuery (Raw Storage)
+
+BigQuery automatically stores large amounts of raw listening data in a scalable cloud data warehouse.
+
+### dbt (Transformation)
+
+dbt automatically cleans and transforms raw data into analytics-ready tables, such as daily listening statistics and top artists.
+
+### Looker Studio (Reporting)
+
+Looker Studio automatically creates dashboards that visualize listening trends, popular songs, and user engagement metrics.
+
+## What would happen to the change_log in a real pipeline?
+
+In a real pipeline, the change_log would be stored as a table that tracks changes to listening data and transformations over time.
+
+dbt tests would automatically validate the data by checking for missing values, duplicate records, and invalid data before it reaches reports.
+
+Data lineage would document how raw Spotify data flows through BigQuery and dbt models to the final dashboard, making it easy to trace the origin of every metric.
+
+
 **Part C — Self-quiz from memory**
 
 Close everything and answer without looking:
 
-- [ ] What are the three stages of ETL and what happens in each?
-- [ ] Why do we never edit the `raw_data` tab?
-- [ ] What is the difference between cleaning data and aggregating data?
-- [ ] What is imputation and when is it risky to use it?
-- [ ] Name one real tool for the Extract stage, one for Transform, one for Load
-- [ ] What problem does a `change_log` solve in a production pipeline?
-- [ ] What does idempotent mean and why does it matter for ETL?
+- [x] What are the three stages of ETL and what happens in each?
+- [x]  Why do we never edit the `raw_data` tab?
+- [x] What is the difference between cleaning data and aggregating data?
+- [x] What is imputation and when is it risky to use it?
+- [x] Name one real tool for the Extract stage, one for Transform, one for Load
+- [x] What problem does a `change_log` solve in a production pipeline?
+- [x] What does idempotent mean and why does it matter for ETL?
 
 ---
 
@@ -290,12 +326,12 @@ Close everything and answer without looking:
 
 By end of Day 2 you should have:
 
-- [ ] Google Sheet `ETL_Pipeline_German_Retail` with 5 tabs: `raw_data`, `change_log`, `cleaned_data`, `transformed_data`, `dashboard`
-- [ ] `change_log` with every single transformation documented row by row
-- [ ] All 4 summary tables in `transformed_data` built entirely with formulas
-- [ ] Dashboard with 4 KPI cells and 3 German-labelled charts
-- [ ] Written pipeline documentation — manual version and production version (Task 7A + 7B)
-- [ ] Self-quiz completed with gaps noted for tomorrow
+- [x] Google Sheet `ETL_Pipeline_German_Retail` with 5 tabs: `raw_data`, `change_log`, `cleaned_data`, `transformed_data`, `dashboard`
+- [x] `change_log` with every single transformation documented row by row
+- [x] All 4 summary tables in `transformed_data` built entirely with formulas
+- [x] Dashboard with 4 KPI cells and 3 German-labelled charts
+- [x] Written pipeline documentation — manual version and production version (Task 7A + 7B)
+- [x] Self-quiz completed with gaps noted for tomorrow
 
 ---
 
