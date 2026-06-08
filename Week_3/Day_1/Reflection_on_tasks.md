@@ -5,6 +5,8 @@
 > **Effort:** ⭐⭐ Light  
 > **Time:** ~4 hours  
 
+> **Link to my Sheet:** [Capital Bikeshare ride data Sep 2023](https://docs.google.com/spreadsheets/d/1V1LvVgmcUCWxSVg2kncLWPWOnZY6dI5Huw0pIw2kWL0/edit?usp=sharing)
+
 ---
 
 ## 🗺️ Your Task Map for Today
@@ -71,15 +73,15 @@ Scroll through 50–100 rows manually. Note anything that looks odd, empty, or s
 Examples of things to look for:
 - Are there rows where `start_station_name` is blank?
 
-    Yes most of them in classic_bike, electric_bike under `rideable_type`
+    Yes, most of them in classic_bike, electric_bike under `rideable_type`
 
 - Are there trips that seem to start and end at the same station?
 
-    Yes mahority of them start and end at the same station
+    Yes, 65404 of them start and end at the same station
 
 - Do all `rideable_type` values look consistent?
 
-   `rideable_type` docked bike has majority station fields filled
+   `rideable_type` under docked bikes has majority station fields filled
 
 
 ### Step 3 — What are the unique values?
@@ -110,9 +112,9 @@ Here are two starter examples (do NOT just copy these — write your own):
 - *"Which start station had the most trips?"*
 
 **Your 5 Level 1 questions:**
-1. How many trips have same Start and end point
-2. How many trips haven't start/end_station filled
-3. How many trips were taken by bike types
+1. How many trips have same Start and end point?
+2. How many trips haven't start/end_station filled?
+3. How many trips were taken by bike types?
 4. What is the average trip duration for each rider type?
 5. Which bike type has the longest average trip duration?
 
@@ -123,13 +125,13 @@ Here are two starter examples (do NOT just copy these — write your own):
 Pick your **two most interesting** Level 1 questions and go deeper. For each one, write 2–3 possible explanations for what you *might* find — before checking the data.
 
 **Question A (from your Level 1 list):**  
-How many trips have same Start and end point
+How many trips have same Start and end point?
 
     Only 65404 trips whitch 14.5 % from total trips have same Start and end point.
 
 Possible explanations:
-- users start a trip, move very short distance, or immediately return
-- bikes are sometimes taken out and returned to the same station due to lack of available bikes/docks elsewhere
+- Users start a trip, move very short distance, or immediately return
+- Bikes are sometimes taken out and returned to the same station due to lack of available bikes/docks elsewhere
 - App or user error: accidental unlocks, users ending trip without actually riding
 
 **Question B (from your Level 1 list):**  
@@ -141,7 +143,7 @@ What is the average trip duration for each rider type?
 
 Possible explanations:
 - Familiarity with system: members know routes and stations, so they optimize time
-- members often have subscription-based pricing encouraging shorter, frequent trips; casual users are pay-per-ride so they may take fewer but longer trips to “get value”.
+- Members often have subscription-based pricing encouraging shorter, frequent trips; casual users are pay-per-ride so they may take fewer but longer trips to “get value”.
 - Different usage intent: members usually use bikes for commuting (short, routine routes), while casual users ride for leisure or sightseeing (longer trips)
 
 ---
@@ -282,10 +284,24 @@ For question 3, you will need one more COUNTIFS formula — write it yourself.
 This is the most important deliverable of the day. Write a **structured brief** of 200–300 words covering:
 
 1. **What this dataset is:** One sentence describing it in plain English for someone who has never heard of Capital Bikeshare.
+
+    This dataset records every individual bike trip taken through Capital Bikeshare in Washington DC's public bikesharing system, during September 2023, capturing roughly 450,000 rides with details on bike type, starting and ending points, timestamps and the rider membership information.
+
 2. **What it can tell us:** 2–3 sentences on the most interesting questions it can answer.
+
+    The data allows us to compare how members and casual riders use the system. For example, members take shorter, more frequent trips (avg. ~14 min) while casual riders take longer ones (avg. ~31 min), suggesting different motivations.
+    Next we can identify the busiest stations, peak usage patterns and which bike types are preferred by each rider group. 
+    Also we can  investigate the ~14.5% of trips that start and end at the same station, pointing to possible failed trips or station supply problems.
 3. **What it cannot tell us:** 2–3 sentences on the most important gaps or limitations.
+
+    The dataset contains no pricing, weather, or demographic information, making it impossible to fully explain why riders behave the way they do. We also have no data on station capacity or bike availability, which limits our ability to distinguish user choice from system constraints.
 4. **Who might be missing:** 1–2 sentences on any groups underrepresented in the data.
+
+    People without smartphones or bank accounts, older adults and riders with disabilities are likely underrepresented. Their absence reflects access barriers, not lack of interest.
+
 5. **Your investigation focus:** 1–2 sentences on the specific question *you* want to investigate this week — and why.
+
+    I want to explore which stations are most heavily used by casual riders and whether trip duration patterns around those stations reveal opportunities to improve the system. Because station level insights could directly inform decisions about bike re-distribution and infrastructure investment.
 
 Write this in a Google Doc or in a new tab in your spreadsheet called `analyst_brief`.
 
@@ -295,26 +311,39 @@ Write this in a Google Doc or in a new tab in your spreadsheet called `analyst_b
 
 ## ✅ Deliverables Checklist
 
-- [ ] Data imported into Google Sheets (row count recorded)
-- [ ] Column glossary table completed
-- [ ] 3 unusual observations from manual scroll
-- [ ] Unique values for `member_casual` and `rideable_type` noted
-- [ ] 5 Level 1 questions written
-- [ ] Level 2 deep-dive for 2 questions (explanations before checking data)
-- [ ] 2 Level 3 questions written
-- [ ] 5 data gaps listed
-- [ ] "Who is invisible" paragraph written
-- [ ] Misleading conclusion critique written
-- [ ] Ethics risk noted
-- [ ] Summary tab with COUNTIF table and percentages complete
-- [ ] Answers to 3 interpretation questions
-- [ ] Analyst brief written (200–300 words)
+- [x] Data imported into Google Sheets (row count recorded)
+- [x] Column glossary table completed
+- [x] 3 unusual observations from manual scroll
+- [x] Unique values for `member_casual` and `rideable_type` noted
+- [x] 5 Level 1 questions written
+- [x] Level 2 deep-dive for 2 questions (explanations before checking data)
+- [x] 2 Level 3 questions written
+- [x] 5 data gaps listed
+- [x] "Who is invisible" paragraph written
+- [x] Misleading conclusion critique written
+- [x] Ethics risk noted
+- [x] Summary tab with COUNTIF table and percentages complete
+- [x] Answers to 3 interpretation questions
+- [X] Analyst brief written (200–300 words)
 
 ---
 
 ## 💡 Bonus (if you finish early)
 
 Sort the `start_station_name` column (copy it to a new tab first so you don't disturb the raw data). Count how many unique station names appear. Do any station names look like errors or duplicates? What would you do about that as an analyst?
+
+
+    The dataset contains 740 unique station names, which is a reasonable number for a city-wide bikeshare network. However, several data quality issues are worth flagging.
+    The most significant problem is 44,935 blank station names this is  9,98 % of all trips have no start station recorded. 
+
+    10 entries with extra spaces are a small but real issue. A TRIM pass before any grouping is recommended.
+    2 entries with suspicious symbols are low priority but worth a manual check. They may be encoding artifacts or one-off entry errors.
+    Name length looks clean: the shortest station name is 10 characters and the longest is 61. Both within a plausible range, suggesting no major truncation or runaway text issues.
+
+    Recommended next steps as an analyst:
+
+    - Apply TRIM() to all station names before grouping.
+    - Manually inspect the 2 suspicious symbol entries and correct or flag them
 
 ---
 
