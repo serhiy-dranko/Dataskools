@@ -51,22 +51,36 @@ For each column below, write in your own words what it contains and give one exa
 
 | Column | What it means | Example value from your data |
 |--------|--------------|------------------------------|
-| `ride_id` | | |
-| `rideable_type` | | |
-| `started_at` | | |
-| `ended_at` | | |
-| `start_station_name` | | |
-| `end_station_name` | | |
-| `start_lat` / `start_lng` | | |
-| `member_casual` | | |
+| `ride_id` | Unique 16-character alphanumeric id for each ride | A5413F6F0EB27E24 |
+| `rideable_type` | Type of vehicle used for the trip| electric bike, docked bike, classic bike |
+| `started_at` | Timestamp indicating when the trip started | 2023-09-04 16:02:31 |
+| `ended_at` | Timestamp indicating when the trip ends | 9/4/2023 16:12:49 |
+| `start_station_name` | Name of station from which the trip started; missing values ​​may indicate trips that did not start from an official station (picked up from a place where the bike is leave previous customer, proved by docked bikes thez all have this values) | 10th St & Constitution Ave NW |
+| `start_station_id` | id of station from which the trip started | 31219 |
+| `end_station_name` | Name of station where the trip ends | Columbus Circle / Union Station |
+| `end_station_id` | id of station where the trip ends | 31623 |
+| `start_lat` | Latitude, geographic coordinates of trip start location | 38.934881 |
+| `start_lng` | Longitude, geographic coordinates of trip start location| -77.072755 |
+| `end_lat` | Latitude, geographic coordinates of trip end location | 38.921103001 |
+| `end_lng` | Longitude, geographic coordinates of trip end location| -77.032150984 |
+| `member_casual` | Type of a Customer (member or casual user)| member |
 
 ### Step 2 — Spot unusual values
 Scroll through 50–100 rows manually. Note anything that looks odd, empty, or surprising. Write down at least **3 observations.**
 
 Examples of things to look for:
 - Are there rows where `start_station_name` is blank?
+
+    Yes most of them in classic_bike, electric_bike under `rideable_type`
+
 - Are there trips that seem to start and end at the same station?
+
+    Yes mahority of them start and end at the same station
+
 - Do all `rideable_type` values look consistent?
+
+   `rideable_type` docked bike has majority station fields filled
+
 
 ### Step 3 — What are the unique values?
 
@@ -79,6 +93,7 @@ Click an empty cell and manually look through column `member_casual`. You should
 Do the same for `rideable_type`. How many distinct bike types are there? Write them down.
 
 > 💡 You can sort a column (Data → Sort sheet → Sort by column) to group identical values together, making it easy to spot all unique entries.
+
 
 ---
 
@@ -95,11 +110,11 @@ Here are two starter examples (do NOT just copy these — write your own):
 - *"Which start station had the most trips?"*
 
 **Your 5 Level 1 questions:**
-1. 
-2. 
-3. 
-4. 
-5. 
+1. How many trips have same Start and end point
+2. How many trips haven't start/end_station filled
+3. How many trips were taken by bike types
+4. What is the average trip duration for each rider type?
+5. Which bike type has the longest average trip duration?
 
 ---
 
@@ -108,16 +123,26 @@ Here are two starter examples (do NOT just copy these — write your own):
 Pick your **two most interesting** Level 1 questions and go deeper. For each one, write 2–3 possible explanations for what you *might* find — before checking the data.
 
 **Question A (from your Level 1 list):**  
+How many trips have same Start and end point
+
+    Only 65404 trips whitch 14.5 % from total trips have same Start and end point.
+
 Possible explanations:
-- 
-- 
-- 
+- users start a trip, move very short distance, or immediately return
+- bikes are sometimes taken out and returned to the same station due to lack of available bikes/docks elsewhere
+- App or user error: accidental unlocks, users ending trip without actually riding
 
 **Question B (from your Level 1 list):**  
+What is the average trip duration for each rider type?
+
+    Member	0:14:13
+    Casual	0:31:01
+
+
 Possible explanations:
-- 
-- 
-- 
+- Familiarity with system: members know routes and stations, so they optimize time
+- members often have subscription-based pricing encouraging shorter, frequent trips; casual users are pay-per-ride so they may take fewer but longer trips to “get value”.
+- Different usage intent: members usually use bikes for commuting (short, routine routes), while casual users ride for leisure or sightseeing (longer trips)
 
 ---
 
@@ -223,8 +248,20 @@ Format those cells as numbers with 1 decimal place (Format → Number → Custom
 Answer these questions in your summary tab (just type them below your table):
 
 1. What percentage of trips are by members vs casual riders? Does that surprise you?
+
+    Members: 64.2% vs Casual riders: 35.8%
+
+    Most trips are made by members. This suggests the service is primarily used by regular, subscribed users rather than one-time riders.
+
 2. What percentage of trips use electric bikes? Is it more or less than you expected?
+
+    Electric bikes: 32.6% of trips use electric bikes. This is a significant share, suggesting electric bikes are a common and popular choice, but still not the dominant option compared to classic bikes.
+
 3. Among casual riders, what % use electric bikes vs classic bikes? What might that tell you about casual rider preferences?
+
+        Casual + electric: 11.5% Casual + classic: 23.2% Casual + docked: 1.0%
+
+        Among casual riders, about 11.5% use electric bikes while 23.2% use classic bikes. This suggests casual users prefer classic bikes over electric ones, possibly because they are cheaper, more available, or more familiar.
 
 For question 3, you will need one more COUNTIFS formula — write it yourself.
 
