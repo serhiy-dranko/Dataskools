@@ -153,9 +153,9 @@ These questions go *beyond* what the data alone can answer. Write **2 Level 3 qu
 Example (don't copy): *"If certain stations are always running out of bikes in the morning, what extra data would we need to predict demand and pre-position bikes overnight?"*
 
 **Your 2 Level 3 questions:**
-1. 
-2. 
-
+1. If 14.5% of trips start and end at the same point, how can we predict whether this is caused by failed trips, station shortages, or user behavior ?
+2. Given that casual riders take significantly longer trips than members, how can we predict which stations will convert casual users into members based on trip duration, routes and how should pricing or membership incentives be redesigned to improve conversion and efficiency?
+3. How can we forecast station demand based on rider type (member vs casual) and trip duration patterns to optimize bike redistribution and reduce shortages during peak hours?
 ---
 
 ## 🚩 Part 3 — Spot the Gaps (45 min)
@@ -166,11 +166,16 @@ Every dataset has limits. A good analyst is honest about what the data *cannot* 
 
 List **5 things** you would *like* to know that this dataset does not contain:
 
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Pricing information
+    We don’t know if trips were influenced by promotions, subscription tiers, or time-based pricing. That makes interpretation of member vs casual behavior incomplete.
+2. User or rider profile
+    No age, experience level, tourist vs local flag, or accessibility needs.
+3. Station capacity and availability
+    We are missing dock/bike availability at start and end stations.
+4. Weather conditions
+    It can affect on trip duration and volume.
+5. Trip purpose
+    We don’t know why people are riding (commute, leisure, errands, tourism).
 
 Think about: rider demographics, weather, pricing, purpose of the trip, physical ability, time spent looking for a bike, etc.
 
@@ -180,8 +185,11 @@ Think about: rider demographics, weather, pricing, purpose of the trip, physical
 
 Think about all the people who travel around Washington DC by bike. Who might be *underrepresented or completely absent* from this dataset — and why?
 
-Write 3–4 sentences. Consider things like: who can afford a bikeshare membership, who lives near stations, who has physical access to the bikes, who might avoid riding in certain conditions.
+    This dataset likely underrepresents people who rely on alternative transport like buses or walking due to cost, accessibility needs, or lack of nearby infrastructure.
 
+    It also excludes older adults, people with disabilities, and those uncomfortable cycling in traffic or weather conditions may also be missing or significantly underrepresented. 
+
+    As a result, the dataset mostly reflects a subset of relatively mobile, station-proximate users rather than the full population of a town.
 ---
 
 ### 3C — The misleading chart trap
@@ -190,13 +198,15 @@ Here is a statement someone might make after looking at this data:
 
 > *"Members are more responsible riders because they return bikes on time more often than casual riders."*
 
-Write 2–3 sentences explaining why this conclusion could be **misleading** — what information are we missing that would be needed to judge "responsibility"?
+    This conclusion is misleading because "returning bikes on time" is not the same as "being responsible". Members and casual riders may face different rules, trip types, pricing rules that affect duration without reflecting behavior quality. To judge responsibility, we would need context such as trip purpose, traffic conditions, pricing penalties, station availability, and whether users had realistic alternatives for completing their trips. 
 
 ---
 
 ### 3D — Ethics check
 
 A company wants to use this dataset to decide which neighbourhoods to expand bikeshare into next. Write 2 sentences on a **potential ethical risk** in that decision if they rely only on this trip data.
+
+    If Capital Bikeshare  relies only on trip data, it may bias expansion toward already well served or wealthier neighborhoods where biking activity is naturally higher. This risks reinforcing existing inequalities by ignoring underserved areas that currently have low usage precisely because of poor access, not lack of demand.
 
 ---
 
@@ -219,13 +229,13 @@ Create a new sheet tab called `summary`. Build this table manually (type the lab
 
 | Question | Formula | Your Answer |
 |----------|---------|-------------|
-| Total trips | `=COUNTA(Sheet1!A:A)-1` | |
-| Trips by members | `=COUNTIF(Sheet1!L:L,"member")` | |
-| Trips by casual riders | `=COUNTIF(Sheet1!L:L,"casual")` | |
-| Classic bike trips | `=COUNTIF(Sheet1!B:B,"classic_bike")` | |
-| Electric bike trips | `=COUNTIF(Sheet1!B:B,"electric_bike")` | |
-| Member + classic bike | `=COUNTIFS(Sheet1!L:L,"member",Sheet1!B:B,"classic_bike")` | |
-| Casual + electric bike | `=COUNTIFS(Sheet1!L:L,"casual",Sheet1!B:B,"electric_bike")` | |
+| Total trips | `=COUNTA(Sheet1!A:A)-1` | 450090 |
+| Trips by members | `=COUNTIF(Sheet1!L:L,"member")` | 289094 |
+| Trips by casual riders | `=COUNTIF(Sheet1!L:L,"casual")` | 160996 |
+| Classic bike trips | `=COUNTIF(Sheet1!B:B,"classic_bike")` | 298622 |
+| Electric bike trips | `=COUNTIF(Sheet1!B:B,"electric_bike")` | 146858 |
+| Member + classic bike | `=COUNTIFS(Sheet1!L:L,"member",Sheet1!B:B,"classic_bike")` | 193996 |
+| Casual + electric bike | `=COUNTIFS(Sheet1!L:L,"casual",Sheet1!B:B,"electric_bike")` | 51760 |
 
 > ⚠️ Adjust column letters if your data imported differently. `L` should be `member_casual`, `B` should be `rideable_type`.
 
@@ -259,9 +269,9 @@ Answer these questions in your summary tab (just type them below your table):
 
 3. Among casual riders, what % use electric bikes vs classic bikes? What might that tell you about casual rider preferences?
 
-        Casual + electric: 11.5% Casual + classic: 23.2% Casual + docked: 1.0%
+    Casual + electric: 11.5% Casual + classic: 23.2% Casual + docked: 1.0%
 
-        Among casual riders, about 11.5% use electric bikes while 23.2% use classic bikes. This suggests casual users prefer classic bikes over electric ones, possibly because they are cheaper, more available, or more familiar.
+    Among casual riders, about 11.5% use electric bikes while 23.2% use classic bikes. This suggests casual users prefer classic bikes over electric ones, possibly because they are cheaper, more available, or more familiar.
 
 For question 3, you will need one more COUNTIFS formula — write it yourself.
 
