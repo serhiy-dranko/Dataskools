@@ -90,7 +90,15 @@ Some trips have errors — bikes not returned for days, or timestamps that are w
 
 > In Google Sheets filter: choose "Filter by condition" → "Greater than" → `1`. Then add another condition "Less than" → `180`.
 
+  The standard Google Sheets filter cannot simultaneously select "Greater than" and "Less than" for the same column. The interface allows only one condition at a time. 
+  
+  So I choose is between >1 and <180.  
+
+
 4. Note down: how many rows remain after filtering? How many were removed?
+
+     150991 of 450090 rows
+     33.5 % has value greater than 1 and less than 180
 
 ---
 
@@ -104,14 +112,14 @@ Type the labels in column A and write the formula in column B:
 
 | Statistic | Formula (on your `duration_min` column) | Your Value |
 |-----------|----------------------------------------|------------|
-| Count (clean trips) | `=COUNTA(Sheet1!M2:M500000)-COUNTBLANK(Sheet1!M2:M500000)` | |
-| Minimum | `=MIN(Sheet1!M2:M500000)` | |
-| 25th Percentile | `=PERCENTILE(Sheet1!M2:M500000, 0.25)` | |
-| Median (50th) | `=MEDIAN(Sheet1!M2:M500000)` | |
-| Mean (Average) | `=AVERAGE(Sheet1!M2:M500000)` | |
-| 75th Percentile | `=PERCENTILE(Sheet1!M2:M500000, 0.75)` | |
-| Maximum | `=MAX(Sheet1!M2:M500000)` | |
-| Standard Deviation | `=STDEV(Sheet1!M2:M500000)` | |
+| Count (clean trips) | `=COUNTA(Sheet1!M2:M500000)-COUNTBLANK(Sheet1!M2:M500000)` | 450090|
+| Minimum | `=MIN(Sheet1!M2:M500000)` | -548.16(6) |
+| 25th Percentile | `=PERCENTILE(Sheet1!M2:M500000, 0.25)` | 6.08(3) |
+| Median (50th) | `=MEDIAN(Sheet1!M2:M500000)` | 10.5(9) |
+| Mean (Average) | `=AVERAGE(Sheet1!M2:M500000)` | 20.229 |
+| 75th Percentile | `=PERCENTILE(Sheet1!M2:M500000, 0.75)` | 18.34(9) |
+| Maximum | `=MAX(Sheet1!M2:M500000)` | 33964.55 |
+| Standard Deviation | `=STDEV(Sheet1!M2:M500000)` | 129.3239 |
 
 > 💡 Adjust `M500000` to match your actual last row. You can check by pressing `Ctrl+End` on your data tab.
 
@@ -120,8 +128,17 @@ Type the labels in column A and write the formula in column B:
 Look at your mean and median. Answer these three questions in your `stats_summary` tab:
 
 1. Is the mean **higher or lower** than the median? By how many minutes?
+
+    The mean is higher than the median by approximately 9.62(8) minutes.
+
 2. What does that gap tell you about the shape of the data — are most trips short or long?
+
+    The gap between the mean and median telling us that the distribution is Right-Skewed. Most trips are relatively short, but a small number of very long trips pull the mean upward.
+
 3. A city planner asks you: *"What is the typical trip duration?"* Would you give them the **mean or the median**? Write 2 sentences explaining your choice.
+
+    I would use the median because it is less affected by extreme values and outliers. The median provides a better representation of a typical trip duration for most riders.
+
 
 ### Step 3 — Understand the spread
 
