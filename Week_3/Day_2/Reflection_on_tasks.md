@@ -1,9 +1,43 @@
+
+# descriptive_stats
+💬 Reflection prompts
+What’s more useful in your work: mean or median? Why?
+
+The median is often more useful because it is not heavily affected by extreme values. In datasets with outliers, the median gives a better picture of a typical value, while the mean can be distorted by a few unusually high or low observations.
+
+Can you think of a situation where the average is misleading?
+
+Average salary is a classic example. If a company has a few highly paid executives and many lower paid employees, the average salary may appear high even though most employees earn less than that amount
+
+What does high variability mean for planning ahead?
+
+High variability means outcomes are less predictable. Planning becomes more difficult because future results can different from significantly from expectations. Businesses usualy need larger safety margins, extra inventory or contingency plans when variability is high.
+
+# distributions
+💬 Reflection prompts
+Have you ever made a decision based only on an average?
+
+Using only an average can lead to poor decisions because it hides the spread and shape of the data. 
+For example, when I was a student, I was looking for a job and a place with a good average salary. But no one told me about the standard key performance indicators that the company wants to achieve. In fact, no one in the company above the managers has a good salary.
+
+What kind of data in your life might have a fat tail?
+
+Unexpected expenses are a good example. Most months may have normal costs, but occasionally there can be a very large expense such as a car repair or buy a new TV. Life enjoys inserting expensive surprises into otherwise reasonable budgets.
+
+Why do companies care about outliers, not just trends?
+
+Outliers can reveal important opportunities or risks. A sudden spike in sales might indicate a successful product, while an unusual drop could signal a problem. Even if overall trends look stable, outliers often contain valuable information that requires attention.
+
+
 # Day 2 Task: Measuring & Describing the Rides 
 
 > **Dataset:** Same Google Sheet from Day 1 (September 2023 trip data)  
 > **Tool:** Google Sheets  
 > **Effort:** ⭐⭐ Light  
-> **Time:** ~4 hours  
+> **Time:** ~4 hours 
+
+
+> **Link to my Sheet:** [Capital Bikeshare ride data Sep 2023](https://docs.google.com/spreadsheets/d/1V1LvVgmcUCWxSVg2kncLWPWOnZY6dI5Huw0pIw2kWL0/edit?usp=sharing)
 
 ---
 
