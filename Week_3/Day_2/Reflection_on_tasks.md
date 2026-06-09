@@ -303,10 +303,10 @@ Use COUNTIFS to answer:
 
 | Question | Formula | Answer |
 |----------|---------|--------|
-| Trips over 60 min | `=COUNTIFS(M:M,">"&60)` | |
-| Trips over 120 min | `=COUNTIFS(M:M,">"&120)` | |
-| Trips over 60 min AND casual | `=COUNTIFS(M:M,">"&60,L:L,"casual")` | |
-| Trips over 60 min AND member | `=COUNTIFS(M:M,">"&60,L:L,"member")` | |
+| Trips over 60 min | `=COUNTIFS(M:M,">"&60)` | 14972 |
+| Trips over 120 min | `=COUNTIFS(M:M,">"&120)` | 4459 |
+| Trips over 60 min AND casual | `=COUNTIFS(M:M,">"&60,L:L,"casual")` | 12089 |
+| Trips over 60 min AND member | `=COUNTIFS(M:M,">"&60,L:L,"member")` | 2883 |
 
 ### Step 2 — Effect of outliers on the mean
 
@@ -314,6 +314,9 @@ Calculate the mean with and without the very long trips:
 
 - Mean of ALL clean trips (already done): \_\_\_\_\_ min
 - Now filter your data to trips ≤ 60 min only (use a filter), then recalculate AVERAGE for that subset. How much does the mean drop?
+
+
+
 
 Write one sentence: *"Outliers pull the mean [up/down] by approximately X minutes, which means..."*
 
@@ -338,17 +341,17 @@ In a tab called `day2_writeup`, write a short analysis note of 150–200 words t
 
 ## ✅ Deliverables Checklist
 
-- [ ] `duration_min` column added and filtered (bad rows removed)
-- [ ] Five-number summary table complete with all 8 statistics
-- [ ] Mean vs median question answered with explanation
-- [ ] Standard deviation ratio calculated and interpreted
-- [ ] Histogram frequency table built with COUNTIFS
-- [ ] Bar chart created and labelled
-- [ ] 4 distribution shape questions answered
-- [ ] Member vs casual comparison table complete
-- [ ] Side-by-side histogram built
-- [ ] 4 comparison interpretation questions answered
-- [ ] Outlier count table complete
+- [X] `duration_min` column added and filtered (bad rows removed)
+- [X] Five-number summary table complete with all 8 statistics
+- [x] Mean vs median question answered with explanation
+- [X] Standard deviation ratio calculated and interpreted
+- [X] Histogram frequency table built with COUNTIFS
+- [X] Bar chart created and labelled
+- [X] 4 distribution shape questions answered
+- [X] Member vs casual comparison table complete
+- [X] Side-by-side histogram built
+- [X] 4 comparison interpretation questions answered
+- [X] Outlier count table complete
 - [ ] Outlier effect on mean calculated
 - [ ] Day 2 write-up (150–200 words, plain English)
 
