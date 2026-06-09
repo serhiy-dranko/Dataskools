@@ -275,9 +275,21 @@ Select all three columns → Insert → Chart → **Column chart** → make sure
 ### Step 3 — Answer these questions
 
 1. Which group has a higher mean duration? By how many minutes?
+
+    Casuals ride longer: 31.0 min vs 14.2 min for members. That's a difference of 16.8 minutes.
+
 2. Which group has a higher % of trips over 30 minutes?
+
+    Casuals at 20.4% vs members at 6.3% — casuals are 3× more likely to take a long trip.
+
 3. What might explain why casual riders ride longer on average? Think about *purpose* — why would a tourist vs a daily commuter ride differently?
+
+    Members are commuters optimizing for efficiency; casuals are likely tourists or leisure riders where the ride itself is the activity, not just transport. Fo example when I go to Düsseldorf for me much better leave a car in free parking yone and explore the city by bike.
+
 4. If you were setting pricing for the bikeshare system, which group would you charge more per-minute after the first 30 minutes — and does your data support that decision?
+
+    Charge casuals more. Because 20% of their trips go over 30 min vs only 6% for members. They're the heavy users of bike-time, likely tourists who aren't price-sensitive and have no subscription.
+
 
 ---
 
