@@ -311,7 +311,7 @@ Use COUNTIFS to answer:
 ### Step 2 — Effect of outliers on the mean
 
 Calculate the mean with and without the very long trips:
-c
+
 - Mean of ALL clean trips (already done): \_\_\_\_\_ min
 
     | Trips | min |
@@ -339,6 +339,9 @@ The key insight: that 31 min casual mean from before was heavily inflated by peo
 
 Answer in 3–4 sentences: Who do you think the 90–180 minute riders are? Are they using the bikeshare system as intended? What does this suggest about how the company should define a "successful" trip in their reporting?
 
+    The 90–180 minute riders are most likely tourists or casual visitors who grabbed a bike for a leisurely sightseeing ride, or people who simply forgot to dock it properly. They're probably not using the system as intended. Bikeshare is designed for short point to point trips, not extended rentals. This suggests the company shouldn't use raw mean duration as a success metric, since a handful of 3-hour rides drowns out thousands of normal 10-minute commutes. 
+    A cleaner definition of a "successful" trip might be something like: trips between 3 and 60 minutes, which captures genuine usage without outliers distorting the picture.
+
 ---
 
 ## ✍️ Part 6 — Interpret and Write Up (30 min)
@@ -349,6 +352,13 @@ In a tab called `day2_writeup`, write a short analysis note of 150–200 words t
 - How members and casual riders differ
 - One thing that surprised you about the data
 - One limitation of this analysis that the manager should know
+
+    One important limitation:
+    This analysis is based on duration only. Without knowing trip purpose, start location, or whether the bike was properly docked, we cannot fully distinguish between intentional long rides and system errors such as forgotten returns or docking failures.
+    Key Findings:
+    Typical trip duration looks like 10.6 minutes (median) - this is the right stat here, since the mean of 20.2 minutes is heavily skewed by a small number of extremely long rides. 
+    Members and casual riders use the system very differently. Members average 14.2 minutes per trip, while casual riders average 31 minutes it is more than twice as long. Casual riders are also far more likely to take extended trips: 20% of casual trips exceed 30 minutes, compared to just 6% for members. This strongly suggests members are commuters while casuals are tourists or leisure riders.
+    One surprising finding: filtering out trips over 60 minutes drops the overall mean from 20.2 to 13.3 minutes — a 35% reduction caused by just smal amount of trips. A handful of failure rides were significantly distorting the average.
 
 > 💡 Imagine this is going into a weekly report. No jargon, no formula names — just plain observations.
 
@@ -368,7 +378,7 @@ In a tab called `day2_writeup`, write a short analysis note of 150–200 words t
 - [X] 4 comparison interpretation questions answered
 - [X] Outlier count table complete
 - [X] Outlier effect on mean calculated
-- [ ] Day 2 write-up (150–200 words, plain English)
+- [x] Day 2 write-up (150–200 words, plain English)
 
 ---
 
