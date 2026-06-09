@@ -147,12 +147,19 @@ The **standard deviation** tells us how spread out the values are around the mea
 - If standard deviation is small relative to the mean → most trips are similar in length
 - If standard deviation is large → there is a wide variety of trip lengths
 
+    Mean = 20.229
+    Standard deviation = 129.3239
+
+    The standard deviation is much larger than the mean, which indicates extremely high variability in trip durations, meaning trips vary widely from very short to extremely long values, and the mean is not a reliable representation of a typical trip.
+
 Calculate this ratio in a cell:
 ```
 = [standard deviation] / [mean]
 ```
 
 If the result is greater than 1, the data is *highly variable* — the mean is not very representative. Write one sentence on what you find.
+
+The ratio is 6.39, which is much greater than 1. This indicates that trip durations are highly variable, and the mean is not very representative of a typical trip because the dataset contains many extreme values and outliers.
 
 ---
 
@@ -199,9 +206,25 @@ Where `B2` is your lower bound cell and `C2` is your upper bound cell. Fill this
 Answer these questions below your chart:
 
 1. Which bin has the **most trips**? What does that say about how people typically use bikeshare?
+
+    The 5–10 min bin (128,869 trips) has the most trips.
+    This suggests that most people use bikeshare for short, quick rides, likely for commuting or short urban trips rather than long-distance travel. 
+
 2. Is the distribution **roughly symmetric** (similar on both sides) or does it have a **long tail on the right**? What is the name for that shape?
+
+    The distribution is not symmetric. It has a long right tail, meaning there are fewer but much longer trips extending far beyond the main cluster.
+
+    This shape is called a Right-Skewed
+
 3. The long right tail represents very long trips — who do you think those riders are? Write 2 sentences.
+
+    The long right tail likely represents riders who are not using bikeshare for typical short urban travel.
+    These could include tourists exploring the city, recreational riders, or users who made unusually long trips due to special circumstances or system misuse.
+
 4. If you only reported the mean to someone, would they get an accurate picture of a "typical" ride? Why or why not?
+
+    No, the mean would not give an accurate picture of a “typical” ride.
+    Because the distribution is heavily Right-Skewed, the mean is pulled upward by a small number of very long trips and does not reflect the most common trip length, which is much shorter.
 
 ---
 
