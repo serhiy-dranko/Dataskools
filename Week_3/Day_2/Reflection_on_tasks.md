@@ -391,6 +391,17 @@ Add a column called `hour_of_day` using:
 
 Then build a frequency table of trip counts by hour (0–23) using COUNTIFS. Which hour has the most trips? Does it match your intuition about how a bikeshare system would be used?
 
+    Hour 17:00 has the most trips: 45 058 total.
+    It completely matches intuition. 17:00 is the classic end of workday. People leaving offices and hopping on bikes to get home or to a transit stop. You can also see a clear double peak pattern in the data:
+
+    Morning peak: 
+        8:00  (29 389 trips) commute to work.
+    Evening peak: 
+        17:00(45,058 trips) and 18:00 (40 781 trips) commute home.
+
+    The evening peak is notably larger than the morning one, which is common in urban transport. Mornings are more spread out (people start work at different times), evenings are more clustered.
+    Hours 0:00 -5:00  are predictably dead, and it picks up again around hour 6:00 -7:00  as the city wakes up. Perfectly matches what I would expect from a transport system.
+
 ---
 
 > The mean is a useful number — but it lies when data is skewed. Always look at the shape before trusting a single summary statistic.
