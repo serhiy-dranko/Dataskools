@@ -311,14 +311,29 @@ Use COUNTIFS to answer:
 ### Step 2 — Effect of outliers on the mean
 
 Calculate the mean with and without the very long trips:
-
+c
 - Mean of ALL clean trips (already done): \_\_\_\_\_ min
+
+    | Trips | min |
+    |----------|---------|
+    | 5–10 min  | 7.41 |
+    | 10–15 min | 12.29 |
+    | 15–20 min | 17.27 |
+    | 20–30 min | 24.19 |
+    | 30–45 min | 30.09 |
+    | 45–60 min | 51.41 |
+    | 60-90 min | 72.47 |
+    | 90-120 min | 102.96 |
+    | Over 120 min | 276.72 |
+
 - Now filter your data to trips ≤ 60 min only (use a filter), then recalculate AVERAGE for that subset. How much does the mean drop?
 
-
-
+   13.28 min istad to 20.23 when we took al the data. Outliers pull the mean up by approximately 6.95 minutes, which means the average trip duration looks nearly 35% longer than what a typical rider actually experiences.
 
 Write one sentence: *"Outliers pull the mean [up/down] by approximately X minutes, which means..."*
+
+The key insight: that 31 min casual mean from before was heavily inflated by people who forgot to dock, took all-day rides or had technical issues. The real typical casual ride is closer to 20 min.
+
 
 ### Step 3 — Interpretation
 
@@ -352,7 +367,7 @@ In a tab called `day2_writeup`, write a short analysis note of 150–200 words t
 - [X] Side-by-side histogram built
 - [X] 4 comparison interpretation questions answered
 - [X] Outlier count table complete
-- [ ] Outlier effect on mean calculated
+- [X] Outlier effect on mean calculated
 - [ ] Day 2 write-up (150–200 words, plain English)
 
 ---
