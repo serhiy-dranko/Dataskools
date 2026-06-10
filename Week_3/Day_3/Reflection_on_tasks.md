@@ -2,19 +2,37 @@
 
 ## 💬Reflection prompts
 What’s something you assumed was certain, but wasn’t?
+
+    I might assume that if I study hard for a test, I'll definitely get a high grade. Studying increases the probability of success, but unexpected questions, stress or mistakes can affect the result.
+
 How does knowing probabilities help you plan smarter?
+
+    Probabilities help us estimate risks and outcomes. For example, if rain is in our water forecast for today, bringing an umbrella is a sensible decision even though rain is not guaranteed.
+
 Why might depending only on probability lead to mistakes?
+
+    Probability describes what is likely, not what will definitely happen. Rare events can still occur, so decisions should also consider other factors such as consequences, context and available information.
 
 # Sampling and bias
 
 🧠 Reflection:  
 Which result is more useful if you're planning a school snack bar?
 
+    The result from a survey that includes a wide variety of students from different grades, interests and lunch schedules is more useful because it better represents the whole school population.
+
 ## 💬 Reflection prompts
 
 - Have you ever made a decision based on incomplete data?
+
+    A common example is buying a product after reading only a few reviews. Later, additional information might reveal issues that were not obvious at first.
+
 - What group might you be **missing** when you gather feedback?
+
+    You might miss people who are absent, less likely to respond. From different age groups or who have different preferences from those who participated.
+
 - How would you redesign Lina’s survey to be more representative?
+
+    I would survey students from different classes and activity groups, and collect responses at different times of the day. Randomly selecting participants would also reduce bias and produce more reliable results.
 
 # Day 3 Task: Probability, Sampling & Fairness
 
@@ -23,7 +41,7 @@ Which result is more useful if you're planning a school snack bar?
 > **Effort:** ⭐⭐⭐ Medium  
 > **Time:** ~4 hours  
 
-> **Link to my Sheet:** [Capital Bikeshare ride data Sep 2023](https://docs.google.com/spreadsheets/d/1V1LvVgmcUCWxSVg2kncLWPWOnZY6dI5Huw0pIw2kWL0/edit?usp=sharing)
+> **Link to my Sheet:** [Capital Bikeshare ride data Jul-Sep 2023](https://docs.google.com/spreadsheets/)
 
 ---
 
@@ -90,6 +108,8 @@ Format the Probability column as a percentage: select → Format → Number → 
 - Do P(casual) + P(member) = 100%? They should — every trip is one or the other.
 - Do P(electric) + P(classic) = 100%? Check if there are any other `rideable_type` values in your data.
 
+        Dosen't include docked_bike 3,93 Probability
+
 If they don't add up to exactly 100%, what might explain the gap? Write one sentence.
 
 ---
@@ -124,12 +144,28 @@ Look at your three values. Are they the same, or does one group prefer electric 
 Answer these questions:
 
 1. Do casual riders and members choose electric bikes at the **same rate**, or is there a difference?
+
+    They choose electric bikes at nearly the **same rate**, 30.24% vs 31.77% a difference of only 1.53 %. This is a very small gap.
+
 2. Based on this, would you say bike type preference is **independent** of rider type, or are they **dependent**? Explain in 2 sentences.
+
+    Bike type preference appears to be essentially independent of rider type. Both groups choose electric bikes at rates very close to the overall rate of 31.21%. Which is exactly what you'd expect if the two variables had no relationship with each other.
+
 3. Why would this matter if Capital Bikeshare wanted to decide how many electric bikes to stock at a station near a tourist area vs a commuter area?
+
+    Because the two groups choose electric bikes at almost identical rates, Only rider type wouldn't be a useful guide for deciding how many electric bikes to stock at tourist vs. commuter stations.
+
+    Capital Bikeshare would need to look at other variables. Like trip duration, time of day to make smarter stocking decisions, since casual vs. member status doesn't meaningfully predict electric bike demand.
 
 ### Step 3 — Your own investigation
 
 Pick ONE more pair of variables from the dataset (e.g. duration > 30 min AND casual, or electric bike AND duration < 5 min) and run the same independence test. Report your finding in 2–3 sentences.
+
+    P (Duration > 30 min \ casual) 25.03%
+    P (Duration > 30 min \ member) 6.96%
+    P (Duration > 30 min overall) 13.62%
+
+    These three values are pretty different. Casual riders take long trips at more than members (25,03% vs 6,96%). Neither of groups is close to the overall rate 13.62%. This means trip duration longer 30 min and rider type are strongly dependent variables. This makes intuitive sense: casual riders are likely tourists or enjoyment cyclists who take long rides. While members are probably commuters making short, purposeful trips on a regular schedule.
 
 ---
 
@@ -141,12 +177,17 @@ Here is a crucial real-world question: *If we can't look at all 60,000 trips, ho
 
 From your full `all_data` tab, note these as your ground truth:
 
-| Metric | True Value (all 60k rows) |
-|--------|--------------------------|
-| % casual riders | |
-| % electric bikes | |
-| Mean duration (min) | |
-| % trips > 30 min | |
+|Metric	 | True Value (all 60k rows)|
+|------------|---------|
+|% casual riders	 | 36.84%|
+|% member riders	 | 63.17%|
+|% electric bikes	 | 31.21%|
+|% classic bikes	 | 64.86%|
+|% docked bikes	 | 3.93%|
+|Mean duration (min)	 | 24.6|
+|Median duration (min)	 | 10.8|
+|% trips > 30 min	 | 13.62%|
+|% trips < 5 min	 | 19.34%|
 
 ### Step 2 — Set up a sampling sheet
 
@@ -176,14 +217,17 @@ Mean duration = AVERAGE(all_data!M2:M51)
 
 Fill in this table:
 
-| Sample Size | % Casual | % Electric | Mean Duration | % > 30 min |
-|-------------|----------|-----------|---------------|------------|
-| True (all) | | | | |
-| n = 50 | rows 2–51 | | | |
-| n = 200 | rows 2–201 | | | |
-| n = 500 | rows 2–501 | | | |
-| n = 2,000 | rows 2–2001 | | | |
-| n = 10,000 | rows 2–10001 | | | |
+|Metric	 | (50 rows)	 | (200 rows)	 | (500 rows)	 | (2000 rows)	 | (10000 rows) | 
+|----------------|---------|---------|---------|---------|---------|
+|% casual riders	 | 48.00%	 | 38.00%	 | 35.20%	 | 36.90%	 | 36.77% | 
+|% member riders	 | 52.00%	 | 62.00%	 | 64.60%	 | 16.15%	 | 3.23%
+|% electric bikes	 | 38.00%	 | 30.00%	 | 28.80%	 | 30.80%	 | 31.35% | 
+|% classic bikes	 | 60.00%	 | 66.00%	 | 67.40%	 | 16.85%	 | 3.37% | 
+|% docked bikes	 | 2.00%	 | 4.00%	 | 3.60%	 | 0.90%	 | 0.18% | 
+|Mean duration (min)	 | 14.3	 | 66.9	 | 35.6	 | 29.8	 | 27.7 | 
+|Median duration (min)	 | 9.9	 | 11.6	 | 10.6	 | 10.7	 | 10.9 | 
+|% trips > 30 min	 | 12.00%	 | 16.50%	 | 12.20%	 | 13.05%	 | 13.82% | 
+|% trips < 5 min	 | 22.00%	 | 18.50%	 | 20.20%	 | 19.45%	 | 19.34% | 
 
 ### Step 4 — Chart the error
 
