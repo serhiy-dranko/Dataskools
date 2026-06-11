@@ -217,17 +217,7 @@ Mean duration = AVERAGE(all_data!M2:M51)
 
 Fill in this table:
 
-|Metric	 | (50 rows)	 | (200 rows)	 | (500 rows)	 | (2000 rows)	 | (10000 rows) | 
-|----------------|---------|---------|---------|---------|---------|
-|% casual riders	 | 48.00%	 | 38.00%	 | 35.20%	 | 36.90%	 | 36.77% | 
-|% member riders	 | 52.00%	 | 62.00%	 | 64.60%	 | 16.15%	 | 3.23%
-|% electric bikes	 | 38.00%	 | 30.00%	 | 28.80%	 | 30.80%	 | 31.35% | 
-|% classic bikes	 | 60.00%	 | 66.00%	 | 67.40%	 | 16.85%	 | 3.37% | 
-|% docked bikes	 | 2.00%	 | 4.00%	 | 3.60%	 | 0.90%	 | 0.18% | 
-|Mean duration (min)	 | 14.3	 | 66.9	 | 35.6	 | 29.8	 | 27.7 | 
-|Median duration (min)	 | 9.9	 | 11.6	 | 10.6	 | 10.7	 | 10.9 | 
-|% trips > 30 min	 | 12.00%	 | 16.50%	 | 12.20%	 | 13.05%	 | 13.82% | 
-|% trips < 5 min	 | 22.00%	 | 18.50%	 | 20.20%	 | 19.45%	 | 19.34% | 
+![table](image.png)
 
 ### Step 4 — Chart the error
 
@@ -238,8 +228,16 @@ In your `sampling` tab, make a line chart showing how the **% casual** estimate 
 ### Step 5 — Answer these questions
 
 1. At what sample size does the % casual estimate get within **2 percentage points** of the true value?
+
+The estimate first lands within 2 percentage points at 2,000 rows. 
+
 2. The n=50 sample might look quite wrong. If a journalist used an n=50 survey to report on bikeshare habits, what could go wrong?
+
+The journalist would report that 46% of riders are casual when the true figure is 36.84% — a nearly 10-point overestimate. This could lead to misleading headlines like "Nearly half of bikeshare users are tourists", causing Capital Bikeshare to over invest in tourist friendly infrastructure and underserve their actual majority regular members.
+
 3. In your own words: what is the relationship between **sample size and accuracy**? Write 2–3 sentences.
+
+Small samples are vulnerable to chance a lucky draw of unusual riders can wildly skew the result. Beyond a certain point (here around 2000 rows), the gains in accuracy start to level off, which is why researchers look for a "good enough" threshold rather than always collecting more data.
 
 ---
 
@@ -281,25 +279,40 @@ Since we can't easily do this with formulas on 60k rows in Sheets, use **Filters
 
 Now calculate the same 4 metrics on the *visible* (filtered) rows and fill in:
 
-| Metric | Biased Sample (7–9 AM weekdays) | True Value (all data) | Difference |
-|--------|-------------------------------|----------------------|-----------|
-| % casual | | | |
-| % electric | | | |
-| Mean duration | | | |
-| % > 30 min | | | |
+Metric	Biased Sample (7–9 AM weekdays)	True Value (all data)	Difference
+% casual	23.97%	36.84%	-12.86%
+% electric	26.14%	31.21%	-5.07%
+Mean duration	14.81	24.58	-9.78
+% > 30 min	6.07%	13.62%	-7.55%
 
 ### Step 3 — Interpret the bias
 
 Answer these questions:
 
 1. How does the % casual rider compare between the biased sample and the full dataset? Why does this happen — who *isn't* riding at 7–9 AM on weekdays?
+% casual	23.97%	VS 36.84%	is -12.86% Difference
+Casual riders are heavily underrepresented because 7-9 AM weekdays is prime commuter time. The people not riding at this hour are tourists and anyone without a 9-to-5 schedule. Exactly the casual rider profile. Members dominate this window because they use bikeshare as a daily transport tool.
+
 2. How does the mean duration compare? Why might morning commute trips be shorter or longer than average?
+
+Mean duration: 14.81 vs 24.58 min (−9.78 min)
+Morning commute trips are much shorter because commuters ride fixed, optimised routes and repeated every day. They've already found the fastest path. Casual riders by contrast explore, take detours, or ride for fun with no destination pressure.
+
 3. Name **two groups of real bikeshare users** who are effectively invisible in this biased sample.
+
+Tourists and leisure riders, they ride midday, afternoons and weekends, almost never at 7 AM on a Tuesday
+Evening & night commuters and shift workers the people commuting to hospitality, healthcare or retail jobs. Who start work at 10 AM, 2 PM, or later
+
 4. If the city used this biased sample to plan new stations, what type of neighbourhood might be unfairly over-prioritised? Under-prioritised?
+
+Over-prioritised: Business districts, office corridors, metro-adjacent commuter hubs
+Under-prioritised: Tourist areas, parks, waterfronts, residential leisure neighbourhoods, and areas with non-traditional work schedules
 
 ### Step 4 — The key insight
 
 Write 2–3 sentences finishing this thought: *"A large biased sample is more dangerous than a small random sample because..."*
+
+A large biased sample is more dangerous than a small random sample because... its size creates an illusion of reliability. The numbers look stable and confident, so who make a decision trust them without question. A small random sample at least captures the full diversity of users proportionally, even if imprecisely. A large biased sample gives you a very accurate picture of the wrong population, and the bigger it gets, the more convincingly wrong it becomes.
 
 ---
 
@@ -311,27 +324,35 @@ Answer these in a tab called `day3_writeup`:
 
 1. **The news story test:** A reporter writes: *"Survey of 10,000 bikeshare rides shows most users prefer classic bikes."* You find out all 10,000 rides were recorded at a single tourist-area station on summer weekends. What is wrong with this headline — and what would a fair headline say?
 
+The sample is entirely from one tourist-area station on summer weekends a setting where casual, leisure riders dominate and are far more likely to pick classic bikes for a slow scenic ride. Members, commuters are completely absent. A large sample size does not fix a biased collection method. It only makes the biased result look more credible.
+
+A fair headline would say: "Weekend tourists at one bikeshare station favour classic bikes. Broader rider survey needed before citywide conclusions."
+
 2. **The policy risk:** Capital Bikeshare is deciding how many electric bikes to stock across the city. They can only survey riders at 5 stations. Which 5 stations should they choose, and how should they choose them, to get a fair picture? Write a short recommendation (3–4 sentences).
 
+Capital Bikeshare should choose stations that represent the full diversity of their ridership, not just convenient or high-traffic locations. A fair selection would include one station in a dense commuter corridor (near a railway station), one in a tourist area (near the park), one in a residential neighbourhood, one near a university and one in downtown. The goal is to capture different rider types, trip purposes, and times of use. Because electric bike demand likely varies across all of these. Choosing only the busiest or most central stations would oversample members and commuters, just like the 7–9 AM weekday bias we found earlier.
+
 3. **Random vs biased:** In your own words (3–4 sentences), explain the difference between a random sample and a biased sample to someone who has never studied statistics. Use an example from this dataset.
+
+A random sample is like putting every bikeshare trip into a hat and pulling out a handful. Every trip has an equal chance of being picked, so you naturally get a mix of commuters, tourists, short rides, long rides, and all times of day. A biased sample is like chose one tool from the toolbox. The trips that happen to sit there (all 7–9 AM weekday rides) get picked every time, and everything else stays buried. In our dataset, the morning commuter sample gave us only 24% casual riders when the true figure is 37% not because we had too little data, but because we collected it in a way that systematically excluded an entire type of rider.
 
 ---
 
 ## ✅ Deliverables Checklist
 
-- [ ] `all_data` tab with ~60,000 combined rows and `duration_min` column
-- [ ] `probabilities` tab with full probability table and sanity check
-- [ ] Independence test for electric bike vs rider type completed
-- [ ] Your own independence test (one extra pair of variables)
-- [ ] True population values recorded
-- [ ] `random_number` column added and frozen (paste values)
-- [ ] Sampling experiment table filled for all 5 sample sizes
-- [ ] Line chart showing % casual estimate vs sample size
-- [ ] 3 sampling accuracy questions answered
-- [ ] Helper columns (hour, weekday) added
-- [ ] Biased sample comparison table complete
-- [ ] 4 bias interpretation questions answered
-- [ ] Final write-up in `day3_writeup` (3 reflection questions)
+- [x] `all_data` tab with ~60,000 combined rows and `duration_min` column
+- [x]  `probabilities` tab with full probability table and sanity check
+- [x]  Independence test for electric bike vs rider type completed
+- [x]  Your own independence test (one extra pair of variables)
+- [x]  True population values recorded
+- [x]  `random_number` column added and frozen (paste values)
+- [x]  Sampling experiment table filled for all 5 sample sizes
+- [x]  Line chart showing % casual estimate vs sample size
+- [x]  3 sampling accuracy questions answered
+- [x]  Helper columns (hour, weekday) added
+- [x]  Biased sample comparison table complete
+- [x]  4 bias interpretation questions answered
+- [x]  Final write-up in `day3_writeup` (3 reflection questions)
 
 ---
 
