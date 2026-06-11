@@ -1,3 +1,34 @@
+
+## 💬 Reflection prompts
+
+- What’s something you’ve seen online that might have been A/B tested?
+
+Online stores often A/B test the color of a "Buy Now" button, email subject lines, homepage layouts, or ad headlines.
+
+- Why is it important to only change one thing at a time?
+
+If multiple things change sin one time, you can't tell which change caused the result. Changing only one variable makes it possible to identify the actual reason for any difference in performance.
+
+- If Lina wanted to test price, what could her control and treatment be?
+
+Control: Product sold at the current price (for example €18).
+Treatment: Product sold at a different price (for example €20).
+Comparing the results helps determine whether the new price improves revenue, profit, or sales volume.
+
+## 🧠 Reflection Prompts
+
+- When have you made a decision based on a single observation?
+
+For example, I once saw a car with excessive rust underneath and immediately decided not to buy that model. However, one car's condition doesn't necessarily represent all cars of the same model, so it would be better to look at more examples before making a final decision.
+
+- Would your choice change if data told you something different?
+
+Probably, yes. Reliable data from many observations is usually more trustworthy than a single experience because it reduces the impact of chance or unusual circumstances.
+
+- What does "enough data" mean to you before taking action?
+
+It means having a large enough sample to be confident that the observed result is real and not just random variation. The exact amount depends on the decision's importance, but generally more observations lead to more reliable conclusions.
+
 # Day 4 Task: Run a Real A/B Test
 
 > **Dataset:** Your combined `all_data` sheet from Day 3 (~60,000 rows)  
@@ -5,7 +36,7 @@
 > **Effort:** ⭐⭐⭐⭐ High  
 > **Time:** ~4 hours  
 
-> **Link:** [A-B Testing tab](https://docs.google.com/spreadsheets/d/1kbzXvMLVJa6mAdsXuyfl9xvTCl3frNGm8gYQuWSdRbE/edit?usp=sharing)
+> **Link:** [A-B Testing tab](https://docs.google.com/spreadsheets/d/1wQU8s1PK47_2W8ibQdQdfDSkr9nB7AbbspJMIZJ_YjY/edit?usp=sharing)
 
 ---
 
@@ -38,8 +69,19 @@ In a proper A/B test, people are *randomly assigned* to Group A or Group B — t
 ### Read and answer before moving on:
 
 1. Why does random assignment matter in a proper A/B test? Write 2 sentences.
+
+Random assignment helps ensure that the groups are similar before the test begins. This makes it more likely that any differences in results are caused by the tested change rather than by differences between the people in each group.
+
 2. What is one reason why our "classic vs electric" comparison might not be as clean as a proper A/B test? (Hint: think about who *chooses* each bike type.)
+
+People choose which type of bike they want to ride, so the groups may be different from the start. For example, riders who choose electric bikes may be older, less experienced, or prefer easier rides.
+
 3. Give one real-world example of an A/B test you might have experienced as a user of an app or website.
+
+You visit a product page and see an orange Add to Cart button positioned directly below the price. Meanwhile, another user visiting the same page at the same time sees a green button placed beside a Save for Later option. Neither of you knows the other is seeing something different.
+
+The company tracks which version leads to more purchases, faster decisions or fewer abandoned carts and rolls out the winning design to everyone.
+
 
 ---
 
@@ -63,15 +105,13 @@ There is NO difference in average trip duration between classic bike riders
 and electric bike riders. Any difference we observe is due to random chance.
 
 H₁ (Alternative Hypothesis):
-Electric bike riders have [longer / shorter / different — choose one] 
-average trip durations compared to classic bike riders.
+Electric bike riders have longer average trip durations compared to classic bike riders.
 
 My prediction before looking at the data:
-I think electric bike rides will be ________ because ________.
+I think electric bike rides will be longer because riders who choose electric bikes are more likely to be casual or tourist riders taking long trips, rather than commuters on short fixed routes.
 
 Why this matters to the business:
-[Write 2 sentences on what decision this analysis could inform — 
-think about fleet size, pricing, maintenance costs, or station planning.]
+If electric bike trips are consistently longer, batteries will drain faster and bikes will need recharging and rebalancing more frequently, increasing operational costs. Capital Bikeshare could use this to plan how many electric bikes to stock at tourist stations vs commuter stations, and whether to adjust pricing for longer electric rentals.
 ```
 
 Save this. You will compare it to your actual findings at the end.
@@ -118,8 +158,23 @@ Select all three columns → Insert → Chart → Column chart. Title it: *"Clas
 Before doing any maths, look at the chart and answer:
 
 1. Which group appears to have longer trips just from the visual shape?
+
+Classic bikes. Average trip time is 21.5 minutes versus 14.7 minutes for electric bikes. The graph confirms this: 
+The blue bars stretch further to the right (The classic bikes dominate in all time ranges). 
+
+Hypothesis H₁ was not confirmed: electric bikes are shorter, not longer.
+
 2. Does one group have a noticeably bigger "spike" in very short trips (under 5 min)?
+
+So both types are not so far form each other:
+Classic bikes have more short trips in absolute numbers .
+Electric bikes have a higher share of short trips relative to their total.
+
 3. Does the electric bike distribution look like it's simply shifted to the right of classic, or does it have a different shape entirely?
+
+A completely different shape. Classic bikes have a big peak at 5-10 minutes, then a long tail stretching to the right. Electric bikes drop off sharply after 10 minutes, and there are almost no long rides. This means that it is not just about speed, but also about a different behavior of the cyclist: 
+classic - simple and does not require charging
+electric - fast short rides whithout physical exsercises.
 
 ---
 
@@ -130,7 +185,7 @@ Before doing any maths, look at the chart and answer:
 In your `ab_test` tab, calculate:
 
 ```
-Observed difference = Mean (Classic) - Mean (Electric)
+Observed difference = Mean (Classic) - Mean (Electric) = 6.8
 ```
 
 Record this number. This is your **observed effect** — the raw difference between the two groups.
@@ -140,7 +195,7 @@ Record this number. This is your **observed effect** — the raw difference betw
 Context matters. A 2-minute difference might sound small, but if the average ride is 14 minutes, that's a 14% difference. Calculate:
 
 ```
-Relative difference (%) = Observed difference / Mean (Classic) * 100
+Relative difference (%) = Observed difference / Mean (Classic) * 100 = 31.47
 ```
 
 | Measure | Value |
@@ -162,8 +217,18 @@ Now re-run the same comparison but separately for **members** and **casual rider
 Answer:
 
 1. Does the classic vs electric difference exist in **both** sub-groups (members and casual), or only in one?
+
+Yes, classic bikes have longer mean durations in both sub-groups. The direction is consistent classic always longer.
+
 2. If the direction of the difference *flips* between members and casual riders (e.g. classic longer for members but shorter for casual), this is called **Simpson's Paradox**. Did you find this? What would it mean?
+
+ The paradox would require the direction to flip between sub-groups (e.g., electric longer for members, but classic longer for casual). That doesn't happen — classic bikes are longer in both groups. The overall finding (classic = longer) is genuine and not an artifact of aggregation.
+
 3. Which sub-group drives the overall difference the most?
+
+The dominant driver is Casual Classic riders. They have the highest mean by far (34.2 min) combined with a sizeable count (13,060)
+
+
 
 ---
 
@@ -330,13 +395,13 @@ Answer these three questions briefly:
 
 ## ✅ Deliverables Checklist
 
-- [ ] Part 1 answers written (3 questions about A/B testing)
-- [ ] Full hypothesis written (H₀, H₁, prediction, business relevance)
-- [ ] Summary stats table for both groups
-- [ ] Side-by-side histogram created and labelled
-- [ ] 3 eyeball questions answered from the chart
-- [ ] Observed difference and relative difference calculated
-- [ ] Member vs casual breakdown table complete
+- [x] Part 1 answers written (3 questions about A/B testing)
+- [x] Full hypothesis written (H₀, H₁, prediction, business relevance)
+- [x] Summary stats table for both groups
+- [x] Side-by-side histogram created and labelled
+- [x] 3 eyeball questions answered from the chart
+- [x] Observed difference and relative difference calculated
+- [x] Member vs casual breakdown table complete
 - [ ] `ttest_data` tab created with 2,000 rows per group
 - [ ] TTEST formula run and p-value recorded
 - [ ] Plain-English p-value interpretation written
