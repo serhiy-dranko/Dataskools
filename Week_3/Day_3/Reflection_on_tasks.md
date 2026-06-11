@@ -41,7 +41,7 @@ Which result is more useful if you're planning a school snack bar?
 > **Effort:** ⭐⭐⭐ Medium  
 > **Time:** ~4 hours  
 
-> **Link to my Sheet:** [Capital Bikeshare ride data Jul-Sep 2023](https://docs.google.com/spreadsheets/)
+> **Link to my Sheet:** [Capital Bikeshare ride data Jul-Sep 2023](https://docs.google.com/spreadsheets/d/1wQU8s1PK47_2W8ibQdQdfDSkr9nB7AbbspJMIZJ_YjY/edit?usp=sharing)
 
 ---
 
