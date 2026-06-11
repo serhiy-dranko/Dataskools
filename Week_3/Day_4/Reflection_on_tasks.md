@@ -277,18 +277,22 @@ This returns your **p-value**.
 
 | Result | Value |
 |--------|-------|
-| p-value from TTEST | |
-| Is p < 0.05? | Yes / No |
-| Conclusion | Reject H₀ / Fail to reject H₀ |
+| p-value from TTEST | 0.0009808098056 |
+| Is p < 0.05? | Yes, is well below |
+| Conclusion | Reject H₀  |
 
 Write a 2-sentence plain-English interpretation:
-> *"The p-value of [X] tells us that if there were truly no difference between classic and electric bike durations, we would see a difference this large by chance [X% / less than 5% / etc.] of the time. Therefore, we [can / cannot] conclude that the observed difference is statistically significant."*
+> *"The p-value of 0.00098 tells us that if there were truly no difference between classic and electric bike durations, we would see a difference this large by chance less than 0.01%  of the time. Therefore, we  cannot conclude that the observed difference is statistically significant."*
 
 ### Step 4 — The sample size trap
 
 With 60,000 trips, even a 30-second difference between groups might show up as "statistically significant" — because we have so much data that we can detect tiny effects.
 
 Answer: Why is statistical significance *not* the same as *practical importance*? Write 3 sentences using an example from your own numbers.
+
+Even though our p-value of 0.00098 proves the duration difference between classic and electric bikes is statistically real, it does not tell us whether that difference matters operationally. 
+For example. If classic bikes averaged just 30 seconds longer than electric bikes, we might still reject H₀ with this sample size of 60000 rides yet no business decision would hinge on half a minute. 
+Practical importance requires asking whether the observed gap is large enough to influence real decisions, such as pricing or membership incentives
 
 ---
 
@@ -402,8 +406,8 @@ Answer these three questions briefly:
 - [x] 3 eyeball questions answered from the chart
 - [x] Observed difference and relative difference calculated
 - [x] Member vs casual breakdown table complete
-- [ ] `ttest_data` tab created with 2,000 rows per group
-- [ ] TTEST formula run and p-value recorded
+- [X] `ttest_data` tab created with 2,000 rows per group
+- [X] TTEST formula run and p-value recorded
 - [ ] Plain-English p-value interpretation written
 - [ ] Effect size calculated and categorised
 - [ ] Full results table complete
