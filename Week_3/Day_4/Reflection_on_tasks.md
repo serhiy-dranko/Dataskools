@@ -222,13 +222,11 @@ Yes, classic bikes have longer mean durations in both sub-groups. The direction 
 
 2. If the direction of the difference *flips* between members and casual riders (e.g. classic longer for members but shorter for casual), this is called **Simpson's Paradox**. Did you find this? What would it mean?
 
- The paradox would require the direction to flip between sub-groups (e.g., electric longer for members, but classic longer for casual). That doesn't happen — classic bikes are longer in both groups. The overall finding (classic = longer) is genuine and not an artifact of aggregation.
+The paradox would require the direction to flip between sub-groups (e.g., electric longer for members, but classic longer for casual). That doesn't happen — classic bikes are longer in both groups. The overall finding (classic = longer) is genuine and not an artifact of aggregation.
 
 3. Which sub-group drives the overall difference the most?
 
-The dominant driver is Casual Classic riders. They have the highest mean by far (34.2 min) combined with a sizeable count (13,060)
-
-
+The dominant driver is Casual Classic riders. They have the highest mean by far (34.2 min) combined with a sizeable count (13,060). But without price data oure desisins not should be grounded only on this data.
 
 ---
 
@@ -282,7 +280,7 @@ This returns your **p-value**.
 | Conclusion | Reject H₀  |
 
 Write a 2-sentence plain-English interpretation:
-> *"The p-value of 0.00098 tells us that if there were truly no difference between classic and electric bike durations, we would see a difference this large by chance less than 0.01%  of the time. Therefore, we  cannot conclude that the observed difference is statistically significant."*
+> *"The p-value of 0.00098 tells us that if there were truly no difference between classic and electric bike durations, we would see a difference this large by chance less than 0.1% of the time. Therefore, we can conclude that the observed difference is statistically significant."*
 
 ### Step 4 — The sample size trap
 
@@ -309,6 +307,8 @@ Think about:
 - If there are 300,000 trips per month, what does a X-minute average difference add up to in total "extra ride time"?
 - Would this difference change a city planner's decision about which bike type to stock more of?
 
+
+
 ### Step 2 — Calculate a simple effect size
 
 Effect size is a way to measure *how big* a difference is relative to the natural variation in the data. We'll calculate a simple version:
@@ -326,11 +326,11 @@ STDEV for electric: use STDEV on your ttest_data column B
 
 | Value | Result |
 |-------|--------|
-| Mean difference (minutes) | |
-| STDEV — Classic | |
-| STDEV — Electric | |
-| Average of the two STDEVs | |
-| Effect size (difference ÷ avg STDEV) | |
+| Mean difference (minutes) | 6.8 |
+| STDEV — Classic | 81.4 |
+| STDEV — Electric | 20.88|
+| Average of the two STDEVs | 51.14|
+| Effect size (difference ÷ avg STDEV) | 0.13 |
 
 **Interpreting effect size (Cohen's d rule of thumb):**
 
@@ -342,15 +342,19 @@ STDEV for electric: use STDEV on your ttest_data column B
 
 Which category does your result fall into?
 
+ 0.13 Small — real but minor in practice
+
 ### Step 3 — Fill the full results table
 
 | Measure | Your Result | Interpretation |
 |---------|------------|----------------|
-| Observed difference (min) | | Small / Medium / Large in context |
-| Relative difference (%) | | |
-| p-value | | Significant / Not significant |
-| Effect size | | Small / Medium / Large |
-| Overall verdict | | Real AND important / Real but minor / Not conclusive |
+| Observed difference (min) | 6.8| Medium |
+| Relative difference (%) | 31.47 | Large practical difference |
+| p-value | 0.00098 | Not significant |
+| Effect size | 0.13 | Small |
+| Overall verdict | | Real but minor |
+
+Statistically significant difference with a small effect size. The difference is real, but rider-to-rider variability is much larger than the average difference between bike types.
 
 ---
 
@@ -362,26 +366,42 @@ This is where analysis becomes decision-making.
 
 Go back to the hypothesis you wrote in Part 2.
 - Was your gut prediction correct?
+My original prediction was that electric bike riders would take longer trips, reasoning that they attract casual and tourist riders. The data actually showed the opposite.
 - Did the data support H₁ or H₀?
+That classic bikes averaged 21.5 min vs. 14.7 min for electric, meaning the null hypothesis was rejected but in the unexpected direction.
 - Did anything surprise you?
+The surprise wasn't that a difference existed, but that electric bikes were associated with shorter trips, suggesting riders use them for efficient point A to point B journeys rather than just for a ride.
 
-Write 3 sentences comparing your prediction to your findings.
 
 ### Step 2 — Return to your Day 1 analyst brief
 
 Find the investigation question you wrote on Day 1. Did this week's analysis answer it? What would you need to investigate further?
 
-Write 2–3 sentences.
+My Day 1 investigation focused on station level casual rider patterns and whether duration data could inform rebalancing decisions. This week's analysis answered a related but narrower question and the finding that casual classic riders average 34.2 minutes per trip, nearly double the system average, directly supports the original concern: those long rides concentrate at specific stations and create predictable rebalancing pressure. What the analysis could not tell us is which stations those casual classic trips originate from, so the core investigation question from Day 1 remains only partially answered. To complete it, trip duration data would need to be joined with start station coordinates and filtered by rider type.
 
 ### Step 3 — Write the recommendation
 
 Imagine you are presenting to the Capital Bikeshare operations team. Write a short recommendation note of **150–200 words** covering:
 
 1. **What we tested:** One sentence on the comparison we made.
+
+We tested whether riders using classic bikes take longer trips than riders using electric bikes, using data from over 57,000 trips.
+
 2. **What we found:** The key numbers — mean difference, whether it's statistically significant, and effect size in plain English.
+
+Classic bike trips averaged 21.5 minutes compared to 14.7 minutes for electric bikes a difference of 6.8 minutes, or 31.48%. This difference is unlikely to be random. However, the effect size is small (0.13), meaning bike type alone is a weak explanator of how long any individual trip lasts.
+
 3. **What it means for the business:** One concrete recommendation or decision that follows from this.
+
+My recommendation is to avoid treating bike type as the primary lever for managing trip duration. The data suggest that whether someone is a casual or member rider matters far more. Casual riders on classic bikes averaged 34 minutes, nearly double the member average. Targeting casual classic riders with time based pricing changes or rebalancing alerts may be more effective.
+
 4. **What we should be cautious about:** One limitation — remember, riders chose their bike type, so this isn't a randomised experiment. What does that mean for how confident we should be?
+
+Riders chose their own bike type, so we cannot be certain the bike caused the difference. Casual riders may simply prefer classic bikes and also happen to ride longer for unrelated reasons.
+
 5. **What to investigate next:** One follow-up question this analysis raised.
+
+ Which stations those casual classic trips originate. Look at, trip duration data would need to be joined with start station coordinates and filtered by rider type.
 
 > 💡 Write for a non-technical reader. No formula names, no p-value jargon — just plain observations and clear logic.
 
@@ -408,13 +428,13 @@ Answer these three questions briefly:
 - [x] Member vs casual breakdown table complete
 - [X] `ttest_data` tab created with 2,000 rows per group
 - [X] TTEST formula run and p-value recorded
-- [ ] Plain-English p-value interpretation written
-- [ ] Effect size calculated and categorised
-- [ ] Full results table complete
-- [ ] Hypothesis compared to findings (3 sentences)
-- [ ] Day 1 analyst brief revisited
-- [ ] Final recommendation note (150–200 words)
-- [ ] 3 honest limitations answered
+- [X]Plain-English p-value interpretation written
+- [X] Effect size calculated and categorised
+- [X] Full results table complete
+- [X] Hypothesis compared to findings (3 sentences)
+- [X] Day 1 analyst brief revisited
+- [X] Final recommendation note (150–200 words)
+- [X] 3 honest limitations answered
 
 ---
 
