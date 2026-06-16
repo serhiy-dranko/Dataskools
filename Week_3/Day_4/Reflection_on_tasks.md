@@ -428,7 +428,7 @@ Answer these three questions briefly:
 - [x] Member vs casual breakdown table complete
 - [X] `ttest_data` tab created with 2,000 rows per group
 - [X] TTEST formula run and p-value recorded
-- [X]Plain-English p-value interpretation written
+- [X] Plain-English p-value interpretation written
 - [X] Effect size calculated and categorised
 - [X] Full results table complete
 - [X] Hypothesis compared to findings (3 sentences)
