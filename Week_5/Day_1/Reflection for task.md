@@ -36,7 +36,6 @@ Complete the following in **Module 1** on Coursera before touching Power BI:
 
 ![Intro Course](image/image.png)
 
-![Basic Data Sources](image/image_1.png)
 
 
 **After completing Block 1 — write one sentence answering this before moving on:**
