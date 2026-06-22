@@ -321,6 +321,8 @@ What was the single most surprising thing you discovered today — either about 
 The most surprising thing today was how much damage a single inconsistency in a text or date time column can do. 
 That surprised me because I expected software to catch obvious problems, but the reality is that the tool trusts the data completely. 
 Responsibility for catching that kind of issue sits entirely with the person building the report. 
+
+
 ---
 
 ## ✅ Day 1 Completion Checklist
