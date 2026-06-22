@@ -315,6 +315,7 @@ For website analytics I'd refresh multiple times a day since marketing teams nee
 Power BI here is combining all three sources in one view and manager can instantly see that traffic is up, conversion is down, and the top product is out of stock, without jumping between three different tools.
 
 **Q5 — Personal Learning:**
+
 What was the single most surprising thing you discovered today — either about Power BI, about the Capital Bikeshare data, or about how data is structured in real datasets? Why did it surprise you?
 
 The most surprising thing today was how much damage a single inconsistency in a text or date time column can do. 
