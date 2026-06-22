@@ -270,18 +270,56 @@ These are your end of day consolidation questions. Write minimum 3–4 sentences
 **Q1 — Data Sources:**
 Capital Bikeshare publishes data as CSV files. Name two other data source types Power BI can connect to and explain one advantage each has over a flat CSV file for business reporting.
 
+Two other source types Power BI connects to are SQL databases and Other APIs *like SAP or Snowflake. A SQL database has a clear advantage over CSV because the data is always structured, typed, and enforced at the storage level. 
+We can't accidentally save a date as text or leave a required field blank the way you can in a CSV edited by hand. 
+A other APIs has a different advantage.They may delivers live data on demand, so the report always reflects the current state of the system without someone manually exporting and uploading a new file every week. 
+With a CSV, the data is only as fresh as the last export.
+
 **Q2 — Flat vs Structured:**
 The bikeshare CSV is a flat file. Describe what a structured version of this same data might look like if it were stored in a relational database. What tables would exist and how would they relate to each other?
+
+Structured version of the bikeshare data would split into at least three tables.
+
+  1. Rides table would keep only the transactional facts: ride_id, rideable_type, started_at, ended_at, member_casual, plus foreign keys pointing to start and end stations. 
+  2. Stations table would store station_id, station_name, latitude and longitude. Do not repeated on every row the way the current CSV does. 
+  3. Bike Types table could optionally store details about each rideable type. 
+
+The Rides table would relate to Stations twice.  For the start station and once for the end station using start_station_id and end_station_id as foreign keys. 
+
+Right now the CSV stores the full station name on every single ride row, which wastes space and creates some risks.
 
 **Q3 — Storage Mode:**
 You connected two CSV files today using Import mode. Write a short paragraph explaining to a non-technical manager why the choice of storage mode matters for report performance and data freshness.
 
+When you connect data to Power BI, you have a choice about where the data actually lives while people are using the report. That choice affects two things: 
+
+  1. How fast the report loads, and how actual the numbers are. Import mode copies all the data into Power BI's own memory, which makes reports very fast.
+  2. Power BI doesn't need to go back and ask the original file anything. The main idea is that the data is frozen at the moment it was last refreshed.
+     So if the source file changes, the report won't know until someone triggers a refresh. 
+
+For a weekly CSV like our bikeshare file this is perfectly fine, but for a live sales dashboard a manager checks during the day, frozen data could mean making decisions on numbers that are already hours out of date.
+
 **Q4 — Real World Connection:**
 Think about a business or organisation you are familiar with — your previous job, a family business, or a local service. Identify at least two data sources that business generates daily. Which Power BI connectors might connect to those sources? Which storage mode would you recommend and why?
+
+An e-commerce business generates data daily from three main sources: 
+
+1. Website (sessions, conversions, abandoned carts) via Google Analytics.
+2. Inventory system (stock levels, purchase orders) usually in a SQL database or ERP like SAP.
+3. Accounting system like Xero or QuickBooks which tracks every transaction and refund.
+
+For storage mode I'd use Import for accounting and inventory. The daily refresh is enough and keeps the report fast. 
+
+For website analytics I'd refresh multiple times a day since marketing teams need same day data to react to campaigns. 
+
+Power BI here is combining all three sources in one view and manager can instantly see that traffic is up, conversion is down, and the top product is out of stock, without jumping between three different tools.
 
 **Q5 — Personal Learning:**
 What was the single most surprising thing you discovered today — either about Power BI, about the Capital Bikeshare data, or about how data is structured in real datasets? Why did it surprise you?
 
+The most surprising thing today was how much damage a single inconsistency in a text or date time column can do. 
+That surprised me because I expected software to catch obvious problems, but the reality is that the tool trusts the data completely. 
+Responsibility for catching that kind of issue sits entirely with the person building the report. 
 ---
 
 ## ✅ Day 1 Completion Checklist
@@ -296,7 +334,7 @@ Before marking Day 1 complete confirm you have:
 - [X] Renamed both queries correctly
 - [X] Confirmed row counts match between Excel and Power BI
 - [X] Completed the Storage Mode Decision Exercise for all 4 scenarios
-- [ ] Written full answers to all 5 Final Reflection Questions
+- [X] Written full answers to all 5 Final Reflection Questions
 
 ---
 
@@ -306,9 +344,9 @@ Save the following to `/Documents/Dataskools/Day1/`:
 
 | File | Description |
 |---|---|
-| `09-capitalbikeshare-tripdata.csv` | First monthly source file |
-| `10-capitalbikeshare-tripdata.csv` | Second monthly source file |
+| `202604-capitalbikeshare-tripdata.csv` | First monthly source file |
+| `202605-capitalbikeshare-tripdata.csv` | Second monthly source file |
 | `Day1_PowerBI.pbix` | Your Power BI Desktop file |
-| `Day1_Notes.docx` | All inspection tables and reflection answers |
+| `Reflection for task.md` | All inspection tables and reflection answers |
 
 > You will use these files again on Day 2 and Day 3. Keep them organised.
