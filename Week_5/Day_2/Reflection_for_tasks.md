@@ -111,10 +111,10 @@ Let us connect one live GBFS feed directly into Power BI:
 
 | Observation | What You See |
 |---|---|
-| How is the JSON structured compared to the CSV? | |
-| What column shows bikes available at each station? | |
-| What column could you use to join this to the CSV data? | |
-| Does Power BI assign correct data types automatically? | |
+| How is the JSON structured compared to the CSV? | Looks like part of structured data. Less user-friendly for people using this data for the first time.|
+| What column shows bikes available at each station? | "num_bikes_available" but we need be careful because we have info about vehicle_type also in the data. |
+| What column could you use to join this to the CSV data? | merge from station information data "short_name" column and then merge "short_name" to the start_station_id or end_station_id  |
+| Does Power BI assign correct data types automatically? | not all it see longitude and latitude as numbers id's also  |
 
 > **Notice:** Every time you click Refresh on this query Power BI fetches a completely fresh snapshot of live station status. This is fundamentally different from the static CSV — the data underneath is always moving.
 
@@ -131,27 +131,27 @@ Using only the two real Capital Bikeshare data sources design a trigger and acti
 **Situation 1 — Monthly Data Arrival**
 Capital Bikeshare publishes a new monthly CSV file on their website at the start of each month. An operations analyst wants the historical trip report in Power BI to update automatically when the new file becomes available rather than downloading and reconnecting manually each time.
 
-> **Your trigger:** *(what event starts the automation?)*
-> **Your action:** *(what does Power BI do when the trigger fires?)*
-> **What would need to change in how the CSV is stored for this automation to work?**
+> **Your trigger:**  A new CSV file appears in a shared folder capitalbikeshare-data
+> **Your action:** Power Automate detects the new file → triggers a Power BI dataset refresh automatically.
+> **What would need to change in how the CSV is stored for this automation to work?** The CSV can't be a manual download saved to a local desktop. If the filename changes every month (like 202605-capitalbikeshare-tripdata.csv) the automation needs extra logic to handle that.
 
 ---
 
 **Situation 2 — Live Station Alert**
 The `station_status.json` feed refreshes every 60 seconds. The operations manager wants to be notified automatically whenever any station in the network shows zero bikes available and zero docks available simultaneously — which indicates a potential data error or a station outage.
 
-> **Your trigger:**
-> **Your action:**
-> **Why is the 60 second refresh important for this use case specifically?**
-
+> **Your trigger:** station_status.json is queried and any station returns num_bikes_available = 0 AND num_docks_available = 0 simultaneously.
+> **Your action:** Power Automate sends an email to the operations manager with the station name and timestamp.
+> **Why is the 60 second refresh important for this use case specifically?** A station outage or data error is an operational problem that needs a fast response. If the feed only refreshed every hour, the manager might not find out about a broken station for 59 minutes. At 60 seconds the alert fires almost in real time, which is exactly what incident detection requires.
 ---
 
 **Situation 3 — Combining Both Sources**
 An analyst wants a single Power BI dashboard that shows both historical trip volume by station from the CSV and current live availability from station_status.json side by side. The historical data only needs to refresh monthly but the live data must always be current.
 
-> **Your trigger:** *(there may be two separate triggers here)*
-> **Your action:**
+> **Your trigger:** New CSV file arrives in SharePoint at the start of the month -> refresh historical dataset AND Scheduled refresh every 30–60 minutes -> pull latest station_status.json
+> **Your action:** Power BI updates each dataset independently. The dashboard always shows fresh live data and updates historical data once a month without any manual work.
 > **Which storage mode would each source use and why?**
+> For CSV is Import all historical data doesn't change during the month, it keeps it fast. For json part also Import but with scheduled refresh every 30–60 minutes.
 
 ---
 
@@ -174,13 +174,13 @@ Capital Bikeshare currently publishes CSV files manually each month. If they mov
 
 Before marking this session complete confirm you have:
 
-- [ ] Completed all six Coursera items listed in Block 1
-- [ ] Written your one sentence summary of connectors vs triggers
-- [ ] Opened all four GBFS JSON feeds in your browser
-- [ ] Completed the source comparison table for both data sources
-- [ ] Connected station_status.json to Power BI via the Web connector
-- [ ] Recorded your Power Query observations for the live JSON feed
-- [ ] Designed trigger and action pairs for all three situations
+- [X] Completed all six Coursera items listed in Block 1
+- [X] Written your one sentence summary of connectors vs triggers
+- [X] Opened all four GBFS JSON feeds in your browser
+- [X] Completed the source comparison table for both data sources
+- [X] Connected station_status.json to Power BI via the Web connector
+- [X] Recorded your Power Query observations for the live JSON feed
+- [X] Designed trigger and action pairs for all three situations
 - [ ] Written full answers to all three reflection questions
 
 ---
