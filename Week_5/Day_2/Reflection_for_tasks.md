@@ -131,25 +131,39 @@ Using only the two real Capital Bikeshare data sources design a trigger and acti
 **Situation 1 — Monthly Data Arrival**
 Capital Bikeshare publishes a new monthly CSV file on their website at the start of each month. An operations analyst wants the historical trip report in Power BI to update automatically when the new file becomes available rather than downloading and reconnecting manually each time.
 
-> **Your trigger:**  A new CSV file appears in a shared folder capitalbikeshare-data
-> **Your action:** Power Automate detects the new file → triggers a Power BI dataset refresh automatically.
-> **What would need to change in how the CSV is stored for this automation to work?** The CSV can't be a manual download saved to a local desktop. If the filename changes every month (like 202605-capitalbikeshare-tripdata.csv) the automation needs extra logic to handle that.
+> **Your trigger:**
+> A new CSV file appears in a shared folder capitalbikeshare-data
+> 
+> **Your action:**
+> Power Automate detects the new file → triggers a Power BI dataset refresh automatically.
+> 
+> **What would need to change in how the CSV is stored for this automation to work?**
+> The CSV can't be a manual download saved to a local desktop. If the filename changes every month (like 202605-capitalbikeshare-tripdata.csv) the automation needs extra logic to handle that.
 
 ---
 
 **Situation 2 — Live Station Alert**
 The `station_status.json` feed refreshes every 60 seconds. The operations manager wants to be notified automatically whenever any station in the network shows zero bikes available and zero docks available simultaneously — which indicates a potential data error or a station outage.
 
-> **Your trigger:** station_status.json is queried and any station returns num_bikes_available = 0 AND num_docks_available = 0 simultaneously.
-> **Your action:** Power Automate sends an email to the operations manager with the station name and timestamp.
-> **Why is the 60 second refresh important for this use case specifically?** A station outage or data error is an operational problem that needs a fast response. If the feed only refreshed every hour, the manager might not find out about a broken station for 59 minutes. At 60 seconds the alert fires almost in real time, which is exactly what incident detection requires.
+> **Your trigger:**
+> station_status.json is queried and any station returns num_bikes_available = 0 AND num_docks_available = 0 simultaneously.
+> 
+> **Your action:**
+> Power Automate sends an email to the operations manager with the station name and timestamp.
+> 
+> **Why is the 60 second refresh important for this use case specifically?**
+> A station outage or data error is an operational problem that needs a fast response. If the feed only refreshed every hour, the manager might not find out about a broken station for 59 minutes. At 60 seconds the alert fires almost in real time, which is exactly what incident detection requires.
 ---
 
 **Situation 3 — Combining Both Sources**
 An analyst wants a single Power BI dashboard that shows both historical trip volume by station from the CSV and current live availability from station_status.json side by side. The historical data only needs to refresh monthly but the live data must always be current.
 
-> **Your trigger:** New CSV file arrives in SharePoint at the start of the month -> refresh historical dataset AND Scheduled refresh every 30–60 minutes -> pull latest station_status.json
-> **Your action:** Power BI updates each dataset independently. The dashboard always shows fresh live data and updates historical data once a month without any manual work.
+> **Your trigger:**
+> New CSV file arrives in SharePoint at the start of the month -> refresh historical dataset AND Scheduled refresh every 30–60 minutes -> pull latest station_status.json
+> 
+> **Your action:** Power BI updates each dataset independently.
+> The dashboard always shows fresh live data and updates historical data once a month without any manual work.
+> 
 > **Which storage mode would each source use and why?**
 > For CSV is Import all historical data doesn't change during the month, it keeps it fast. For json part also Import but with scheduled refresh every 30–60 minutes.
 
@@ -162,11 +176,33 @@ Write minimum 2–3 sentences per answer in your learning journal.
 **Q1 — Two Sources One Model:**
 You now have a static CSV and a live JSON feed both connected to Power BI. What is the key challenge of combining these two sources into a single report? What column would you use to join them and what data quality checks would you run before trusting the join?
 
+ >  The key challenge is that the two sources don't update at the same speed.  CSV is a monthly snapshot while the JSON is live, so at any given moment they're describing different points in time. 
+ >  
+ >  The column to join them is station_id — it appears as start_station_id / end_station_id in the CSV and as short_name in the GBFS feed. 
+ >  
+ >  Before trusting the join you'd want to check that every station ID in the CSV actually exists in the JSON feed, check for formatting differences. Check for stations that appear in one source but not the other in case when new stations added after the CSV was exported wouldn't match.
+
 **Q2 — Storage Mode Decision:**
 Explain in plain language to a non-technical colleague why the CSV trip data and the GBFS station status feed need different storage modes. Use a real example from what you saw in the data today to make your explanation concrete.
 
+ >  Think of it like two very different types of information. 
+ >  
+ >  The CSV trip history is like a printed monthly report. It doesn't change once it's published, so Power BI can take a full copy of it, store it and show it instantly to anyone who opens the report. 
+ >  The JSON GBFS station status is like a live score board. The numbers change every 60 seconds, so Power BI needs to keep going back to check the latest version. 
+ > 
+ > For example, station_status.json right now might show at one station has 3 bikes available but that number is old if it's from this morning update. Using onetime Import on the live feed would be like printing the score board and pretending it's still accurate ten hours later.
+
 **Q3 — Automation Value:**
 Capital Bikeshare currently publishes CSV files manually each month. If they moved to publishing via a live API instead — how would this change the connector, storage mode, and trigger setup for an analyst building a Power BI report on their data?
+
+  > If Capital Bikeshare moved from monthly CSV files to a live API, almost everything in the setup would change.
+  > 
+  > The connector would switch from Text/CSV to the Web connector. 
+  > The storage mode would move from monthly-refreshed Import toward either frequent Import refreshes or DirectQuery. 
+  > 
+  > The data would go from being a month old to being minutes old. The trigger would change. Instead of watching for a new file to appear in a folder once a month Power Automate would either run on a schedule (every hour, every day) or ideally the API would support trigers that push new data automatically, removing the need for scheduled request entirely. 
+  > 
+  > For the data team this means less manual work but more complexity in creating the connection because API stettings can change and that may require authentication tokens or may have some limits that a CSV never had.
 
 ---
 
@@ -181,7 +217,7 @@ Before marking this session complete confirm you have:
 - [X] Connected station_status.json to Power BI via the Web connector
 - [X] Recorded your Power Query observations for the live JSON feed
 - [X] Designed trigger and action pairs for all three situations
-- [ ] Written full answers to all three reflection questions
+- [X] Written full answers to all three reflection questions
 
 ---
 
@@ -192,4 +228,4 @@ Add the following to your `/Documents/Dataskools/Day1/` folder:
 | File | What To Add |
 |---|---|
 | `Day1_PowerBI.pbix` | station_status.json Web connector query added |
-| `Day1_Notes.docx` | JSON feed observations, comparison table, trigger designs, reflection answers |
+| `Reflection_for_tasks.md` | JSON feed observations, comparison table, trigger designs, reflection answers |
