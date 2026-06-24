@@ -159,11 +159,11 @@ Now scroll across every column and look at the quality bars that appear below ea
 **Answer in your notes:**
 
 - Which column has the highest percentage of empty values?
-  Right now none of preview based on firs 1000 rows. We need to switch to the whole data. 14:50 start import
+  Right now none of preview based on firs 1000 rows. We need to switch to the whole data. AND it doesent help only 1000 rows.
 - Which column has the most unique values — and does that make sense for what that column represents?
   "ride_id" because each Ride has unique id. IF our count of rows not equal to the unique values we have duplicated rows.
 - Does `end_station_name` have more empty values than `start_station_name`? If yes — why might that be?
-  In that case bouth have no empty values. We need to switch preview to the whole data.
+  In that case bouth have no empty values. We need to switch preview to the whole data. AND it doesent help only 1000 rows.
 - Does `member_casual` show only two distinct values? If it shows more — what are the extra values and are they valid?
   Yes only two distinct values. IF we have more that cam mean we have some rows with misstakes like typo or company ad new type of customer.
 
@@ -354,11 +354,11 @@ After today's session write your personal definition of what clean data means fo
 
 Before marking Day 3 complete confirm you have:
 
-- [ ] Completed all Coursera Module 2 items listed in Block 1
-- [ ] Written your two-sided Applied Steps answer
-- [ ] Audited and documented all auto-generated steps in both queries
-- [ ] Verified data types for all 13 columns and corrected at least two
-- [ ] Enabled Column Quality, Distribution and Profile and recorded findings
+- [X] Completed all Coursera Module 2 items listed in Block 1
+- [X] Written your two-sided Applied Steps answer
+- [X] Audited and documented all auto-generated steps in both queries
+- [X] Verified data types for all 13 columns and corrected at least two
+- [X] Enabled Column Quality, Distribution and Profile and recorded findings
 - [ ] Tried both null handling approaches for end station name
 - [ ] Fixed started_at to Date/Time type (or documented why it failed)
 - [ ] Created trip_month column from started_at
