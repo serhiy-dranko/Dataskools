@@ -41,7 +41,8 @@ Complete the following across both sessions in **Module 2** on Coursera:
 **Before moving to Block 2 — answer this in your notes:**
 > *"The Applied Steps list is useful because... and dangerous because..."*
 
-> Write both sides. There is a right answer to the second part.
+> The Applied Steps list is useful its like a script or instruction for Pover Query what it should to do. Whenever we upload new info but with same format Pover Query will change this data step by step imidiatley. Dangerous because if we change ordering of Applied Steps we can broke the logic of instructions also if we have some changes in the data for example we change name of column this wil not work.
+
 
 ---
 
@@ -75,15 +76,18 @@ For each step that exists record the following in your notes:
 
 | Step Name | What Does This Step Do? | Did Power BI Name It Clearly? | Would You Rename It? |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Source | discribe path to the source of data, show type of data, delimeter, colums qty and Quote style | For me yes, we can see all in comand row | No, its clear |
+| Promoted Headers | Took row #1 and took values of rows for namig of columns | yes, but if we have empty values or commas in row it may cause mistakes | Maybe,for me its clear |
+| Changed Types | Transform column types, include Headers name and type of format | Only for person who create his or person who works in Pover Query | Maybe, column formating |
+
 
 **Then answer:**
-- How many steps did Power BI create automatically?
+- How many steps did Power BI create automatically? 
+  3 steps
 - Click on each step one at a time — does the data preview change as you move up and down the list?
+  Yes, it shows how data looks like in thats step.
 - Click the very first step — what does the raw unprocessed data look like before Power BI touched it?
+  Like table without Headers and whole document has text format. 
 
 > This is the moment most students miss. The first step shows you exactly what arrived before any transformation. Always check this against your final output.
 
@@ -97,24 +101,25 @@ Complete this table in your notes for `Trips_Month1`:
 
 | Column Name | Power BI Assigned Type | Correct Type? | If Wrong — What Should It Be? |
 |---|---|---|---|
-| ride_id | | | |
-| rideable_type | | | |
-| started_at | | | |
-| ended_at | | | |
-| start_station_name | | | |
-| start_station_id | | | |
-| end_station_name | | | |
-| end_station_id | | | |
-| start_lat | | | |
-| start_lng | | | |
-| end_lat | | | |
-| end_lng | | | |
-| member_casual | | | |
+| ride_id | text | Yes | - |
+| rideable_type | text | Yes | - |
+| started_at | date/time | Yes | - |
+| ended_at | date/time | Yes | - |
+| start_station_name | text | Yes | - |
+| start_station_id | whole number | No | text, Power query mistakenly can summarize them |
+| end_station_name | text | Yes | - |
+| end_station_id | whole number | No | text, Power query mistakenly can summarize them |
+| start_lat | decimal number | No | Normaly we have formats but let keep them for now as decimal number |
+| start_lng | decimal number | No | Normaly we have formats but let keep them for now as decimal number |
+| end_lat | decimal number | No | Normaly we have formats but let keep them for now as decimal number |
+| end_lng | decimal number | No | Normaly we have formats but let keep them for now as decimal number |
+| member_casual | text | Yes | - |
 
 **Pay close attention to:**
 - `started_at` and `ended_at` — are they Date/Time or plain Text? Click the column and look at what the formula bar shows
 - `start_station_id` — is this a Number or Text? Think carefully before answering. Station IDs that look like numbers are not always safely treated as numbers
 - `start_lat` and `start_lng` — are decimal places preserved correctly?
+  In youtube gides i've saw that people use them as decimal number. need more time for exploration.
 
 ---
 
@@ -129,11 +134,15 @@ Choose two columns where the assigned type is wrong or questionable and change t
 
 **Record in your notes:**
 - Which two columns did you change?
+  {"end_station_id", type text}, {"start_station_id", type text}
 - What type were they before?
+  type whole number
 - What type did you change them to?
+  type text
 - Did any errors appear in the column after the type change?
+  No, none changet in that step
 - If errors appeared — what does the error message say?
-
+  
 > **If changing a type breaks something:** do not panic and undo everything. Click on the error cell, read the message carefully, and think about why that value could not convert. This is real data quality information. Document it.
 
 ---
@@ -150,9 +159,13 @@ Now scroll across every column and look at the quality bars that appear below ea
 **Answer in your notes:**
 
 - Which column has the highest percentage of empty values?
+  Right now none of preview based on firs 1000 rows. We need to switch to the whole data. 14:50 start import
 - Which column has the most unique values — and does that make sense for what that column represents?
+  "ride_id" because each Ride has unique id. IF our count of rows not equal to the unique values we have duplicated rows.
 - Does `end_station_name` have more empty values than `start_station_name`? If yes — why might that be?
+  In that case bouth have no empty values. We need to switch preview to the whole data.
 - Does `member_casual` show only two distinct values? If it shows more — what are the extra values and are they valid?
+  Yes only two distinct values. IF we have more that cam mean we have some rows with misstakes like typo or company ad new type of customer.
 
 > **Note on `end_lat` and `end_lng`:** These columns frequently contain nulls in Capital Bikeshare data. Before assuming this is a data error — think about what situation would cause a trip to have a start location but no end location recorded. Write your hypothesis.
 
