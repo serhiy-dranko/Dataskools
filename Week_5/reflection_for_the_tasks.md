@@ -74,25 +74,6 @@ Complete this table in your notes:
 
 | Column Name | Trips_Month1 Type | Trips_Month2 Type | Match? |
 |---|---|---|---|
-| ride_id | | | |
-| rideable_type | | | |
-| started_at | | | |
-| ended_at | | | |
-| start_station_name | | | |
-| start_station_id | | | |
-| end_station_name | | | |
-| end_station_id | | | |
-| start_lat | | | |
-| start_lng | | | |
-| end_lat | | | |
-| end_lng | | | |
-| member_casual | | | |
-| duration_minutes | | | |
-| trip_month | | | |
-
-
-| Column Name | Power BI Assigned Type | Correct Type? | If Wrong — What Should It Be? |
-|---|---|---|---|
 | ride_id | text | text |Yes | - |
 | rideable_type | text |text | Yes | - |
 | started_at | date/time | date/time | Yes | - |
@@ -327,13 +308,20 @@ For each join type below:
 | Left Outer (original) | 1,196,339 | 184,026 | reason in CSV. null in start_station_id |
 | Inner Join | 1,012,313 | 0 | We lost rows in csv which has null in start_station_id or 32901, 31248, 31288 stations |
 | Left Anti | 184,026 | 184,026 | We have rows from csv which do not connected to json |
-| Full Outer | | | We have all rows from bouth files |
+| Full Outer | 1,196,351 | 184,026 | We have all rows from bouth files |
 
 **After completing the table answer these in your notes:**
 
 - Inner Join removed rows — which rows specifically and why?
+  
+  Exclude rows in csv which has null in start_station_id or 32901, 31248, 31288 stations and rows from json which not connected to the csv. Inner join give only matching rows.
+  
 - Left Anti returned only rows with no station match — what does this list represent in real operational terms?
+  
+  This gives us direct data that, for various reasons, does not provide information. We can work with this data to minimize the impact.
+  
 - Full Outer likely increased the row count beyond `Trips_Combined` — where did the extra rows come from?
+  This extra rows come from json.file it show us rows wich has this data and do not have in monthly data. For example old info about stations or neone where opened this month.
 
 ---
 
@@ -358,6 +346,11 @@ Using your `Trips_Combined` table try a quick pivot to understand the concept in
 - Fix the upstream data if needed and retry
 
 **Record the final pivot table structure in your notes.**
+
+|rideable_type|	4	| 5 |
+|-------|---|---|
+| classic_bike |	195889 |	191149 |
+| electric_bike |	408328 |	400973 |
 
 > This query is for learning only — do not load it into the model. Right click `Trips_Pivot_Test` → uncheck **Enable Load** to keep it as a reference query.
 
@@ -399,8 +392,8 @@ Before marking Day 4 complete confirm you have:
 - [X] Fixed any key format mismatch before merging
 - [X] Run Left Outer Merge and expanded station columns
 - [X] Completed merge validation including match rate and null investigation
-- [ ] Tested all four join types and recorded comparison table
-- [ ] Completed pivot exercise and disabled load on test query
+- [x] Tested all four join types and recorded comparison table
+- [x] Completed pivot exercise and disabled load on test query
 - [ ] Written full answers to all five reflection questions
 
 ---
