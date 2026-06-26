@@ -387,7 +387,7 @@ Structure it as:
 
 Then answer one final question:
 
-> *"Before this week I thought data analysis was about... Now I think it is about..."*
+> Over of this week, I have become more confident in my skills in working with Power Query and creating simple visualizations.
 
 Write at least four sentences for this final answer. It does not need to sound impressive. It needs to be honest.
 
@@ -418,7 +418,7 @@ Before marking this week complete confirm you have:
 - [X] Added introduction text box to the report canvas
 - [X] Added member/casual slicer and confirmed it filters all visuals
 - [X] Completed the structured self review table
-- [ ] Written full answers to all six fundamental questions
+- [X] Written full answers to all six fundamental questions
 - [X] Saved final Capstone_PowerBI.pbix to the Capstone folder
 
 ---
