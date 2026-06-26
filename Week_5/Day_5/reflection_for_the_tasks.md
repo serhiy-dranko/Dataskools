@@ -40,15 +40,39 @@ You should have three tables in your model. Confirm they are all present and rec
 
 | Table Name | Row Count | Purpose In The Report | Any Visible Issues? |
 |---|---|---|---|
-| Trips_Combined | | | |
-| Station_Info | | | |
-| Trips_With_Station | | | |
+| Trips_April_2026 | 604,165 | Collect data for April 2026 | - |
+| Trips_May_2026  | 592,174 | Collect data for May 2026 | - |
+| Trips_Combined | 1,196,339 | Collect data for April-May 2026 and actual station capacity | - |
+| Station_Info | 850 | Collect data about Stations in Capstone | Check stations 32901, 31248, 31288 |
+| Station_status | 1,694 | Collect data about bikes at Stations in Capstone | Shoud check vehicle_type_id |
+| Trips_Pivot_Test | 2 | Count monthly data about quantity of rides by bike type| - |
 
 **Then answer in your notes:**
 - Are there any relationships drawn between tables in the Model view?
+
+  Yes, it has connections:
+  
+  Made by me:
+  
+  - Trips_Combined to Station_Info : start_station_id to short name AND end_station_id to short name.
+  - Station_Info to Station_status : station_id to station_id
+     
+  Made by PowerBI:
+  
+  - Trips_April_2026 to Trips_Pivot_Test : rideable_type to rideable_type
+  - Trips_May_2026 to Trips_Pivot_Test : rideable_type to rideable_type  
+  
 - If yes — were these created by you or by Power BI automatically?
+
+  50/50 half by me, half by PowerBI.
+  
 - If Power BI created them automatically — click on each relationship line and verify the join columns are correct
+
+  Yes, they are correct and looks reasonable.
+  
 - If no relationships exist — is that a problem for the report you are about to build? Why or why not?
+
+  Yes, this is a problem because if we don't have connection, it means that our data from different sources is not being combined into one source.
 
 > Power BI sometimes auto-detects relationships on columns with matching names. Always verify these manually — an incorrect auto-relationship silently corrupts every visual that uses more than one table.
 
@@ -60,26 +84,26 @@ Switch to **Data view** and click through each table. This is your last opportun
 
 For `Trips_Combined` verify:
 
-- [ ] `started_at` is Date/Time — not Text
-- [ ] `duration_minutes` exists and contains no negative values
-- [ ] `trip_month` exists and shows only two distinct numeric values
-- [ ] `member_casual` contains only `member` and `casual` — no other variants
-- [ ] `rideable_type` contains only expected bike type values
-- [ ] `end_station_name` shows `Dockless Return` where nulls previously existed
+- [X] `started_at` is Date/Time — not Text
+- [X] `duration_minutes` exists and contains no negative values
+- [X] `trip_month` exists and shows only two distinct numeric values
+- [X] `member_casual` contains only `member` and `casual` — no other variants
+- [X] `rideable_type` contains only expected bike type values
+- [X] `end_station_name` shows `Dockless Return` where nulls previously existed
 
 For `Station_Info` verify:
 
-- [ ] `station_id` is the correct type matching what you used as the join key
-- [ ] `lat` and `lon` are Decimal Number type — not Text
-- [ ] `capacity` is Whole Number type
-- [ ] No duplicate `station_id` values exist — duplicates break joins silently
+- [X] `station_id` is the correct type matching what you used as the join key. **We do not use `station_id`. for correct conection we use `short_name`.
+- [X] `lat` and `lon` are Decimal Number type — not Text
+- [X] `capacity` is Whole Number type
+- [X] No duplicate `station_id` values exist — duplicates break joins silently
 
 For `Trips_With_Station` verify:
 
-- [ ] Row count matches `Trips_Combined` exactly
-- [ ] `station_name_lookup` column exists with station names populated
-- [ ] Null percentage in `station_name_lookup` is at an expected level
-- [ ] No columns are duplicated from the original trip data
+- [X] Row count matches `Trips_Combined` exactly
+- [X] `station_name_lookup` column exists with station names populated
+- [X] Null percentage in `station_name_lookup` is at an expected level
+- [X] No columns are duplicated from the original trip data
 
 **Fix any issues before proceeding. Do not build visuals on top of known problems.**
 
@@ -192,12 +216,6 @@ Write: `Trip Volume Grew Month Over Month` or `September Generated 12% More Trip
 
 ### Step 2 — Add A Text Box Introduction (15 mins)
 
-Go to **Insert → Text Box** and add a short introduction panel to your report. Write 3–4 sentences that answer:
-
-- What data is this report based on?
-- What time period does it cover?
-- What is the single most important finding a viewer should take away?
-- Any known data limitations the viewer should be aware of?
 
 > This introduction box is what separates a professional report from a student exercise. Every report shared with a real stakeholder needs a plain language summary of what they are looking at and what they should trust or question.
 
@@ -329,12 +347,12 @@ Consider:
 
 Before marking this week complete confirm you have:
 
-- [ ] Completed model inventory and column audit in Block 1
-- [ ] Fixed any outstanding data issues before building visuals
-- [ ] Built all five visuals with validated results
+- [X] Completed model inventory and column audit in Block 1
+- [X] Fixed any outstanding data issues before building visuals
+- [X] Built all five visuals with validated results
 - [ ] Renamed all visual titles to meaningful findings not labels
-- [ ] Added introduction text box to the report canvas
-- [ ] Added member/casual slicer and confirmed it filters all visuals
+- [X] Added introduction text box to the report canvas
+- [X] Added member/casual slicer and confirmed it filters all visuals
 - [ ] Completed the structured self review table
 - [ ] Written full answers to all six fundamental questions
 - [ ] Saved final Capstone_PowerBI.pbix to the Capstone folder
