@@ -279,7 +279,6 @@ Write a definition in your own words that covers:
   In the Capstone model, we see that, just like in structured data, we can quickly combine historical data with our station capacity information for deep analysis. 
   If we do this manually with flat files, our information becomes outdated and irrelevant during preparation.
 
-
 ---
 
 ### Fundamental Question 2 — What Did The Data Not Tell You? (20 mins)
@@ -293,6 +292,15 @@ Write a list of at least six things you would want to know about Capital Bikesha
 
 > This question is about the limits of data — a skill that is more valuable and rarer than knowing how to build visuals.
 
+  April and May definitely has a good weather, casual numbers are likely inflated by tourists who may disappear when weather become colder.
+  If the duration gap narrows in the winter because only commuters are left in data. That completely changes the conversion strategy. 
+  So we should definitely analyze at least one year data before making any decisions.
+
+  Also beter conect our price policy to the data for better understanding in wich way we can earn more profit. 
+  Also we cal look to promo policy for better understanding customers behavior especialy casual riders.
+
+  https://gbfs.lyft.com/gbfs/2.3/dca-cabi/en/system_pricing_plans.json I think this file can give us more information for fruther analysis. 
+  
 ---
 
 ### Fundamental Question 3 — The Cleaning Decisions You Made (20 mins)
