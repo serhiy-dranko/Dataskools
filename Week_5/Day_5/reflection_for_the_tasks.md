@@ -237,14 +237,14 @@ Before considering the report complete go through this structured self review. F
 
 | Question | Your Answer |
 |---|---|
-| Does every visual have a meaningful title? | |
-| Does the member/casual slicer filter all visuals correctly? | |
-| Are there any visuals showing unexpected values you cannot explain? | |
-| Does the scatter chart show any stations with unusually high trip volume relative to capacity? | |
-| Does the donut chart show exactly two segments? | |
-| Does the average duration visual show reasonable values for a bike share system? | |
-| Would a non-technical person understand what this report is telling them? | |
-| What is the one thing you would fix if you had another hour? | |
+| Does every visual have a meaningful title? | Yes employers would understand what thats is mean |
+| Does the member/casual slicer filter all visuals correctly? | All except Scatter Chart because because if we use station name_lookup empty stations affect to our chart |
+| Are there any visuals showing unexpected values you cannot explain? | No. |
+| Does the scatter chart show any stations with unusually high trip volume relative to capacity? | 10th G St NW Capacity 1 during two month 1801 rides  |
+| Does the donut chart show exactly two segments? | Yes, member and casual |
+| Does the average duration visual show reasonable values for a bike share system? | Yes. they pretty colse to my priveous project |
+| Would a non-technical person understand what this report is telling them? | Non-technical person understand will see all key parameters for busines and can do quick analize. |
+| What is the one thing you would fix if you had another hour? | Wold fix Scatter Chart conection to the slicer|
 
 ---
 
