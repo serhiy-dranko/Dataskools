@@ -353,9 +353,9 @@ Before marking this week complete confirm you have:
 - [ ] Renamed all visual titles to meaningful findings not labels
 - [X] Added introduction text box to the report canvas
 - [X] Added member/casual slicer and confirmed it filters all visuals
-- [ ] Completed the structured self review table
+- [X] Completed the structured self review table
 - [ ] Written full answers to all six fundamental questions
-- [ ] Saved final Capstone_PowerBI.pbix to the Capstone folder
+- [X] Saved final Capstone_PowerBI.pbix to the Capstone folder
 
 ---
 
