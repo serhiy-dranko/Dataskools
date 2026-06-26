@@ -220,8 +220,8 @@ Before merging, compare the station ID values in both tables side by side.
 
 **Complete this in your notes:**
 
-| | Trips_Combined start_station_id | Station_Info station_id | Station_Info short_name | 
-|---|---|---|
+|  Trips_Combined |start_station_id | Station_Info station_id | Station_Info short_name | 
+|---|---|---|---|
 | Data type | text | text | text |
 | Example value | 33002 | febec658-2bcd-473e-8ba8-f84f016da7cd | 33002 |
 | Any leading zeros? | No | Yes | No |
