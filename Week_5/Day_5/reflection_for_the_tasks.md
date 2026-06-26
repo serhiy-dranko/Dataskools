@@ -308,7 +308,7 @@ Write a list of at least six things you would want to know about Capital Bikesha
 During Day 3 you made several cleaning decisions — replacing nulls with `Dockless Return`, filtering trips over 1440 minutes, fixing data types. These decisions changed the data that reached your report.
 
 For each major cleaning decision you made write:
-- What the raw data looked like before the decision
+- What the raw data looked like before the decision 
 - What the cleaned data looks like after
 - Who benefits from this decision and how
 - Who could be misled by this decision and how
@@ -316,6 +316,12 @@ For each major cleaning decision you made write:
 
 > Every cleaning decision is also an analytical decision. There is no such thing as neutral data cleaning.
 
+  Raw data looks like simple Excel sheet. We defenetley must always check the data for mistakes before analysis. 
+  After all preparations we have data wich do not include mistakes in data wich can afect to our charts. For example durations over 24 hours can increasing our averege duration by Client.
+  Benefits from these that without losing statifican significant nubers of rides we have values wich are more correctly showing us more real picture instead of calculations with rare picks and lows.
+  Misled by this decision, we fail to notice the out of average trips that could occur and give us a one time profit or we fail to see some errors that affect our data columns.
+  Yes, but if I had more time, maybe I would create some rules for minimization lost info or show them in a separate diagram.
+  
 ---
 
 ### Fundamental Question 4 — If This Were A Real Job (25 mins)
