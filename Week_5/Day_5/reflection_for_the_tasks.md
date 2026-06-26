@@ -266,6 +266,20 @@ Write a definition in your own words that covers:
 
 > Do not look this up and copy a definition. Write it from what you experienced this week. A definition that comes from your own work is worth more than a correct answer copied from a textbook.
 
+  A data model is structural data framework that that organizes data elements and defines how they are related to each other. 
+  For example, in a library, we have book sections with detective stories, science fiction, novels, etc. And a librarian has a journal that contains records of where exactly a book is kept. 
+  So, essentially, a data model is our library journal with path to each book. 
+
+  Flat file it just one book which we can read over and over again. Data model its our library where sometimes apear a new books and the librarian defetley know where the place for new book.
+
+  The structure affects the quality of the report because if we make some changes randomly it can take up our time and resources. 
+  In the data, when we select only the columns we need instead of all the others, we spend less time calculating the queries.
+  Like in library we go to the shelves with detectives if we look book in that genre.
+
+  In the Capstone model, we see that, just like in structured data, we can quickly combine historical data with our station capacity information for deep analysis. 
+  If we do this manually with flat files, our information becomes outdated and irrelevant during preparation.
+
+
 ---
 
 ### Fundamental Question 2 — What Did The Data Not Tell You? (20 mins)
