@@ -366,9 +366,23 @@ Without looking at any task sheets or notes — write a summary of what you lear
 
 Structure it as:
 - **Day 1:** What the core concept was and what you remember most clearly
+   Difference betwen Flat vs Structured files.
+  
+  A flat file is an unstructured, self-contained list stored in a single table without relationships or complex hierarchies.
+  A structured file contains connected tables, schemas and allowing for complex queries, data integrity rules and relationships between different pieces of data.
+  
 - **Day 2 (Connectors):** What surprised you most about how Power BI connects to data
+
+  That logic 100 percent like in Power query wich used in Excel. Join types even windows looks the same.
+  
 - **Day 3:** The single most important cleaning decision and why it mattered
+
+  Change type on station_id's to text withou that we wold be able to connect them to json files.
+  
 - **Day 4:** What the join type experiment taught you that the Coursera videos did not
+
+  FULL OUTER JOIN and ANTI JOINs where defenetley lefted out of Coursera videos
+  
 - **This session:** What the act of building a real report revealed about the work done earlier in the week
 
 Then answer one final question:
