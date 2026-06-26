@@ -336,6 +336,28 @@ Write a short preparation note covering:
 
 > This is the question that matters most in a real job. Tools are learnable. Knowing what to say to a room full of decision-makers is the rarer skill.
 
+  1. Why is Station 1th & M St NE so overloaded?
+
+  My report can show that the station recorded 7,084 rides against a capacity of 15 over April–May 2026. What it cannot answer is whether this is a seasonal pattern or permanent. 
+  To answer fully I would need historical data going back 12 months to show whether this station is chronically overwhelmed or reacting to a one-time event.
+
+  2. Are casual riders growing or decrising relative to members?
+
+  My report shows the April-May split 70.19% vs 29.81%  but has no trend line. Management will almost certainly want to know if casual ridership is being converted into memberships over time. 
+  I would need morer data broken down by month to answer this properly.
+
+  3.  Which stations are underperforming and could we reallocate bikes from them?
+
+  The scatter chart shows stations in the bottom right. 
+  Large capacity and  low trip volume  but my report does not rank them. 
+  I would add a table or filtered bar chart listing the bottom 10 stations by trips per dock station to make this acure.
+
+  Recommendation: 
+
+  Check E capacity review at 1th & M St N. The practical consequence is bikes unavailable at peak times and frustrated users abandoning trips. I would recommend either expanding dock capacity or redistributing bikes from the lowest in top stations identified in the scatter chart. Also look at time of rides and find peaks at current station.
+  
+  At least 12 months of historical data to confirm this is structural, not seasonal.
+
 ---
 
 ### Fundamental Question 5 — The Week In Your Own Words (20 mins)
