@@ -64,17 +64,17 @@ Complete this table in your notes — use your own memory first before looking a
 
 | Action You Took Last Week | ETL Stage (Extract / Transform / Load) | Which Day Did This Happen? |
 |---|---|---|
-| Downloaded CSV files from Capital Bikeshare website | | |
-| Connected CSV to Power BI via Get Data | | |
-| Changed data types for started_at and ended_at | | |
-| Replaced null end_station_name with Dockless Return | | |
-| Created duration_minutes custom column | | |
-| Filtered trips over 1440 minutes | | |
-| Connected station_information.json via Web connector | | |
-| Appended two monthly CSV files into Trips_Combined | | |
-| Merged Trips_Combined with Station_Info | | |
-| Clicked Close and Apply to load into the data model | | |
-| Built visuals on the report canvas | | |
+| Downloaded CSV files from Capital Bikeshare website | Extract |  |
+| Connected CSV to Power BI via Get Data | Extract |  |
+| Changed data types for started_at and ended_at | Transform |  |
+| Replaced null end_station_name with Dockless Return | Transform |  |
+| Created duration_minutes custom column | Transform |  |
+| Filtered trips over 1440 minutes | Transform |  |
+| Connected station_information.json via Web connector | Extract |  |
+| Appended two monthly CSV files into Trips_Combined | Transform  |  |
+| Merged Trips_Combined with Station_Info | Transform |  |
+| Clicked Close and Apply to load into the data model | Load |  |
+| Built visuals on the report canvas |  |  |
 
 **After completing the table answer in your notes:**
 - Which ETL stage took the most time across your week?
