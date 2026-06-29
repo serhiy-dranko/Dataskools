@@ -142,7 +142,7 @@ Create two groups:
 
 After grouping — take a screenshot of your organised Queries panel and save it to your notes document. This is what a structured Power BI ETL file looks like.
 
-([Queries area](https://github.com/serhiy-dranko/Dataskools/blob/main/Week_6/Day_1/images/Queries%20area.png))
+![Queries area](https://github.com/serhiy-dranko/Dataskools/blob/main/Week_6/Day_1/images/Queries%20area.png)
 
 ---
 
@@ -155,9 +155,23 @@ Capital Bikeshare has just told you they are changing their CSV format next mont
 
 **Question A:** Which specific Applied Steps in your staging queries will break when the new format arrives? List them by name.
 
+  When a source schema changes any step in Power Query that explicitly references the old column name (started_at) by string literal will throw an error. 
+  
+  Power Query automatically generates a hardcoded list of column names and types during import. If started_at is missing, this step will immediately fail.
+  
+  If we do no change our report i'll create steps before fomating ,wich combine new two columns in on an rename it into old name and apply this logics to the new files.
+
 **Question B:** How would you restructure your staging queries to make this kind of format change easier to handle in future? What is the minimum change you would make today to protect against this?
 
+  The Minimum Change Today Instead of importing individual CSV files manually, point Power Query to the source folder using Folder.Files(). When you combine the files not in separate way (each csv manualy) instead of it upload from folder. 
+  
+  Right after combining the files and establishing your core columns, select only the specific columns required for our report and use "Remove Other Columns" (Table.SelectColumns). In Power Query, dropping unused columns as early as possible is a best practice for performance..
+
 **Question C:** If you had ten analysts all connected to this same staging query — how does fixing it in one place propagate to all of their reports? Why is this the core argument for centralised staging?
+
+  If this staging query is built as a Power BI Dataflow, fixing the code in that single central location automatically fixes it for everyone. The next time Dataflow refreshes all ten analysts don't need to change a single line of code in their local .pbix files.
+
+  Centralised staging eliminates redundant work, ensures data consistency across all departmental reports, and insulates business users from unexpected upstream database or file changes. Single Source of Truth and Single Point of Maintenance.
 
 ---
 
@@ -189,23 +203,24 @@ Go to the bottom of the Power Query window — click where it says **Column prof
 
 Work through every column in `Trips_Combined` and complete this data quality table. For each column click on it and read the Column Profile statistics at the bottom of the screen.
 
-| Column | Valid % | Error % | Empty % | Min Value | Max Value | Distinct Count | Is Quality Acceptable? |
+| 	Column	| 	Valid %	| 	Error %	| 	Empty %	| 	Min Value	| 	Max Value	| 	Distinct Count	| 	Is Quality Acceptable?	| 
 |---|---|---|---|---|---|---|---|
-| ride_id | | | | | | | |
-| rideable_type | | | | | | | |
-| started_at | | | | | | | |
-| ended_at | | | | | | | |
-| start_station_name | | | | | | | |
-| start_station_id | | | | | | | |
-| end_station_name | | | | | | | |
-| end_station_id | | | | | | | |
-| start_lat | | | | | | | |
-| start_lng | | | | | | | |
-| end_lat | | | | | | | |
-| end_lng | | | | | | | |
-| member_casual | | | | | | | |
-| duration_minutes | | | | | | | |
-| trip_month | | | | | | | |
+| 	ride_id	| 	100	| 	0	| 	0	| 	00000DB8C6CC97D1	| 	FFFFFB4B52A80E4F	| 	1196287	| 	Yes	| 
+| 	rideable_type	| 	100	| 	0	| 	0	| 	classic_bike	| 	electric_bike	| 	2	| 	Yes	| 
+| 	started_at	| 	100	| 	0	| 	0	| 	01/04/2026 0:00:09	| 	31/05/2026 23:57:20	| 	1196037	| 	Yes	| 
+| 	ended_at	| 	100	| 	0	| 	0	| 	01/04/2026 0:01:00	| 	31/05/2026 23:59:57	| 	1195931	| 	Yes	| 
+| 	start_station_name	| 	85	| 	0	| 	15	| 		| 	Yuma St & Tenley Circle NW	| 	846	| 	No, replace null for 0	| 
+| 	start_station_id	| 	85	| 	0	| 	15	| 	30200	| 	33207	| 	842	| 	No, replace null for Dockless Start	| 
+| 	end_station_name	| 	100	| 	0	| 	0	| 	S Scott St & 12th St	| 	Yuma St & Tenley Circle NW	| 	1196339	| 	Yes, replaced null for Dockless End	| 
+| 	end_station_id	| 	85	| 	0	| 	15	| 	30200	| 	33207	| 	842	| 	No, replace null for 0	| 
+| 	start_lat	| 	100	| 	0	| 	0	| 	38.76	| 	39.13	| 	70110	| 	Yes	| 
+| 	start_lng	| 	100	| 	0	| 	0	| 	-77.42	| 	-76.825535	| 	71285	| 	Yes	| 
+| 	end_lat	| 	99	| 	0	| 	<1	| 	38.66	| 	39.19	| 	895	| 	Yes, if have station replace by station value	| 
+| 	end_lng	| 	99	| 	0	| 	<1	| 	-77.44	| 	-76.82	| 	915	| 	Yes, if have station replace by station value	| 
+| 	member_casual	| 	100	| 	0	| 	0	| 	casual	| 	member	| 	2	| 	Yes	| 
+| 	duration_minutes	| 	100	| 	0	| 	0	| 	0.000566667	| 	1439.719783	| 	816142	| 	Yes, apply filter  between 0 and 24 h	| 
+| 	trip_month	| 	100	| 	0	| 	0	| 	4	| 	5	| 	2	| 	Yes	| 
+| 	custom_start_at	| 	100	| 	0	| 	0	| 	01/04/2026 0:00:00	| 	31/05/2026 23:57:00	| 	80060	| 	Yes	| 
 
 **For columns where you mark quality as not acceptable — add a note explaining what the issue is and what cleaning action would address it.**
 
@@ -335,13 +350,13 @@ Professional analysts profile every new dataset before building anything on top 
 Before marking this session complete confirm you have:
 
 - [X] Completed all Coursera Module 3 items listed in Block 1
-- [ ] Written pre-task ETL and staging definitions
-- [ ] Mapped all last week's actions to ETL stages
-- [ ] Classified all queries as Staging or Reporting and set load correctly
-- [ ] Organised queries into named groups in Power Query
-- [ ] Written responses to all three staging design questions
-- [ ] Enabled full dataset profiling (not just top 1000 rows)
-- [ ] Completed the full data quality table for all 15 columns
+- [X] Written pre-task ETL and staging definitions
+- [X] Mapped all last week's actions to ETL stages
+- [X] Classified all queries as Staging or Reporting and set load correctly
+- [X] Organised queries into named groups in Power Query
+- [X] Written responses to all three staging design questions
+- [X] Enabled full dataset profiling (not just top 1000 rows)
+- [X] Completed the full data quality table for all 15 columns
 - [ ] Investigated and documented at least three anomalies
 - [ ] Completed duplicate investigation and recorded findings
 - [ ] Completed geographic boundary check and removed temporary column
