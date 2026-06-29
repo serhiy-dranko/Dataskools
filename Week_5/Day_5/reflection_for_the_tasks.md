@@ -399,9 +399,13 @@ If you were to repeat this entire week from Day 1 with a fresh dataset — what 
 
 Consider:
 - Which step would you spend more time on?
+  connection to station caracity and station_status table
 - Which assumption would you question earlier?
+  During two months could we se som patterns of customer behaviour
 - Which cleaning decision would you make differently knowing what the final report revealed?
+  Switch month number to month full name for better visualisation
 - What question would you ask about the data on Day 1 that you did not know to ask until Day 4 or today?
+  How related current capacity of stations to the quantity of rides during two months.
 
 > The ability to critique your own past work is one of the most important skills in any analytical role. It is also one of the hardest to develop honestly.
 
