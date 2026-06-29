@@ -64,23 +64,31 @@ Complete this table in your notes — use your own memory first before looking a
 
 | Action You Took Last Week | ETL Stage (Extract / Transform / Load) | Which Day Did This Happen? |
 |---|---|---|
-| Downloaded CSV files from Capital Bikeshare website | Extract |  |
-| Connected CSV to Power BI via Get Data | Extract |  |
-| Changed data types for started_at and ended_at | Transform |  |
-| Replaced null end_station_name with Dockless Return | Transform |  |
-| Created duration_minutes custom column | Transform |  |
-| Filtered trips over 1440 minutes | Transform |  |
-| Connected station_information.json via Web connector | Extract |  |
-| Appended two monthly CSV files into Trips_Combined | Transform  |  |
-| Merged Trips_Combined with Station_Info | Transform |  |
-| Clicked Close and Apply to load into the data model | Load |  |
-| Built visuals on the report canvas |  |  |
+| Downloaded CSV files from Capital Bikeshare website | Extract | Day 1 |
+| Connected CSV to Power BI via Get Data | Extract | Day 1 |
+| Changed data types for started_at and ended_at | Transform | Day 3 |
+| Replaced null end_station_name with Dockless Return | Transform | Day 3 |
+| Created duration_minutes custom column | Transform | Day 3 |
+| Filtered trips over 1440 minutes | Transform | Day 3 |
+| Connected station_information.json via Web connector | Extract | Day 2 |
+| Appended two monthly CSV files into Trips_Combined | Transform  | Day 4 |
+| Merged Trips_Combined with Station_Info | Transform | Day 4 |
+| Clicked Close and Apply to load into the data model | Load | Day 4 |
+| Built visuals on the report canvas | - | Day 5 |
 
 **After completing the table answer in your notes:**
 - Which ETL stage took the most time across your week?
+  
+  Appended two monthly CSV files into Trips_Combined because final data has ove 1m rows we was waiting for calculations on each step of verification of the data.
+  
 - Which stage produced the most errors or unexpected results?
+
+  Unexpected was connection between json files and cvs. id's dosent match. 
+
 - Was there any action that genuinely sits across two stages simultaneously? Which one and why?
 
+  Connected CSV to Power BI via Get Data at same time Extract and may be Load if data was prepearesd befor and ready to work.
+  
 ---
 
 ### Step 2 — Identify Your Staging Queries (20 mins)
@@ -98,12 +106,13 @@ Look at your existing queries and classify each one:
 
 | Query Name | Staging or Reporting? | Is Load Enabled? | Should Load Be Enabled? |
 |---|---|---|---|
-| Trips_Month1 | | | |
-| Trips_Month2 | | | |
-| Trips_Combined | | | |
-| Station_Info | | | |
-| Trips_With_Station | | | |
-| Any other queries present | | | |
+| Trips_Month1 | Staging | No | Yes |
+| Trips_Month2 | Staging | No | Yes |
+| Trips_Combined | Reporting | Yes | Maybe |
+| Station_satus | Reporting | Yes | No |
+| Station_Info | Reporting | Yes | No |
+| Trips_With_Station | Reporting | Yes | No |
+| Trips_Pivot_Test | Reporting | Yes | No |
 
 **To check whether load is enabled:** Right click any query in the Queries panel — if **Enable Load** has a checkmark it is loading into the model. If not it is a staging query only.
 
@@ -132,6 +141,8 @@ Create two groups:
 > If you have any JSON scaffolding queries (named List, Record, or similar) that Power BI created automatically during JSON parsing — create a third group called `Reference` and move those there.
 
 After grouping — take a screenshot of your organised Queries panel and save it to your notes document. This is what a structured Power BI ETL file looks like.
+
+![table](Week_6/Day_1/images/Queries area.png)
 
 ---
 
