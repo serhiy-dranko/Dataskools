@@ -142,7 +142,7 @@ Create two groups:
 
 After grouping — take a screenshot of your organised Queries panel and save it to your notes document. This is what a structured Power BI ETL file looks like.
 
-![table](Week_6/Day_1/images/Queries area.png)
+([Queries area](https://github.com/serhiy-dranko/Dataskools/blob/main/Week_6/Day_1/images/Queries%20area.png))
 
 ---
 
