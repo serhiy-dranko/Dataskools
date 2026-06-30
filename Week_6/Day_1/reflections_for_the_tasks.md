@@ -233,22 +233,25 @@ While completing the quality table above you will encounter values that look unu
 For each anomaly document:
 
 **Anomaly 1:**
-- Column name and what you observed
+- `start_station_name` null values
 - Exact values or value range causing concern
 - Is this a data error, a known characteristic of the dataset, or genuinely unexplainable?
 - What cleaning action would you take if any?
+  Probably rename as "Dockless start"
 
 **Anomaly 2:**
-- Column name and what you observed
+- `end_lat` and `end_lon` <1% empty
 - Exact values or value range causing concern
 - Is this a data error, a known characteristic of the dataset, or genuinely unexplainable?
 - What cleaning action would you take if any?
+  this case less 1% row just mention this in analisys
 
 **Anomaly 3:**
-- Column name and what you observed
+- `start_station_id` Check stations 32901, 31248, 31288 why they do not merge to `station_info.json`
 - Exact values or value range causing concern
 - Is this a data error, a known characteristic of the dataset, or genuinely unexplainable?
 - What cleaning action would you take if any?
+  stations 32901, 31248, 31288 do not exist in station_info.json
 
 > Likely anomalies you will find in Capital Bikeshare data: extreme duration_minutes values that survived filtering, start_lat and start_lng values that fall outside Washington D.C.'s geographic boundaries, ride_id values that appear more than once suggesting potential duplicate records, and end_lat or end_lng nulls that do not correspond to end_station_name nulls as expected. Not all of these are errors — your job is to investigate and make a reasoned call.
 
@@ -265,6 +268,7 @@ In Power Query with `Trips_Combined` selected:
 **Check ride_id for duplicates:**
 1. Click on `ride_id` column
 2. Look at Column Profile — note the Distinct count and the Total row count
+   Total 1196339 vs Distinct count 1196287 * Difference 52 rows
 3. If Distinct count equals Total row count — every ride_id is unique — no duplicates
 4. If Distinct count is lower than Total row count — duplicates exist
 
@@ -274,6 +278,8 @@ In Power Query with `Trips_Combined` selected:
 3. After investigating — undo this step by clicking the X in Applied Steps
 4. If true duplicates exist: **Home tab → Remove Rows → Remove Duplicates** on the ride_id column
 5. Record how many rows were removed
+   26 rows removed 
+   
 
 **If no duplicates exist:**
 - Record this finding as a positive quality signal
@@ -304,7 +310,9 @@ Go to **Add Column → Custom Column**, name it `geo_flag` and write:
 **After adding the column:**
 - Click on `geo_flag` and look at Column Distribution
 - How many trips are flagged as Out of Boundary?
+   10356 rows
 - Click on one of the Out of Boundary rows — what are the actual lat/lon values?
+   ride id  3748CA101EB43151 Start 39.049765 -77.11368 End 39.049765 -77.11368 "Out of Boundary"
 - Are these plausible trips from a docking station near the boundary or do the values look like data entry errors?
 
 **Record your findings then delete this temporary column** — right click `geo_flag` → Remove → and also delete the Added Custom step from Applied Steps.
@@ -327,15 +335,54 @@ Write minimum 3–4 sentences per answer.
 
 **Q1 — ETL Revisited:**
 At the start of this session you wrote a definition of ETL and identified which stage Power BI analysts most often get wrong. Now that you have done the staging reorganisation and profiling tasks — do you stand by your original answer or would you change it? Explain what you understand now that you did not at the start of the day.
+  
+  In Append queries firstly I would remove all duplicates and in Staging queries I would remove all columns wich not involwed to report calculations. The most of the problems exist only in Transformation part of ETL for my opinion. If we have some duplicates it defenetley affect to our report results. We sould clear all data or mark some outliers before we give any recomendations.
 
 **Q2 — Staging As Architecture:**
 You reorganised your queries into Staging and Reporting groups today. Explain in plain language to a non-technical colleague why this structure matters. Use the scenario from Block 2 — the CSV format change — as your example. How does centralised staging protect a team of ten analysts from having to fix the same problem ten times?
 
+  By splitting our queries into Staging and Reporting, we’ve created two separate, dedicated phases:
+
+  1. The Staging Group (The Raw meat)
+  This is our behind the restaraunt kitchen. Here, we gather all the raw information from different departments, double check the figures, fix any typos, and format everything properly.
+  
+  Why it matters: If there’s an error or missing information, we catch and fix it here before it goes live. It keeps the messy editing process hidden away.
+  
+  2. The Reporting Group (The Steak on the table)
+  This is the grilled, final product. This group only pulls from the clean, perfected data that passed through the Staging phase. It is built purely to power our final dashboards and business reports.
+  
+  Why it matters: Because this group doesn't have to do any heavy lifting or cleaning, it runs incredibly fast and stays completely accurate.
+
 **Q3 — Profiling Before vs After:**
 Last week you cleaned data and built visuals. This week you profiled the same data more systematically. Did the profiling reveal anything that your cleaning last week missed? If yes — what was it and how does it affect the report you built? If no — what does that tell you about the quality of last week's cleaning decisions?
 
+  Yes, the systematic data profiling this week revealed two critical gaps that were missed during last week's initial cleaning phase:
+  
+  Missing Data (start_station_name Nulls): We discovered a significant number of blank or null entries in the starting station names.
+  
+  Duplicate Records: We identified duplicate rows within the dataset that had not been fully removed.
+  
+  How This Affects the Report
+  These findings are highly important and directly impact the accuracy of the visuals built last week:
+  
+  Volume Inflation: Leaving duplicates in the dataset artificially inflated our overall metrics, meaning last week's report overstated actual activity.
+  
+  Skewed Location Insights: The null values in start_station_name mean that our station-popularity rankings and route visualizations were incomplete, potentially hiding true demand or patterns for specific locations.
+
 **Q4 — The Geographic Anomaly:**
 Describe what you found in the geographic boundary check. Whether you found genuine out-of-boundary records or not — explain what the operational interpretation would be either way. What would Capital Bikeshare's operations team want to know about trips that appear to originate outside their service area?
+
+  During the geographic boundary check of our location data, I performed a geographic boundary check to flag any trips originating outside Capital Bikeshare’s standard service area.
+  
+  The check revealed 10,356 rows flagged as "Out of Boundary." For example, Ride ID 3748CA101EB43151 registered a start and end location which is outside the dense DC core boundaries set in the query, but still within Capital Bikeshare's expanded regional footprint.
+  
+  Operational Interpretation: What This Means for the BusinessWhen trips appear outside the designated boundary, there are two primary operational interpretations:
+  
+  1. The Data is Accurate (Genuine Out-of-Boundary Trips)
+  If these coordinates represent real trips, it means bikes are being ridden, parked, or left outside the strict geofenced service zone.
+  
+  2.  The Data is Inaccurate (GPS/Hardware Glitches)
+  If these coordinates do not represent real trips, it indicates a technical issue.
 
 **Q5 — What Bad Data Actually Costs:**
 The Coursera vignette covered bad data in a business context. Write your own version using Capital Bikeshare as the organisation. Describe a specific scenario where one of the data quality issues you found today — duplicates, out-of-boundary coordinates, unexpected duration values, or null station names — makes its way into a report presented to the Capital Bikeshare board. What decision might the board make based on that flawed report? What is the real-world consequence of that decision?
@@ -357,11 +404,11 @@ Before marking this session complete confirm you have:
 - [X] Written responses to all three staging design questions
 - [X] Enabled full dataset profiling (not just top 1000 rows)
 - [X] Completed the full data quality table for all 15 columns
-- [ ] Investigated and documented at least three anomalies
-- [ ] Completed duplicate investigation and recorded findings
-- [ ] Completed geographic boundary check and removed temporary column
+- [X] Investigated and documented at least three anomalies
+- [X] Completed duplicate investigation and recorded findings
+- [X] Completed geographic boundary check and removed temporary column
 - [ ] Written full answers to all six reflection questions
-- [ ] Saved updated file
+- [X] Saved updated file
 
 ---
 
