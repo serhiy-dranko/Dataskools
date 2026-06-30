@@ -30,9 +30,9 @@ Complete the following in **Module 3** on Coursera before touching Power BI:
 - ✅ Activity: Using reference queries (reading)
 
 **Session 2 — Reference Queries & Dataflows:**
-- ✅ Introduction to reference queries (video)
-- ✅ Reference queries and dataflows (video)
-- ✅ Activity: Using reference queries (reading)
+- ✅ Introduction to reference queries (video) <- Dupplicate
+- ✅ Reference queries and dataflows (video) <- Dupplicate
+- ✅ Activity: Using reference queries (reading) <- Dupplicate
 - ✅ Helper queries (reading)
 - ✅ Activity: Disabling helper queries (reading)
 - ✅ Discussion prompt: Which best practices did you find most useful?
@@ -41,7 +41,11 @@ Complete the following in **Module 3** on Coursera before touching Power BI:
 
 > *"A reference query is different from a duplicate query because..."*
 
+  Because duplicate query its a duplicate. This command give us dipect copy of each step wich we applied in query.  Reference query its like a link to the result of a query we have only one new step and if anyone change main query the Reference query will change insteat of duplicate query wich save old logic.
+
 > *"The single best practice I am most likely to actually use on a real project is... because..."*
+
+  Is Reference query because it's give me oportunity to update the main logic without change whole file and also it can help to do the file faster.
 
 > Write the second answer before doing the tasks today. Revisit it in Block 4 and see if your answer changes after working with the concepts hands-on.
 
@@ -66,27 +70,74 @@ Use this scoring system: ✅ Already done well — ⚠️ Needs improvement — 
 
 Complete this audit table in your notes for each query:
 
-**For `Trips_Month1` and `Trips_Month2` (Staging group):**
+**For `Trips_April_2026` and `Trips_May_2026` (Staging group):**
 
 | Best Practice | Score | Notes |
 |---|---|---|
-| Query has a clear descriptive name | | |
-| Load is disabled (staging only) | | |
-| All Applied Steps have meaningful names | | |
-| No unnecessary steps that could be removed | | |
-| Data types set manually not left to auto-detect | | |
-| No transformations that duplicate work done in a downstream query | | |
+| Query has a clear descriptive name | ✅ Already done well | - |
+| Load is disabled (staging only) | ✅ Already done well | - |
+| All Applied Steps have meaningful names | ✅ Already done well | - |
+| No unnecessary steps that could be removed | ✅ Already done well | - |
+| Data types set manually not left to auto-detect | ❌ Not done at all | At Day 1 Power query identify them automatically. After that we apply some changes in further steps. It have logic in side of automation but if structure of table will change we'll have some mistakes. |
+| No transformations that duplicate work done in a downstream query | ✅ Already done well | - |
 
-**For `Trips_Combined`, `Station_Info`, `Trips_With_Station` (Reporting group):**
+**For(Reporting group):**
+
+`Trips_Combined`
 
 | Best Practice | Score | Notes |
 |---|---|---|
-| Query has a clear descriptive name | | |
-| Applied Steps are named descriptively | | |
-| No steps that reference column names that could change in source data | | |
-| Column types are explicitly set — not inherited from staging | | |
+| Query has a clear descriptive name | ✅ Already done well | - |
+| Applied Steps are named descriptively | ✅ Already done well | - |
+| No steps that reference column names that could change in source data | ✅ Already done well | - |
+| Column types are explicitly set — not inherited from staging | ✅ Already done well | - |
 | No columns loaded into the model that are never used in visuals | | |
-| Query purpose is obvious without needing documentation | | |
+| Query purpose is obvious without needing documentation | ✅ Already done well | - |
+
+`Trips_With_Station`
+
+| Best Practice | Score | Notes |
+|---|---|---|
+| Query has a clear descriptive name | ⚠️ Needs improvement | Better add more info in name |
+| Applied Steps are named descriptively | ⚠️ Needs improvement | Better to rename some aditional steps |
+| No steps that reference column names that could change in source data | ⚠️ Needs improvement | we have "start_station_id" wich joined to `Station_Info` and Its duplicate better do as reference |
+| Column types are explicitly set — not inherited from staging | ✅ Already done well | - |
+| No columns loaded into the model that are never used in visuals | ⚠️ Needs improvement | We have extra data |
+| Query purpose is obvious without needing documentation | ⚠️ Needs improvement | Purpose of query no so obvious |
+
+`Station_Info`
+
+| Best Practice | Score | Notes |
+|---|---|---|
+| Query has a clear descriptive name | ✅ Already done well | - |
+| Applied Steps are named descriptively | ⚠️ Needs improvement | Better to rename some aditional steps |
+| No steps that reference column names that could change in source data | we have "short_name" wich joined to `Trips_With_Station`|
+| Column types are explicitly set — not inherited from staging | ⚠️ Needs improvement | "data.stations.short_name", type text}|
+| No columns loaded into the model that are never used in visuals | ⚠️ Needs improvement | We have extra data |
+| Query purpose is obvious without needing documentation | ⚠️ Needs improvement | Purpose of query no so obvious |
+
+`Station_Status`
+
+| Best Practice | Score | Notes |
+|---|---|---|
+| Query has a clear descriptive name | ✅ Already done well | - |
+| Applied Steps are named descriptively | ⚠️ Needs improvement | Better to rename some aditional steps |
+| No steps that reference column names that could change in source data | ✅ Already done well | - |
+| Column types are explicitly set — not inherited from staging | ⚠️ Needs improvement | We need work with data |
+| No columns loaded into the model that are never used in visuals | ⚠️ Needs improvement | We have extra data |
+| Query purpose is obvious without needing documentation | ⚠️ Needs improvement | Purpose of query no so obvious |
+
+
+`Trips_Pivot_Test`
+
+| Best Practice | Score | Notes |
+|---|---|---|
+| Query has a clear descriptive name | ⚠️ Needs improvement | Better add more info in name |
+| Applied Steps are named descriptively | ⚠️ Needs improvement | Better to rename some aditional steps |
+| No steps that reference column names that could change in source data | ⚠️ Needs improvement | Its duplicate better do as reference |
+| Column types are explicitly set — not inherited from staging | ⚠️ Needs improvement | We have extra data |
+| No columns loaded into the model that are never used in visuals | ⚠️ Needs improvement | We do not use them in visuals yet |
+| Query purpose is obvious without needing documentation | ✅ Already done well | - |
 
 **After completing the audit:**
 - Count your ✅, ⚠️, and ❌ across all queries
@@ -343,7 +394,7 @@ At the start of Block 1 you wrote which best practice you were most likely to ac
 Before marking this session complete confirm you have:
 
 - [X] Completed all Coursera Module 3 items listed in Block 1
-- [ ] Written pre-task definitions for reference queries and best practices
+- [X] Written pre-task definitions for reference queries and best practices
 - [ ] Completed full best practices audit table for all five queries
 - [ ] Renamed all default Applied Step names across all queries
 - [ ] Removed confirmed unused columns from the model
