@@ -169,6 +169,9 @@ Default names to look for and replace:
 
 **After renaming — take a screenshot of the Applied Steps panel for `Trips_Combined` and save it to your notes. This is the before/after evidence of the refactor.**
 
+
+
+
 ---
 
 ### Step 3 — Remove Unused Columns (20 mins)
