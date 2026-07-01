@@ -80,7 +80,16 @@ Record the following for each hard-coded value in your notes:
 
 | Query | Step Name | Hard-Coded Value | What It Controls |
 |---|---|---|---|
-| | | | |
+| Trips_Cleaned_Template | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
+| Trips_Cleaned_Template | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name | 
+| Trips_Cleaned_Template | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Folder_data | Source | Folder.Files("C:\Users\User\Documents\Dataskools\week_5\Capstone\data")| path to the data |
+| Trips_April_2026 | Source | Csv.Document(File.Contents("C:\Users\User\Documents\Dataskools\week_5\Capstone\data..."),[Delimiter=",", Columns=13, QuoteStyle=QuoteStyle.None])| path to the data |
+| Trips_May_2026 | Source | Csv.Document(File.Contents("C:\Users\User\Documents\Dataskools\week_5\Capstone\data..."),[Delimiter=",", Columns=13, QuoteStyle=QuoteStyle.None])| path to the data |
+| Trips_April_2026 | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
+| Trips_May_2026 | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
+| Trips_April_2026 | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Trips_May_2026 | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
 
 Common candidates to look for:
 
