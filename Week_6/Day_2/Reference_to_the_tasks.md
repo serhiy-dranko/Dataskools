@@ -388,6 +388,21 @@ Format each rule as:
 
 > These five rules are worth keeping. They are the beginning of your own professional standards document — something every senior analyst develops over years. You are starting yours now.
 
+  1. Check duration before trusting it
+  Duration numbers can hide negatives, zeros, or absurd outliers. Sort/filter min-max before using them.
+  Break it: skewed averages with no warning.
+  2. Null station names are a signal
+  Nulls often point to a real system issue, not just missing data. Investigate the pattern before deleting.
+  Break it: deleting them can quietly shrink real data.
+  3. Verify coordinates against real bounds
+  A valid number isn't the same as a valid location. Check lat/long against the actual service area.
+  Break it: bad coordinates distort maps silently.
+  4. Deduplicate before counting anything
+  Check full-row and ID duplicates before any total or average. Do it early.
+  Break it: counts inflate unevenly, favoring some stations over others.
+  5. Keep the fix in one place
+  Cleaning logic should live in one reusable spot — reference query or dataflow. Don't repeat it.
+  Break it: fixing one copy and forgetting another leaves conflicting "clean" data.
 ---
 
 ### Step 3 — Reflection Questions (40 mins)
