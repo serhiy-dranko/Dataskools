@@ -169,7 +169,7 @@ Default names to look for and replace:
 
 **After renaming — take a screenshot of the Applied Steps panel for `Trips_Combined` and save it to your notes. This is the before/after evidence of the refactor.**
 
-
+![Queries area](https://github.com/serhiy-dranko/Dataskools/blob/main/Week_6/Day_2/images/Trips_query.png)
 
 
 ---
@@ -192,9 +192,10 @@ Return to Power Query and for each table remove any column that is not used anyw
 - Any intermediate columns created during profiling that were not removed
 
 **Before removing any column — record in your notes:**
-- Column name
-- Reason for removal
+- Column name `start_lng` `start_lat` `end_lat` `end_lng`
+- Reason for removal We do no have map visual so we can delete them
 - Confirmation it is not used anywhere in the model
+
 
 > Do not remove columns speculatively. Only remove what you have confirmed is unused. A column that seems unnecessary today may be needed the moment someone asks a new question of the data.
 
@@ -241,8 +242,8 @@ Example structure to document:
 CSV File 1 → Trips_Month1 (staging) ↘
                                       → Trips_Combined → Trips_With_Station
 CSV File 2 → Trips_Month2 (staging) ↗
-                                      ↑
-                         Station_Info ┘
+                                                                  ↑
+                                                     Station_Info ┘
 ```
 
 Does your actual structure match this? If not — draw what it actually is.
@@ -302,8 +303,16 @@ Then create a third reference:
 
 **In your notes answer:**
 - If you needed to fix a data type error in `started_at` — how many queries would you need to edit in the old structure versus the new reference query structure?
+  
+  In old schema two Trips_April_2026 and Trips_May_2026
+
 - What happens to `Trips_MemberOnly` and `Trips_CasualOnly` automatically if you fix a bug in `Trips_Cleaned_Template`?
+
+  All changes from Trips_Cleaned_Template will apear in `Trips_MemberOnly` and `Trips_CasualOnly`
+  
 - Why are these two branch queries currently disabled and when would you enable them?
+
+  They currently disabled because we do need them in data model. This exclude reloat thease two sources. We need enable them only when data changed or when we apply some new calculations in them.
 
 ---
 
@@ -318,7 +327,13 @@ Dataskools has five instructors each building their own Power BI reports using C
 
 **Question A:** How would a centralised dataflow solve this problem? Describe the architecture in plain language — what lives in the dataflow, what lives in each instructor's .pbix file, and where the single fix happens when the CSV format changes.
 
+  A centralised dataflow moves the CSV connection and cleaning steps out of each instructor's .pbix file and into one shared object in the Power BI Service. The dataflow holds the raw data connection, the column renaming, and the cleanup logic. Each .pbix file no longer touches the CSV directly. It just connects to the dataflow and builds visuals/reports on top of it. 
+So when name are changed , someone fixes it once inside the dataflow, refreshes it and all five reports get the corrected data automatically.
+
 **Question B:** Your reference query structure in this file is the local equivalent of a dataflow. Explain the analogy — what is the same and what is the fundamentally different between a reference query inside one .pbix file and a dataflow shared across five separate .pbix files?
+
+  A reference query works the same basic way: one base query does the cleaning, and other queries point back to it instead of repeating the steps. Fix the base query once, and everything referencing it updates too. The difference is scale. A reference query only helps within one .pbix file. It doesn't help the other four instructors at all, since each of them has their own separate file with their own separate reference queries. 
+  A dataflow lives outside any single file, in the cloud and is shared by everyone. So a reference query is "don't repeat yourself" for one person, while a dataflow is "don't repeat yourself" for a whole team.
 
 ---
 
@@ -335,6 +350,8 @@ In your Applied Steps list for `Trips_Combined` right click each step. If the op
 
 Record: At which step does query folding stop in your pipeline? What is the first step that breaks folding?
 
+**View Native Query** is not available in all queries.
+
 > For CSV sources almost all steps will show as non-foldable. This is expected. The value of this check is building the habit — when you eventually work with SQL sources this audit will matter enormously.
 
 **Check 2 — Step Count Review:**
@@ -346,6 +363,8 @@ Now look for any step that could be eliminated by doing the same work differentl
 - A **Filter Rows** step that could have been applied earlier to reduce the volume of data processed by all subsequent steps
 
 For each consolidation opportunity you find — describe it in your notes. You do not need to implement all of them but identify at least two.
+
+So I've done a bit change data and upload csv from folder this step allowed us exclude all duplicated steps in months and also now we do not need Monthly and Trips_combained queries.
 
 **Check 3 — Load Verification:**
 Go to **Home → Close & Apply dropdown → Apply Changes** and watch the loading progress.
@@ -398,19 +417,19 @@ Before marking this session complete confirm you have:
 
 - [X] Completed all Coursera Module 3 items listed in Block 1
 - [X] Written pre-task definitions for reference queries and best practices
-- [ ] Completed full best practices audit table for all five queries
-- [ ] Renamed all default Applied Step names across all queries
-- [ ] Removed confirmed unused columns from the model
-- [ ] Identified and documented all repeated transformation logic
-- [ ] Created `Trips_Cleaned_Template` reference query
-- [ ] Moved shared transformation steps into the template
-- [ ] Created `Trips_MemberOnly` and `Trips_CasualOnly` branch references
-- [ ] Validated model still loads cleanly after restructuring
-- [ ] Written dataflows scenario responses for both questions
-- [ ] Completed all three performance checks
-- [ ] Written personal five rules for Power Query best practices
+- [X] Completed full best practices audit table for all five queries
+- [X] Renamed all default Applied Step names across all queries
+- [X] Removed confirmed unused columns from the model
+- [X] Identified and documented all repeated transformation logic
+- [X] Created `Trips_Cleaned_Template` reference query
+- [X] Moved shared transformation steps into the template
+- [X] Created `Trips_MemberOnly` and `Trips_CasualOnly` branch references
+- [X] Validated model still loads cleanly after restructuring
+- [X] Written dataflows scenario responses for both questions
+- [X] Completed all three performance checks
+- [X] Written personal five rules for Power Query best practices
 - [ ] Written full answers to all five reflection questions
-- [ ] Saved updated file
+- [X] Saved updated file
 
 ---
 
