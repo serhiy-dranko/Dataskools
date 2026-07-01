@@ -387,8 +387,20 @@ Describe what you found in the geographic boundary check. Whether you found genu
 **Q5 — What Bad Data Actually Costs:**
 The Coursera vignette covered bad data in a business context. Write your own version using Capital Bikeshare as the organisation. Describe a specific scenario where one of the data quality issues you found today — duplicates, out-of-boundary coordinates, unexpected duration values, or null station names — makes its way into a report presented to the Capital Bikeshare board. What decision might the board make based on that flawed report? What is the real-world consequence of that decision?
 
+  Say duplicate trip records get counted in a board report, making a few stations look far busier than they really are. The board decides to expand docks at those "high-demand" stations and cut docks from quieter ones that were actually fine. Real consequence: wasted budget on stations that didn't need it, and reduced access at stations that did a costly decision made on inflated numbers.
+
 **Q6 — The Profiling Habit:**
 Professional analysts profile every new dataset before building anything on top of it. Based on what you found today — write a personal data profiling checklist of at least eight checks you would run on any new dataset before declaring it ready for reporting. Write it as something you would actually use — not a theoretical list.
+
+ - Check row count against expected volume
+ - Check for duplicate rows/IDs
+ - Count nulls per column, check where they cluster
+ - Check data types are correct (numbers aren't text, dates aren't text)
+ - Check min/max on numeric fields (e.g. duration) for impossible values
+ - Check lat/long are within expected geographic bounds
+ - Check for inconsistent category values (e.g. typos in station names)
+ - Check date range covers what's expected, no gaps or future dates
+ - Check for unexpected outliers/extreme values
 
 ---
 
@@ -407,7 +419,7 @@ Before marking this session complete confirm you have:
 - [X] Investigated and documented at least three anomalies
 - [X] Completed duplicate investigation and recorded findings
 - [X] Completed geographic boundary check and removed temporary column
-- [ ] Written full answers to all six reflection questions
+- [X] Written full answers to all six reflection questions
 - [X] Saved updated file
 
 ---
