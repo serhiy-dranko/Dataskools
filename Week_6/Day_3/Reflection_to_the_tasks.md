@@ -323,15 +323,18 @@ Go through every query in the file and confirm the load setting is correct for i
 
 | Query Name | Group | Load Enabled? | Correct Setting | Action Required |
 |---|---|---|---|---|
-| Trips_Month1 | Staging | | Disabled | |
-| Trips_Month2 | Staging | | Disabled | |
-| Trips_Cleaned_Template | Staging | | Disabled | |
-| Trips_MemberOnly | Staging | | Disabled | |
-| Trips_CasualOnly | Staging | | Disabled | |
-| Station_Raw | Staging | | Disabled | |
-| Station_Info | Reporting | | Enabled | |
-| Trips_Combined | Reporting | | Enabled | |
-| Trips_With_Station | Reporting | | Enabled | |
+| Trips_April_2026 | Staging | Disabled | YES | NO |
+| Trips_May_2026| Staging |  Disabled | YES | NO |
+| Trips_Cleaned_Template | Staging | Disabled | YES | NO |
+| Trips_Member_Only | Staging | Disabled | YES | NO |
+| Trips_Casual_Only | Staging | Disabled | YES | NO |
+| Station_Raw | Staging | Disabled | YES | NO |
+| Station_Info | Reporting | Enabled | YES | NO |
+| Trips_Combined | Reporting | Enabled | YES | NO |
+| Trips_With_Station | Reporting | Enabled | YES | NO |
+| Test_pivot_table | Reporting | Enabled | YES | NO |
+| Folder data | Staging | Disabled | YES | NO |
+| station_status |  Staging | Enabled | YES | Analyze data |
 
 For any query where the current setting does not match the correct setting fix it before moving to Step 2. After fixing open Model View and confirm only the intended reporting tables appear as tables in the model.
 
@@ -357,11 +360,11 @@ Run the following checks in order and record the result of each in your notes.
 
 **Row count checks:**
 
-- Trips_Month1 row count: ___
-- Trips_Month2 row count: ___
-- Trips_Combined row count: ___ (should equal Month1 plus Month2 exactly)
-- Trips_With_Station row count: ___ (should equal Trips_Combined if left outer join)
-- Station_Info row count: ___
+- Trips_Month1 row count: 604,565
+- Trips_Month2 row count: 592.556
+- Trips_Combined row count: 1,196,287 (should equal Month1 plus Month2 exactly) no because we have filters and duplicates.
+- Trips_With_Station row count: 1,196,287 (should equal Trips_Combined if left outer join)
+- Station_Info row count: 848 
 
 **Type checks:**
 
