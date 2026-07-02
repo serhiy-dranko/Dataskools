@@ -81,15 +81,17 @@ Record the following for each hard-coded value in your notes:
 | Query | Step Name | Hard-Coded Value | What It Controls |
 |---|---|---|---|
 | Trips_Cleaned_Template | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
-| Trips_Cleaned_Template | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name | 
-| Trips_Cleaned_Template | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Trips_Cleaned_Template | Renamed_month_trip | Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name | 
+| Trips_Cleaned_Template | Renamed_month_trip | Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
 | Folder_data | Source | Folder.Files("C:\Users\User\Documents\Dataskools\week_5\Capstone\data")| path to the data |
 | Trips_April_2026 | Source | Csv.Document(File.Contents("C:\Users\User\Documents\Dataskools\week_5\Capstone\data..."),[Delimiter=",", Columns=13, QuoteStyle=QuoteStyle.None])| path to the data |
 | Trips_May_2026 | Source | Csv.Document(File.Contents("C:\Users\User\Documents\Dataskools\week_5\Capstone\data..."),[Delimiter=",", Columns=13, QuoteStyle=QuoteStyle.None])| path to the data |
 | Trips_April_2026 | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
 | Trips_May_2026 | Removed_LessNull+TripsOver24Hours	| Table.SelectRows(Created_duration_minutes, each [duration_minutes] > 0 and [duration_minutes] < 1440)	| we keep only positive durations and less than 24 h | 
-| Trips_April_2026 | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
-| Trips_May_2026 | Renamed_month_trip 	|  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Trips_April_2026 | Renamed_month_trip |  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Trips_May_2026 | Renamed_month_trip |  Table.RenameColumns(Created_month_trip,{{"started_at - Copy", "trip_month"}}) | depend on column name |
+| Trips_Member_Only | Filtered Rows | Table.SelectRows(Source, each ([member_casual] = "member")) | Controls which member type |
+| Trips_Casual_Only | Filtered Rows | Table.SelectRows(Source, each ([member_casual] = "member")) | Controls which member type |
 
 Common candidates to look for:
 
@@ -185,13 +187,13 @@ Open Station_Info in Power Query Editor and audit it against the following best 
 
 | Best Practice | Score | Notes |
 |---|---|---|
-| Query has a descriptive name | | |
-| Load is set correctly for its purpose | | |
-| Applied Steps are meaningfully named | | |
-| Data types are explicitly set | | |
-| No unused columns are being loaded | | |
-| Source connection uses a parameter | | |
-| No transformation logic duplicated elsewhere | | |
+| Query has a descriptive name | ⚠️ Needs improvement  | We should rename it |
+| Load is set correctly for its purpose | ✅ Already done well | - |
+| Applied Steps are meaningfully named | ⚠️ Needs improvement | We should rename them |
+| Data types are explicitly set | ✅ Already done well | - |
+| No unused columns are being loaded | ⚠️ Needs improvement | We should rebuild the query |
+| Source connection uses a parameter | ❌ Not done at all | We must to create the new parameter |
+| No transformation logic duplicated elsewhere |✅ Already done well | |
 
 After completing the audit:
 
@@ -231,6 +233,8 @@ Apply the same structural standards to Station_Info that Trips_Cleaned_Template 
 - Remove any column not used in any of the above
 - Record each removal in your notes with the column name and reason for removal
 
+  'data.stations.region_id' 'data.stations.rental_uris.android' 'data.stations.rental_uris.ios' 'last_updated' 'ttl' 'version' does not participate in visualizations and additional analysis
+
 ---
 
 ### Step 3 — Rebuild The Join With Trips Data (30 mins)
@@ -245,9 +249,22 @@ Before rebuilding the join open Trips_With_Station and check the column used to 
 - Which column from Station_Info is the join key
 - What type of join is being used — left outer, inner, or full outer
 
+  Left Outer * Table.NestedJoin(Source, {"start_station_id"}, Station_Raw, {"data.stations.short_name"}, "station_information", JoinKind.LeftOuter)
+
+  Rows joined 
+
 Then go to View then Column Quality on both join key columns and check:
 
 - What percentage of values are valid, empty, or error
+
+  | Column_name | valid | empty | error |
+  |---|---|---|---|
+  | station_id_lookup | 85 | 15 | 0 |
+  | station_name_lookup | 85 | 15 | 0 |
+  | station_lat | 85 | 15 | 0 |
+  | station_lon | 85 | 15 | 0 |
+  | station_capacity | 85 | 15 | 0 |
+  
 - Whether there are whitespace or casing differences that could cause silent mismatches
 
 Record your findings in your notes before changing anything.
@@ -265,9 +282,13 @@ Name this column StationLookupStatus. Check the distribution of values in this c
 In your notes write a plain-language description of the join between trips and station data covering:
 
 - What the join key is and why it was chosen
+   by Start_station_id to Station_shorT_name
 - What type of join is used and what that means for rows with no station match
+   Left outer join we left values empty for stations in csv
 - What the StationLookupStatus column reveals about data quality
+   that we do not have 15% of info about Start stations
 - Whether the no-match rows should be included or excluded from reporting and why
+   should be excluded because we can't find this info and mention thos in visualisations
 
 This documentation is the kind of thing that gets asked in a data review. Having a written answer ready is professional practice.
 
