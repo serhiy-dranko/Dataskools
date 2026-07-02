@@ -134,15 +134,22 @@ Work through each column and record the following in your notes:
 
 | Column Name | Type Detected | Valid % | Empty % | Error % | Notes |
 |---|---|---|---|---|---|
-| | | | | | |
+| date | Date | 100 | 0 | 0 | - |
+| month | text | 100 | 0 | 0 | - |
+| year | text | 100 | 0 | 0 | - |
+| temperature_celsius | Decimal number | 100 | 0 | 0 | - |
 
 After completing the profile table, answer the following in your notes:
 
 - Which columns are essential for the join or relationship to trip data?
+   date and temperature_celsius 
 - Which columns can be removed before the data reaches the reporting layer?
+  month and year
 - Are there any data quality issues that need to be handled before the join — nulls, format inconsistencies, unexpected values?
+  no, data looks good
 - What is the correct grain of this table — one row per day, one row per station, one row per trip?
-
+  one row per day
+  
 > Understanding the grain before building the join prevents the most common multi-source error — a join that accidentally multiplies rows because the relationship between sources was not correctly understood.
 
 ---
