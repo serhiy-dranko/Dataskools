@@ -342,12 +342,12 @@ Run each check and record the result in your notes.
 
 | Table | Expected Row Count | Actual Row Count | Match? |
 |---|---|---|---|
-| Trips_Month1 | | | |
-| Trips_Month2 | | | |
-| Trips_Combined | Month1 + Month2 | | |
-| Trips_With_Station | Same as Trips_Combined | | |
-| Station_Info | Unique station count | | |
-| Third source table | Unique key count | | |
+| Trips_Month1 | 604,565 | 604,565 | Yes |
+| Trips_Month2 | 592,556 | 592,556 | Yes |
+| Trips_Combined | 1,197,121 | 1,196,287 | No, we delete duplicates |
+| Trips_With_Station | 1,196,287 |  1,196,287 | Yes |
+| Station_Info | 849 | 849 | Yes |
+| Third source table | 61| 61 | Yes |
 
 **Type validation:**
 
@@ -365,7 +365,7 @@ Run each check and record the result in your notes.
 **Refresh timing:**
 
 - Time a full close and apply refresh
-- Record the time
+- Record the time 40 seconds
 - Compare to the Day 3 baseline recorded in `W2D3_Notes.docx`
 - If the Day 4 refresh is more than 50% slower than Day 3 — investigate before signing off
 
@@ -392,22 +392,38 @@ Write minimum three to four sentences per answer. These are not summaries of wha
 **Q1 — The Multi-Source Challenge**
 
 Describe what was genuinely harder about working with three sources than with two. Not technically harder — architecturally harder. What decisions did you have to make about structure, grain, and join logic that you did not have to make when the pipeline had only one source family?
+  
+  With two sources, alignment is largely mechanical. Matching column names and types. With three, the real work is architectural: each source has its own grain and its own idea of "correct" formatting and I had to decide which one governs. 
+  For example, the Weather data used a specific date grain. So I had to reformat custom_start_date to DD/MM/YYYY without the time component to match it precisely before joining. Adding a third source turns "make the formats match" into "decide whose format is the standard," which is a structural decision. Not just a technical one.
 
 **Q2 — Parameters In Retrospect**
 
 Now that every configurable value in the pipeline is a parameter, describe the difference in how the file feels to maintain compared to Day 1. What would have broken if you had handed the Day 1 file to a colleague on a different machine? What would break now?
 
+  On Day 1 every rule was writed directly into the M code. If a colleague asked to change the trip duration filter to 5-35 minutes, I'd have to locate and manually edit each hardcoded filter step. It's slow and error prone, especially on someone else's machine where paths or assumptions might differ. 
+  Now with parameters, that same change is a single value swap that propagates through every formula referencing it. The file went from something only I could safely modify to something anyone can adjust confidently and quickly.
+
 **Q3 — The Documentation Habit**
 
 You have built a `_Documentation` query, written join quality notes, recorded row counts, and planned the architecture before building it. Describe how this documentation practice would have changed the experience of inheriting the file described at the start of the week — the one with no names, no groups, and no explanation of what anything does.
 
+  Without documentation, understanding someone else's pipeline means reverse-engineering every step. Which can take days. Good documentation works like a passport at the airport. A short, structured summary that lets anyone, including a "border officer" unfamiliar with the details, quickly verify what they're looking at and trust it. 
+  Inheriting a file with the Documentation query, join notes, and row counts means I can verify correctness and intent in minutes instead of days
+
 **Q4 — What The Exemplar Showed You**
 
 The Coursera exemplar for this project represents one way to meet the standard. Compare your pipeline to the exemplar. What did you do differently and why? What did the exemplar do that you would adopt in future? What did you do that the exemplar did not and that you consider a genuine improvement?
+  
+  Unlike the exemplar, I loaded all CSVs directly from a folder rather than importing each file individually, which simplified onboarding new files. 
+  I also built a Trips_Cleaned_Template query to standardize the transformation logic. It's a reusable pattern the exemplar didn't include.
+  I'd adopt the exemplar's approach to Template technique in future projects, but I see the folder based load and the reusable template as genuine improvements for scalability and maintainability.
 
 **Q5 — Readiness For Modelling**
 
 Next week moves into data modelling — relationships, DAX, and the semantic layer that sits between the ETL pipeline and the report visuals. Based on the state of your `W2D4` file describe what a data modeller would find when they open it. Would they be able to understand the tables, their grain, their relationships, and their known limitations without asking you any questions? If not — what is still missing?
+
+  A data modeller opening W2D4 would find clear joins in the data model plus documentation embedded in the queries, so a technically skilled reviewer could understand table grain and relationships without needing to ask me questions. 
+For a non-technical stakeholder, though, the raw model isn't self-explanatory. I'd still want to prepare a short presentation or summary to walk them through it.
 
 ---
 
@@ -416,22 +432,22 @@ Next week moves into data modelling — relationships, DAX, and the semantic lay
 Before marking this session complete, confirm you have done each of the following:
 
 - [X] Completed all Coursera Module 4 items listed in Block 1
-- [ ] Written a project plan in your notes before starting Block 2
-- [ ] Connected the third data source and confirmed the preview loads
-- [ ] Profiled the third source and completed the column profile table
-- [ ] Built the staging query for the third source with all steps named correctly
-- [ ] Created and wired the third source path parameter
-- [ ] Created the reporting query and established the join to trip data
-- [ ] Added the third source lookup status column and recorded its distribution
-- [ ] Completed the full query panel audit and fixed all issues found
-- [ ] Built and validated all three final reporting tables
-- [ ] Completed the end-to-end pipeline test including source, parameter, join quality, and model tests
-- [ ] Completed the final row count validation table
-- [ ] Completed the type and parameter validation checks
-- [ ] Recorded the Day 4 refresh timing and compared to Day 3 baseline
-- [ ] Updated the `_Documentation` query to reflect the Day 4 state
-- [ ] Written full answers to all five reflection questions
-- [ ] Saved the final file
+- [X] Written a project plan in your notes before starting Block 2
+- [X] Connected the third data source and confirmed the preview loads
+- [X] Profiled the third source and completed the column profile table
+- [X] Built the staging query for the third source with all steps named correctly
+- [X] Created and wired the third source path parameter
+- [X] Created the reporting query and established the join to trip data
+- [X] Added the third source lookup status column and recorded its distribution
+- [X] Completed the full query panel audit and fixed all issues found
+- [X] Built and validated all three final reporting tables
+- [X] Completed the end-to-end pipeline test including source, parameter, join quality, and model tests
+- [X] Completed the final row count validation table
+- [X] Completed the type and parameter validation checks
+- [X] Recorded the Day 4 refresh timing and compared to Day 3 baseline
+- [x] Updated the `_Documentation` query to reflect the Day 4 state
+- [X] Written full answers to all five reflection questions
+- [x] Saved the final file
 
 ---
 
