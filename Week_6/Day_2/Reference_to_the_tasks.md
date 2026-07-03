@@ -412,17 +412,29 @@ Write minimum 3–4 sentences per answer.
 **Q1 — Reference Queries In Practice:**
 Describe the restructuring you did in Block 3 — what was the before state, what is the after state, and what specifically changed in terms of maintainability. If the restructuring broke something — describe what broke and what that taught you about how Power BI executes queries in sequence.
 
+  Before, each transformation step lived directly on top of the raw import, so every stage: renaming, filtering out bad coordinates, deduplicating. Was baked into one long linear query. After restructuring, I split it into a base query (raw connection + core cleaning) and separate queries that reference it for specific report needs, so the cleaning logic exists once instead of being rewritten per use case. When I first restructured, a downstream step broke because it referenced a column name from before the rename step, which taught me that Power BI executes steps strictly top-to-bottom. Step can only "see" the state of the data as it existed at that exact point in the sequence, not the final result.
+
 **Q2 — Best Practice vs Getting It Done:**
 There is a real tension in professional work between doing things properly and shipping something that works. Describe a specific moment today where the best practice approach took significantly longer than the shortcut would have. Was it worth it? Under what circumstances would you take the shortcut intentionally and under what circumstances never?
+
+  Checking every duration value's min and max, and manually verifying a sample of coordinates against real boundaries. Took noticeably longer than just eyeballing the table and moving on. It was worth it. Because the shortcut would have let bad values sit undetected in a "finished" report. I'd take the shortcut intentionally for a quick, disposable exploration I'm not sharing with anyone  but never for anything going into an actual report or presented to someone else's decisions.
 
 **Q3 — Performance As A Professional Skill:**
 The Coursera session noted that reports taking 30 seconds tend to be ignored. Write a short argument for why performance optimisation is not a technical skill but a communication skill. Who is affected when a report is slow, and how does that affect the trust stakeholders place in the analyst who built it?
 
+  Performance optimisation is a communication skill because a slow report doesn't just cost time - it costs attention. The people affected are the stakeholders trying to make a decision  and if the report lags. They either stop trusting it or stop opening it at all. Regardless of how accurate the underlying data is. A report that's technically correct but too slow to use fails at its actual job, which is informing someone quickly enough to matter, so speed becomes part of how trustworthy the analyst looks not just how skilled the query is.
+
 **Q4 — Dataflows And Team Scale:**
 You currently work with a single .pbix file. Describe how the problems you would face if five analysts were all working from the same Capital Bikeshare data would differ from the problems you face alone. What breaks first when teams scale without a shared data layer? Use specific examples from your own queries to illustrate.
 
+  Working alone, I only have to keep my own cleaning logic consistent with itself, and if I find a data issue I fix it once in my own file. With five analysts on the same Capital Bikeshare data, the same null station_name would need to be caught and fixed independently by each person. There's no guarantee they'd all fix it the same way. One analyst might drop nulls, another might flag them, producing five slightly different "clean" datasets. The first thing that breaks at scale is consistency: two reports referencing the "same" data could show different numbers simply because each analyst's private cleaning steps diverged, and no one would notice until the numbers were compared side by side.
+
 **Q5 — Revisiting Your Opening Answer:**
 At the start of Block 1 you wrote which best practice you were most likely to actually use. Now that you have spent the day on structure, reference queries, performance, and naming conventions — has your answer changed? What do you know now about your own working habits that you did not know this morning?
+
+  My answer has shifted from focusing on structure toward prioritizing profiling before anything else, since almost every issue I ran into today. Duration outliers, null station names, bad coordinates it was something I could have caught immediately.
+  If I'd checked ranges and distributions before writing any transformation. 
+  What I know now that I didn't this morning is that I tend to jump straight into cleaning and fix problems reactively as I find them. Rather than checking systematically upfront. Which is slower in the end, even though it feels faster at the start.
 
 ---
 
@@ -443,7 +455,7 @@ Before marking this session complete confirm you have:
 - [X] Written dataflows scenario responses for both questions
 - [X] Completed all three performance checks
 - [X] Written personal five rules for Power Query best practices
-- [ ] Written full answers to all five reflection questions
+- [X] Written full answers to all five reflection questions
 - [X] Saved updated file
 
 ---
