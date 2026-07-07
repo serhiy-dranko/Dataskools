@@ -43,7 +43,11 @@ Complete the following on Coursera before opening Power BI:
 
 > "A table visual and a chart visual answer different kinds of questions. A table is best for... and a chart is best for... because..."
 
+   A table is best for looking up exact values, comparing many specific numbers side by side, or when the audience needs precise figures. Because it prioritizes precision and detail over pattern recognition. A chart is best for spotting trends, comparisons, and relationships. Because it prioritizes visual pattern recognition over exact numbers.
+
 > "The difference between a report and a dashboard is..."
+
+  A report is a multi-page, interactive document built in Power BI Desktop with detailed visuals, filters and slicers for deep exploration of one dataset. A dashboard is a single page, high level summary that can pull tiles from multiple reports datasets, meant for quick monitoring rather than deep analysis.
 
 These will come up again in Block 4.
 
@@ -80,6 +84,11 @@ Format the table:
 
 Write in your notes: what does this table tell you in one sentence that you did not already know from the raw data?
 
+The table reveals that despite members making up the clear majority of ride volume. Their trips are consistently shorter than casual riders. 
+A pattern that isn't visible in raw trip-level records without first aggregating and comparing the two groups side by side.
+
+
+
 ---
 
 ### Step 2 — Switch and Compare Chart Types (30 mins)
@@ -109,6 +118,9 @@ Add a line chart showing trip count by month, split by `member_casual`.
 Add a second visual on the same page: a column chart of trip count by day of week. Title it "Trips by Day of Week."
 
 Write in your notes: does the weekly pattern look different for members versus casual riders? State the pattern in one sentence.
+
+The Monthly pattern looks largely similar. Between the two groups Members dominate ride volume. 
+Every day of the week they also lead but casual riders' share is noticeably higher on weekends, suggesting members ride consistently for commuting while casual riders lean more toward weekend/leisure use.
 
 ---
 
@@ -202,6 +214,9 @@ Reopen the Coursera exemplar reading from Block 1 — Exemplar: Create a sales r
 
 Write in your notes: what did the exemplar do that your report did not? What did your report do that the exemplar did not need to, because Capital Bikeshare data has a different shape than the sales example?
 
+Exemplar had: line charts and slicers its useful for sales data, where filtering and tracing trends over selectable time periods is the main question.
+My report had instead:  Top 10 stations chart, an Azure Map, KPI cards and bookmark navigation. Because bikeshare data has a real spatial dimension (physical stations with locations) that sales data doesn't.
+
 ---
 
 ### Step 2 — Reflection Questions (45 mins)
@@ -211,17 +226,38 @@ Write a minimum of three to four sentences per answer.
 **Q1 — Table vs Chart:**
 Return to your Block 1 answer about when to use a table versus a chart. Now that you have built both on real data, do you stand by your original answer? Give one concrete example from today where a table was the right choice and one where a chart was the right choice.
 
+  Yes, I stand by my original answer. Today's example: a donut chart was the right choice to show categories and sub-categories for example, seeing what portion of member rides used electric bikes versus classic bikes. 
+  A table was the better choice when comparing more than two criteria at once for example, average duration, ride quantity, and bike type together. 
+  The table lets you see all the details side by side without losing precision.
+
 **Q2 — Chart Type Comparison:**
 In Step 2 of Block 2 you built the same comparison three different ways. Explain which chart type you kept and why, using the actual member versus casual split numbers from your data as evidence.
+  
+  I kept the donut chart for the member vs. casual comparison. 
+  It's better suited than a line chart or scatter chart for showing category and sub-category share of the total. 
+  The visual "slice of the pie" makes it immediately clear what members percentage of rides vs casual riders, which is exactly the kind of part to whole comparison a donut chart is built for. 
+  While a line or scatter chart would suit a trend or correlation instead.
 
 **Q3 — Report vs Dashboard:**
 Using the Capital Bikeshare Overview dashboard you pinned or planned in Block 3, explain in plain language what a dashboard is for that a full report is not. Who would look at the dashboard versus who would open the full report?
 
+  A full report highlights all the important details. It's built for digging in and understanding the "why" behind the numbers. 
+  A dashboard shows key numbers, like a car's dashboard. 
+  Just the essential indicators, meant for a quick check rather than deep analysis. 
+  Someone monitoring overall performance day to day would look at the dashboard, while someone doing deeper analysis or planning next steps would open the full report.
+
 **Q4 — Colour as a System:**
 You were asked to keep member and casual colours consistent across every page. Explain why this matters for a report with multiple pages, and describe what happens to a reader's understanding when colour meaning shifts between pages.
 
+  Consistent colours let readers build a shortcut like "blue = member". 
+  That carries across every page without rechecking the legend. 
+  If colours shift between pages, that shortcut breaks, and a reader could easily misread which group a chart is actually showing.
+
 **Q5 — What the Cards Communicate:**
 Look at your four KPI cards on the Trip Summary page. If a stakeholder saw only these four numbers and nothing else, what would they understand about Capital Bikeshare usage, and what would they be missing?
+
+  The four cards show overall scale like how much activity, how long rides typically last, how spread out the network is over what period. 
+  What's missing is the member vs. casual breakdown. So the single average duration number hides that members and casual riders actually behave very differently.
 
 ---
 
@@ -230,17 +266,17 @@ Look at your four KPI cards on the Trip Summary page. If a stakeholder saw only 
 Before marking this session complete, confirm you have done each of the following:
 
 - [X] Completed all Coursera Module 1, Part 1 and Part 2 items listed in Block 1
-- [ ] Written pre-task answers on table versus chart and report versus dashboard
+- [X] Written pre-task answers on table versus chart and report versus dashboard
 - [X] Built the Trip Summary page with table, KPI cards, and chosen chart type
 - [X] Compared three chart types and recorded reasoning for the one kept
 - [X] Built the Usage Over Time page with monthly trend and day-of-week visuals
 - [X] Built the Station Demand page with top 10 stations and map if available
 - [X] Applied a single consistent theme across all pages
 - [X] Confirmed consistent colour use for member versus casual across every page
-- [ ] Pinned visuals to a dashboard, or documented the intended pinning workflow
-- [ ] Added working page navigation
+- [X] Pinned visuals to a dashboard, or documented the intended pinning workflow
+- [X] Added working page navigation
 - [X] Completed the self-review against the Coursera exemplar
-- [ ] Written full answers to all five reflection questions
+- [X] Written full answers to all five reflection questions
 - [X] Saved all final files
 
 ---
