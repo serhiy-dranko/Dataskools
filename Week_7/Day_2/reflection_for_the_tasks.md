@@ -119,9 +119,13 @@ If available in your version of Power BI, run the built-in accessibility checker
 If not available, manually check each page against this list:
 
 - Does every visual have a clear, descriptive title that does not depend on colour to be understood?
+  Yes, all visuals have descriptive titles that convey meaning independent of colour.
 - Can the report be navigated using keyboard tab order alone, without a mouse?
+  Tested using Button navigation across all pages, focus order follows a logical left-to-right, top-to-bottom sequence and navigation buttons are keyboard-activatable.
 - Are font sizes legible at default zoom without requiring the reader to lean in?
+  Yes, font sizes remain legible at default zoom across all visuals and cards.
 - Does any visual rely on colour as the only way to distinguish categories?
+  No, categories are distinguished by both colour and legends, so colour is not the sole differentiator.
 
 Record findings and any fixes applied in your notes.
 
@@ -201,6 +205,10 @@ Starting from the **Trip Summary** page, click through the entire report as a fi
 
 Record in your notes: did anything behave unexpectedly? Was any interaction unclear without explanation?
 
+Walked through the full report starting from the Trip Summary page 
+I've had applied slicers, hovered for tooltips, opened the drillthrough page, used the back button, tested both bookmark navigation buttonsand visited every page. 
+Everything behaved as expected; no unexpected interactions and no unclear elements requiring extra explanation.
+
 ---
 
 ### Step 2 — Reflection Questions (45 mins)
@@ -210,17 +218,37 @@ Write a minimum of three to four sentences per answer.
 **Q1 — Accessibility in Practice:**
 Return to your Block 1 answer on accessible design choices. Now that you have applied a theme, conditional formatting, and a tooltip page, which change do you think made the biggest difference to a first-time reader, and why?
 
+  Consistent, high-contrast colours help because some readers may be colourblind and need extra cues beyond colour alone, like distinct shapes or labels. 
+  That said, I think slicers and tooltips made the biggest difference for a first-time reader, since they let someone explore and get quick context without needing any prior explanation of the report. 
+  Colour consistency supports understanding but interactivity is what actually makes the report usable on first contact.
+
 **Q2 — Tooltip vs Drillthrough:**
 Return to your Block 1 answer comparing tooltips and drillthrough. Using the two you built today — the station tooltip and the station drillthrough page — explain the actual difference in what each one reveals and when a reader would want one over the other.
+
+  The tooltip gives a quick, in-context summary. Just enough detail to answer a specific question without leaving the current view. 
+  The drillthrough page goes much deeper, showing the full detail behind one specific item like a station's complete trip history and trends. 
+  A reader would use a tooltip for a fast check and drillthrough when they actually need to investigate one item in depth.
 
 **Q3 — Conditional Formatting Choices:**
 Explain the threshold you chose for the duration_minutes conditional formatting in Block 2. What would happen to the report's usefulness if that threshold were set too low, flagging almost everything? What would happen if it were set too high, flagging almost nothing?
 
+  I set the threshold at trips above 15 minutes, since most rides fall under that, making it a meaningful cutoff. It highlights that casual riders on classic bikes tend to exceed this duration. 
+  If the threshold were set too low, almost everything would get flagged this making the highlighting meaningless and impossible to act on. 
+  If set too high, almost nothing would be flagged and we'd lose visibility into the outliers that actually matter.
+
 **Q4 — Bookmarks as Storytelling:**
 You built two bookmarks representing member-only and casual-only views. Explain how this is different from simply telling a reader to click the slicer themselves. What does a pre-built bookmark do that an empty slicer does not?
 
+  A pre-built bookmark captures a specific, intentional view instantly. One click shows exactly the member only or casual only comparison. 
+  I want the reader to see, with no risk of them applying the wrong filter or missing a step. 
+  An empty slicer requires the reader to know what to select and do it correctly themselves, which adds friction and room for error. 
+  Bookmarks guide the story and  slicers leave the reader to build it on their own.
+
 **Q5 — Interactivity Risk:**
 Interactivity gives a reader control, but control can also let a reader build a misleading or confusing view by combining filters in unexpected ways. Describe one way today's report could be misread if a user applied slicers in combination, and what you could add to prevent that misreading.
+
+  If a user selects a single month like January where the report intentionally excludes winter data, the report  show a misleadingly empty view, making them think there's a broken report rather that genuinely no data. 
+  To prevent this. I could add a visible message or card that says "No data for this period" instead of a blank chart or restrict the date slicer to only the months actually covered (April-May 2026) so users can't select an empty range.
 
 ---
 
@@ -240,7 +268,7 @@ Before marking this session complete, confirm you have done each of the followin
 - [X] Confirmed navigation buttons work across all pages
 - [X] Grouped related visuals and checked layering
 - [X] Completed a full click-through test and recorded any issues
-- [ ] Written full answers to all five reflection questions
+- [X] Written full answers to all five reflection questions
 - [X] Saved all final files
 
 ---
