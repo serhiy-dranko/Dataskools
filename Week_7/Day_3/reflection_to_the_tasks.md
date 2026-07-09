@@ -74,8 +74,11 @@ Before pinning anything, write a short plan in your notes. A dashboard is a smal
 Answer in your notes:
 
 - Who is the dashboard for — an operations lead checking usage daily, or a stakeholder reviewing the programme once?
+  I think for the a stakeholder we kepp the totals and KPI's
 - What three to five numbers or visuals would that person need to see in under ten seconds to know whether anything needs their attention?
+  All KPI, Date arrange and Key Charts with totals.
 - What from this week's report would you deliberately leave off the dashboard, and why?
+  Map chart, Table and week day chart this chart show us detailed info wich belongs to the report better.
 
 > A dashboard that tries to show everything shows nothing clearly. The discipline is in what you cut.
 
@@ -199,6 +202,11 @@ Open the **Capital Bikeshare Overview** dashboard and the full report side by si
 
 Write in your notes: name one question a reader could answer from the dashboard alone, and one question that requires them to leave the dashboard and open the full report.
 
+  From the dashboard alone, a reader can answer "What was the overall trip volume and average duration for April–May 2026, and how does it split between members and casual riders by month?". 
+  The KPI cards and monthly bar chart answer this directly.
+  A question that requires opening the full report is "Where geographically are the busiest stations located, or how does ridership variete by day of the week?". 
+  The dashboard's Top 10 stations chart shows volume by name but not location and there's no day of week breakdown. So the reader would need to go to the report's map and weekly pattern chart for that detail.
+
 ---
 
 ### Step 2 — Reflection Questions (45 mins)
@@ -208,17 +216,36 @@ Write a minimum of three to four sentences per answer.
 **Q1 — What the Dashboard Left Out:**
 Return to your Step 1 plan from Block 2. Looking at the finished dashboard, did you end up leaving off everything you planned to, or did something get added back in? Explain what changed your mind, if anything.
 
+  No, I kept to my original plan and didn't need to add anything back in. I built a focused dashboard with only the key parameters, total trips, unique stations, average duration, and the main member vs. casual split. 
+  All the other, more detailed charts stayed on the report instead, since that level of detail belongs there, not on a quick glance dashboard. 
+  Nothing changed my mind because the plan matched what a dashboard is actually meant to do.
+
 **Q2 — Dashboard Limitations:**
 The Coursera content covered limitations of pinned visuals. Name one limitation you actually encountered or anticipated while pinning your Capital Bikeshare tiles, and explain how it shaped a decision you made.
+
+  One limitation I ran into was that the minimum size for KPI card tiles is a bit too large when pinning them. 
 
 **Q3 — What Export Loses:**
 Compare the live report to the PDF export from Block 3. What specifically was lost in translation — be specific about a visual or interaction, not a general statement — and who would be affected by that loss?
 
+  Comparing the live report to the PDF export, the buttons and bookmarks completely stop working, and the report loses all interactivity like drillthrough and tooltips. 
+  This means a PDF reader can't click into a station's detail page or hover to see extra context, they only see the static charts exactly as they were when exported. 
+  It would mainly affect someone like an analyst who needs to explore the data further, since they'd lose the ability to dig into specifics that the live report allows.
+
 **Q4 — Choosing the Right Delivery Format:**
 You now have three ways to deliver this work: the live interactive report, the pinned dashboard, and the PDF export. For each of the three audiences below, state which format you would send and why: a programme manager who checks in monthly, an analyst who will build on this work next week, and a stakeholder who only has five minutes and a phone.
 
+  For a stakeholder with five minutes on their phone. I would send the dashboard, since it shows only the key numbers at a glance without needing any exploration. 
+  For a programme manager who checks in monthly. I would send the PDF, since it's a stable, easy to open snapshot they can quickly review without needing to open Power BI. 
+  For an analyst who will build on this work next week. I would send the live interactive report, since they need full access to the model, filters, and drillthrough detail to actually work with the data.
+
 **Q5 — Sharing Responsibly:**
 Using your sharing link notes from Block 3, explain the difference between making something accessible and making something appropriately accessible. What would go wrong if every dashboard you build defaulted to the widest possible sharing setting?
+
+  Making something accessible just means anyone with the link can open it. Making something appropriately accessible means the right people see only the data they're supposed to see. 
+  For example:  if a region manager is only allowed to see numbers for their own region but I share the full dataset with everyone, they would now see other regions' data that they were never meant to have access to. 
+  If every dashboard defaulted to the widest possible sharing setting, sensitive or restricted data could end up visible to people who shouldn't have permission to see it. 
+  Which could cause real privacy or business problems. Appropriate sharing means matching access to each person's actual role not just making things easy to open.
 
 ---
 
@@ -228,7 +255,7 @@ Before marking this session complete, confirm you have done each of the followin
 
 - [X] Completed all Coursera Module 3, Part 1 and Part 2 items listed in Block 1
 - [X] Written pre-task answers on dashboards versus reports and Analyze in Excel
-- [ ] Written a dashboard inclusion plan before pinning anything
+- [X] Written a dashboard inclusion plan before pinning anything
 - [X] Published the report to Power BI Service, or documented the process if unavailable
 - [X] Created the Capital Bikeshare Overview dashboard with a deliberate, limited tile set
 - [X] Arranged and titled the dashboard for single-glance readability
@@ -236,8 +263,8 @@ Before marking this session complete, confirm you have done each of the followin
 - [ ] Tested Analyze in Excel, or documented the process if unavailable
 - [X] Created a sharing link and documented permission decisions
 - [X] Organised the Week 3 Day 3 workspace folder
-- [ ] Completed the dashboard versus report side-by-side check
-- [ ] Written full answers to all five reflection questions
+- [X] Completed the dashboard versus report side-by-side check
+- [X] Written full answers to all five reflection questions
 - [X] Saved all final files
 
 ---
