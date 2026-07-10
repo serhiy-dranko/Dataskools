@@ -60,13 +60,17 @@ Write each of the following in two to three sentences maximum — this is a comp
 
 **One design decision:** one choice from the week — colour consistency, the drillthrough instead of a tooltip, what was left off the dashboard — and why it was made.
 
+ This dashboard pins key visuals from the full report into one quick-read summary. High-contrast colours separate casual and member riders at a glance. The KPI cards give totals anyone can understand instantly.
+ The top 10 chart shows exactly where demand is highest. 
+
+ ALSO
   The Azure Map showing top station demand was originally recalculating the top 10 stations across the entire dataset every time it loaded, which made the page slow. 
   I created a dedicated query that pre-calculates just the top 10 stations, and had the map pull from that instead. This cut the visual's load time from over 2 seconds to under 20 milliseconds, without changing what the viewer sees.
 
 **The close:** one sentence on what this dashboard is ready for next.
 
-  This dashboard is ready to guide decisions on where to prioritize bike restocking and maintenance. 
-  The next step would be connecting it to live data so the trends update automatically instead of reflecting a fixed two-month snapshot.
+  This dashboard is ready for the next step - connecting it to live, ongoing data. 
+  Once it's tracking trends continuously instead of just two months, it can properly support decisions like restocking and station planning.
 
 > Keep this tight. A five-minute presentation does not need a nine-slide arc — it needs four clear points said well.
 
@@ -85,7 +89,7 @@ Decide, in writing:
 
   Title slide -  project name, your name, one-line description
   The situation - what Capital Bikeshare is, what the data covers
-  Key finding #1 - member vs. casual usage trend (screenshot: monthly volume chart)
+  Key finding #1 - member vs. casual usage trend (screenshot: Trip Summary by Rider Type and Bike Type)
   Key finding #2 - top stations by demand (screenshot: top 10 stations chart)
   One design decision - discribe decision about design
   Close - what this dashboard is ready for next
@@ -143,8 +147,13 @@ Write a minimum of two to three sentences per answer.
 **Q1 — Closing the Project:**
 Now that the Capital Bikeshare project is finished, what is the one thing you are most confident you could do again on a new dataset without guidance, and what is the one thing you would still want to look up or double-check?
 
+ I'm most confident working with visual transformations. Chart styling, drillthroughs and tooltips. These felt intuitive and I applied them consistently throughout the project. 
+ What I'd still want to look up or double-check is more advanced DAX functions, particularly around optimization patterns and less common aggregation logic.
+
 **Q2 — What Carries Forward:**
-Of everything built across the four weeks of this project — ETL, staging, profiling, visuals, accessibility, interactivity, dashboards, performance tuning — name the single skill you expect to use the most in the retail mini project ahead, and why.
+Of everything built across the four weeks of this project — ETL, staging, profiling, visuals, accessibility, interactivity, dashboards, performance tuning — name the single skill you expect to use the most in the retail mini project ahead, and why.  
+ The skill I expect to use most in the retail mini project is slicers combined with page navigation. These are what transform a report from a flat, static view into something genuinely dynamic and explorable. 
+ Being able to let users filter and move through data on their own terms is central to making any tab in report actually useful not just visually complete.
 
 ---
 
@@ -248,10 +257,10 @@ Write a short personal goals note for Week 4, covering:
 Before marking this session complete, confirm you have done each of the following:
 
 - [X] Written a short audience profile and compressed story spine
-- [ ] Completed the Power BI readiness check and exported two to three visuals
-- [ ] Built a five to six slide Canva deck and exported it as PDF
-- [ ] Run through the short presentation and confirmed it lands at five to seven minutes
-- [ ] Delivered the presentation and written both closing reflection answers
+- [X] Completed the Power BI readiness check and exported two to three visuals
+- [X] Built a five to six slide Canva deck and exported it as PDF
+- [X] Run through the short presentation and confirmed it lands at five to seven minutes
+- [X] Delivered the presentation and written both closing reflection answers
 - [ ] Written plain-language definitions of forecasting, Key Influencers, and Decomposition Tree
 - [ ] Applied a forecast to the monthly trend chart and recorded observations
 - [ ] Tried at least one AI visual and recorded what it revealed
