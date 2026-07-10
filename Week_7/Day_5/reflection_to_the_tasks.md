@@ -170,8 +170,19 @@ Week 4 introduces forecasting and AI-powered visuals. This block is a first expo
 Search Power BI's official documentation or Coursera resources for the following topics and spend roughly ten minutes on each:
 
 - What forecasting in Power BI is and how the built-in line chart forecast feature works
+
+  Power BI can add a forecast line directly to a line chart, using historical time-based data to predict future values along with a confidence range showing how certain it isbased on built-in predictive forecasting models using exponential smoothing
+  and it works best with time-series data. 
+  
 - What the Key Influencers visual does and what kind of question it answers
+
+ The key influencers visual helps you understand the factors that drive a metric that interests you by analyzing your data, ranking the factors that matter and displaying them as key influencers. 
+ In other words, it answers "what factors are causing this outcome and which ones matter most?"
+
 - What the Decomposition Tree visual does and what kind of question it answers
+
+  The decomposition tree visual lets you visualize data across multiple dimensions, automatically aggregating data and letting you drill down into your dimensions in any order.
+  It answers "what is this total made up of and where exactly should I look to find the cause?"
 
 Write a one-sentence plain-language definition of each in your notes.
 
@@ -261,14 +272,14 @@ Before marking this session complete, confirm you have done each of the followin
 - [X] Built a five to six slide Canva deck and exported it as PDF
 - [X] Run through the short presentation and confirmed it lands at five to seven minutes
 - [X] Delivered the presentation and written both closing reflection answers
-- [ ] Written plain-language definitions of forecasting, Key Influencers, and Decomposition Tree
+- [X] Written plain-language definitions of forecasting, Key Influencers, and Decomposition Tree
 - [ ] Applied a forecast to the monthly trend chart and recorded observations
 - [ ] Tried at least one AI visual and recorded what it revealed
 - [ ] Opened and profiled the retail dataset at a glance
 - [ ] Compared the retail dataset structurally to Capital Bikeshare
 - [ ] Written anticipated ETL and modelling needs for the retail dataset
 - [ ] Written personal goals for the Week 4 mini project
-- [ ] Saved all final files
+- [X] Saved all final files
 
 ---
 
