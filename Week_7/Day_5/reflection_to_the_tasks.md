@@ -278,7 +278,7 @@ Before marking this session complete, confirm you have done each of the followin
 - [ ] Opened and profiled the retail dataset at a glance
 - [ ] Compared the retail dataset structurally to Capital Bikeshare
 - [ ] Written anticipated ETL and modelling needs for the retail dataset
-- [ ] Written personal goals for the Week 4 mini project
+- [] Written personal goals for the Week 4 mini project
 - [X] Saved all final files
 
 ---
