@@ -156,23 +156,29 @@ Write two to three sentences each:
 
 **Q1 —** What's the one thing from this whole capstone we're most confident explaining to someone else without notes?
 
+The thing we could explain most confidently without notes is the ETL process itself: pulling raw, inconsistently-formatted source files, standardizing them into a common schema  and loading them into a queryable table. 
+That logic is extract, transform to a common structure, then load. Carries directly over to how the resulting queries connect to and depend on that underlying structure, so understanding one makes the other make sense too.
+
 **Q2 —** Looking back at the full week — join, cleaning, modelling, forecasting, AI visuals, this build — what's the one skill we'd most want more practice on before Day 5?
+
+The skill we'd most want more practice on before Day 5 is forecasting and building AI-driven visuals, since both are genuinely new territory compared to the joins, cleaning, and modeling work we'd done before. 
+Cleaning and modeling felt like extensions of things we already had some intuition for, but forecasting asks us to reason about uncertainty and future patterns in a way we haven't built confidence in yet. 
 
 ---
 
 ## Completion Checklist
 
-- [ ] Built all six core visuals on one page
-- [ ] Applied consistent theme, title, and footer
-- [ ] Exported the dashboard as PDF
-- [ ] Gathered and summarised reusable visuals from across the week
-- [ ] Outlined a 12–15 slide deck covering the full capstone
-- [ ] Built the Canva deck following the formatting rules
-- [ ] Exported the presentation as PDF
-- [ ] Run through the full deck and confirmed it lands at ten to twelve minutes
-- [ ] Delivered the presentation
-- [ ] Written both reflection answers
-- [ ] Saved all files
+- [X] Built all six core visuals on one page
+- [X] Applied consistent theme, title, and footer
+- [X] Exported the dashboard as PDF
+- [X] Gathered and summarised reusable visuals from across the week
+- [X] Outlined a 12–15 slide deck covering the full capstone
+- [X] Built the Canva deck following the formatting rules
+- [X] Exported the presentation as PDF
+- [X] Run through the full deck and confirmed it lands at ten to twelve minutes
+- [X] Delivered the presentation
+- [X] Written both reflection answers
+- [X] Saved all files
 
 ---
 
