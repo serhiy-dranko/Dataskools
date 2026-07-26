@@ -38,7 +38,12 @@ Complete the following on Coursera before opening Power BI:
 
 > "An insight is different from a finding because a finding states what the data shows, and an insight..."
 
+  explains what that pattern means for a decision or an action — it connects the data to a "so what." A finding is "Winter ridership drops to ~2.2M." An insight is "Winter isn't a smooth seasonal dip, it's a separate low-demand regime driven by cold-weather threshold behavior, so we shouldn't staff or forecast it the same way we do shoulder seasons.
+
 > "If I had to remove two of the three AI visuals — Key Influencers, Decomposition Tree, forecast — from a three-minute executive summary, I would keep... because..."
+
+   I'd keep Key Influencers, because it gives stakeholders a direct, quantified answer to "what's driving ridership" that they can act on immediately, without needing to interpret a chart. 
+   Decomposition Tree is useful for deeper investigation, but in a three-minute summary, a clear driver with a number attached lands faster and more memorably than an exploratory tool or an unvalidated projection.
 
 These will come up again in Block 4.
 
@@ -149,6 +154,9 @@ Check the finished page against the following, adapted from the Coursera self-re
 
 Fix anything that does not meet the standard.
 
+<img width="1407" height="793" alt="Screenshot 2026-07-26 190439" src="https://github.com/user-attachments/assets/e1abe90e-bd3f-4038-9a6c-00e112b9c2f5" />
+
+
 ---
 
 ### Step 4 — Export the Final Summary (15 mins)
@@ -176,20 +184,36 @@ Write a minimum of three to four sentences per answer.
 **Q1 — Insight vs Finding:**
 Return to the Block 1 answer distinguishing a finding from an insight. Using the actual Executive Summary page, point to one element that is a plain finding and one that is a genuine insight, and explain the difference using our own example.
 
+  A plain finding on the Executive Summary page is the stat "579.90K average monthly rides" — it just states a number the data shows, no interpretation attached. A genuine insight is the framing that temperature is the strongest driver of ridership with a quantified effect size — that connects a pattern in the data to something actionable (e.g., staff and forecast around weather, not just calendar month). The difference is that the first is descriptive and the second explains why the numbers move the way they do.
+
 **Q2 — What We Cut:**
 We were asked to keep an executive summary to three to five visuals. Name one analysis done in Block 2 that did not make it onto the final page, and explain why it was right to leave it out.
+
+  The Decomposition Tree drill-down to the isolated 78°F/Day 9 anomaly didn't make the final page. It was right to leave out because it's a narrow, single-point data-quality flag rather than a broad pattern executives need to act on. 
+  It's valuable for an analyst to investigate further, but it would confuse a three-to-five-visual summary meant to convey the big picture.
 
 **Q3 — Correlation vs Cause:**
 In Block 2 we were asked to consider whether a Key Influencers result implied correlation or something closer to cause. Explain how this was handled in the final callout text — was the language softened, and if so how?
 
+  Yes, the language was deliberately softened. Instead of saying temperature "causes" ridership to drop, the callout used "when average temperature decreases, ridership also decreases" — descriptive, correlational phrasing rather than a causal claim, since Key Influencers shows statistical association, not a proven causal mechanism.
+
 **Q4 — Explaining the Anomaly, Briefly:**
 The executive summary had to represent, in a single sentence, a stretch of history that behaved very differently from the rest. Write the sentence used, and explain what was left out of it that a data analyst would want to know but an executive does not need.
+  
+  The sentence used was: "Over 1.6 million rides start and end at the same station, most visible on the Columbus Circle/Union Station route." 
+  Left out: the fact that this needs deeper investigation outside Power BI to confirm the actual cause (docking errors, loop routes, maintenance checks) — a data analyst wants that caveat, but an executive just needs to know the number exists and is being tracked.
+  
 
 **Q5 — AI Tools as a Starting Point, Not an Answer:**
 Across this week, the AI visuals produced results quickly, but every useful output required questioning, narrowing, or reframing before it was presentation-ready. Describe one specific moment today where the raw AI output was not good enough on its own, and what judgement was applied to make it usable.
 
+  When the Decomposition Tree first showed the 78°F dip, the raw output just displayed a low number sitting next to normal neighbors — it took judgment to recognize this as a likely data-quality artifact rather than a real behavioral finding worth reporting as-is. 
+  Without that reframing, the raw AI output could have been mistakenly presented as a genuine temperature effect instead of a flagged anomaly needing follow-up.
+
 **Q6 — The Programme, Looking Back:**
 Across Weeks 2 through 4 — ETL and staging, visual reporting and dashboards, and now pattern analysis and AI tools on a real multi-year history — what is the single capability we feel most confident in, and what is the one we would most want to keep practising after this programme ends?
+
+  The capability I feel most confident in is structuring and cleaning multi-source data into a model that can actually answer questions — the ETL and joining work from Weeks 2–3 that made everything downstream possible. The one I'd most want to keep practicing is judgment around AI-generated outputs. Knowing when a Key Influencers result or a forecast is trustworthy versus when it needs reframing before it reaches a stakeholder.
 
 ---
 
@@ -197,20 +221,20 @@ Across Weeks 2 through 4 — ETL and staging, visual reporting and dashboards, a
 
 Before marking this session complete, confirm we have done each of the following:
 
-- [ ] Completed all Coursera Module 5, Part 1 and Part 2 items listed in Block 1
-- [ ] Written pre-task answers on insight versus finding and prioritising AI visuals
-- [ ] Framed a single executive question before building any visual
-- [ ] Pushed Key Influencers with at least two framings and identified one result to exclude
-- [ ] Pushed the Decomposition Tree across at least three breakdown orderings
-- [ ] Strengthened the revisited forecast with a reference line and a plain-language explanation
-- [ ] Used the Q&A visual to check for gaps in the other findings
-- [ ] Planned the Executive Summary layout before building it
-- [ ] Built the Executive Summary page with three to five visuals and callouts
-- [ ] Applied the self-review checklist and fixed any gaps
-- [ ] Exported the final PDF summary
-- [ ] Completed the final course quiz and reviewed any missed questions
-- [ ] Written full answers to all six reflection questions
-- [ ] Saved all final files
+- [X] Completed all Coursera Module 5, Part 1 and Part 2 items listed in Block 1
+- [X] Written pre-task answers on insight versus finding and prioritising AI visuals
+- [X] Framed a single executive question before building any visual
+- [X] Pushed Key Influencers with at least two framings and identified one result to exclude
+- [X] Pushed the Decomposition Tree across at least three breakdown orderings
+- [X] Strengthened the revisited forecast with a reference line and a plain-language explanation
+- [X] Used the Q&A visual to check for gaps in the other findings
+- [X] Planned the Executive Summary layout before building it
+- [X] Built the Executive Summary page with three to five visuals and callouts
+- [X] Applied the self-review checklist and fixed any gaps
+- [X] Exported the final PDF summary
+- [X] Completed the final course quiz and reviewed any missed questions
+- [X] Written full answers to all six reflection questions
+- [X] Saved all final files
 
 ---
 
