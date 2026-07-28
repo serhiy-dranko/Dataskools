@@ -32,6 +32,10 @@ Read `day1_theory.md` before starting if you haven't already — this task file 
 6. Use that subquery inside a `WHERE` clause on `stations_summary` to pull back the full row for the busiest station — without hardcoding its name.
 7. Try writing a scalar subquery that would actually return more than one row (for example, station capacity without an aggregate), and confirm you get an error. Read the error message carefully — you'll want to recognize it later.
 
+    Binder Error: Referenced column "capacity" not found in FROM clause!
+    Candidate bindings: "latitude", "casual_rides_percentage", "average_ride_duration_min", "station_capacity"
+    LINE 4:     WHERE total_rides = (SELECT capacity FROM stations_summary);
+
 ---
 
 ## Block 2: Multi-Row Subqueries — IN and EXISTS (90 min)
@@ -48,6 +52,8 @@ Read `day1_theory.md` before starting if you haven't already — this task file 
 6. Find all rider types in `trips` that appear at high-capacity stations (capacity over 30) but do not appear at any low-capacity station (capacity 30 or under) — this needs both an `IN`/`EXISTS` and a `NOT IN`/`NOT EXISTS` working together.
 7. Take one query from this block and rewrite it as an equivalent `JOIN`. Note which version reads more clearly for that specific question, and why.
 8. Write one sentence on when you'd now reach for `EXISTS` over `IN` by default, based on what Task 4 showed you.
+
+   I'd reach for EXISTS over IN by default whenever the subquery's column could contain NULLs, since NOT IN silently returns zero rows if even one NULL sneaks into the subquery's result, while NOT EXISTS (and EXISTS) evaluate row-by-row and are immune to that trap.
 
 ---
 
@@ -76,9 +82,19 @@ Read `day1_theory.md` before starting if you haven't already — this task file 
 2. Extend Task 1 to also attach the average ride duration for trips starting at each station, as a second correlated subquery column.
 3. Write a correlated subquery that finds all stations whose ride count is above the average ride count *for their own neighborhood* — not the overall average. This should reference both the outer row's neighborhood and station.
 4. Time, even roughly, how Task 3 feels to write compared to Block 3's neighborhood-based queries. Which approach would you reach for first next time, and why?
+
+   This query was much faster to write than Block 3, mostly because neighborhoods_summary already has everything pre-joined and pre-aggregated — no COALESCE, no rebuilding joins, just one WHERE and a self-referencing subquery. 
+   Block 3 took longer because I was still constructing that join from raw tables and debugging alias mismatches along the way. Next time I'd reach for a pre-built summary table first whenever one exists, since the actual analysis logic is simple once the data is already flat.
+   I'd only go back to the full LEFT JOIN + GROUP BY chain from raw tables when I need to build that summary table in the first place.
+   
 5. Rewrite Task 1 as a `LEFT JOIN` with `GROUP BY` instead, and compare both the query and the result. Do they produce the same numbers for stations with zero trips?
 6. Identify one question from earlier this week (Week 1) that would have been easier to answer with a correlated subquery than with the join-based approach you actually used. Write the correlated version now.
 7. Write two or three sentences distinguishing correlated from non-correlated subqueries in your own words — not the definition from the theory file, but how you'd explain it to someone who hasn't read it.
+
+    Basically: non-correlated is "calculate this one number first, then use it everywhere," while correlated is "for each row, ask a fresh, personalized question."
+    A non-correlated subquery is completely self-contained. 
+    A correlated subquery can't do that, because it reaches back into the outer query for a value (like "this row's neighborhood") and uses it in its own filter.
+
 
 ---
 
