@@ -369,26 +369,56 @@ FROM stations_summary
 -- 7.Write a CASE WHEN that labels each trip as 'Weekday' or 'Weekend' based on its start date, and use it to compare ride counts between the two.
 
          SELECT 
-            strftime(t.start_time, '%d/%m/%Y')   AS start_date,
+            
             CASE 
-              WHEN DAYOFWEEK(t.start_time) IN (1, 7) THEN 'Weekend'
+              WHEN DAYOFWEEK(t.start_time) IN (0, 6) THEN 'Weekend'
                ELSE 'Weekday'
                 END                                                           AS day_type,
-           COUNT(t.bike_id)                                                  AS total_rides
+            COUNT(t.bike_id)                                                  AS total_rides
           
         FROM trips                                                             AS t
         LEFT JOIN station                                                      AS n
                ON n.short_name = t.start_station_id
-        WHERE date_part('year', start_time) = 2026
-        GROUP BY start_date,day_type
+        
+        GROUP BY day_type
         ORDER BY total_rides DESC;
+
+-- Result 2 rows 2 columns.
 
 -- 8.Combine two CASE WHEN expressions in one query — capacity tier and duration bucket, for example — to build a small cross-tabulated summary in a single SELECT.
 
+        SELECT 
+            CASE
+              WHEN s.capacity > 40 THEN 'Large'
+              WHEN s.capacity > 20 THEN 'Medium'
+              WHEN s.capacity > 0  THEN 'Small'
+              ELSE 'Unknown'
+            END                                                               AS capacity_tier,
+        
+            CASE
+              WHEN t.duration < 0                         THEN 'Negative'
+              WHEN t.duration < 10                        THEN 'under 10 min'
+              WHEN t.duration >= 10 AND  t.duration <= 30 THEN '10–30 min'
+              WHEN t.duration > 30 AND  t.duration < 1440 THEN 'over 30 min'
+              WHEN t.duration > 1440                      THEN 'over 24 h'
+            ELSE 'Unknown'
+            END                                                                AS duration_bucket,
+        
+            COUNT(t.bike_id)                                                   AS total_rides,
+            ROUND(AVG(t.duration), 1)                                          AS avg_duration,
+            ROUND(AVG(s.capacity), 0)                                          AS avg_capacity
+        
+        FROM trips                                                             AS t
+        LEFT JOIN station                                                      AS s
+               ON s.short_name = t.start_station_id
+        GROUP BY ALL
+        ORDER BY capacity_tier, duration_bucket;
+
+--- BLOCK 4 answears saved in markdowns in notes
 
 
-
-
+-- Reporter : Serhiy Dranko
+-- Date : 2026-07-29
 
 
 
